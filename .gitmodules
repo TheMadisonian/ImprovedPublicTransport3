@@ -7,6 +7,6 @@
   url = https://github.com/bloodypenguin/RedirectionFramework
   branch = customization/ImprovedPublicTransport
 [submodule "AlgernonCommons"]
-  path = AlgernonCommons
-  url = https://github.com/algernon-A/AlgernonCommons
-  branch = customization/ImprovedPublicTransport
+	path = AlgernonCommons
+	url = https://github.com/algernon-A/AlgernonCommons
+	branch = master
