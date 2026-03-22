@@ -1,0 +1,62 @@
+using System;
+using CitiesHarmony.API;
+using ICities;
+using IntercityBusControl.HarmonyPatches.BuildingInfoPatches;
+using UnityEngine;
+using ImprovedPublicTransport.Util;
+
+namespace IntercityBusControl
+{
+    public class LoadingExtension : LoadingExtensionBase
+    {
+        private static AppMode _loadMode;
+        
+        public override void OnCreated(ILoading loading)
+        {
+            base.OnCreated(loading);
+            InitializePrefabPatch.Reset();
+            _loadMode = loading.currentMode;
+            try
+            {
+                if (_loadMode == AppMode.Game)
+                {
+                    if (!HarmonyHelper.IsHarmonyInstalled)
+                    {
+                        return;
+                    }
+                    if (!Mod.IsSunsetHarborInstalled())
+                    {
+                        Utils.Log("Intercity Bus Control - Sunset Harbor DLC not found, skipping patches.");
+                        return;
+                    }
+                    Patcher.PatchAll();
+                }
+            }
+            catch (Exception e)
+            {
+                Utils.LogError($"Intercity Bus Control - OnCreated error: {e.Message}");
+            }
+        }
+
+        public override void OnReleased()
+        {
+            base.OnReleased();
+            InitializePrefabPatch.Reset();
+            try
+            {
+                if (_loadMode == AppMode.Game)
+                {
+                    if (!HarmonyHelper.IsHarmonyInstalled)
+                    {
+                        return;
+                    }
+                    Patcher.UnpatchAll();
+                }
+            }
+            catch (Exception e)
+            {
+                Utils.LogError($"Intercity Bus Control - OnReleased error: {e.Message}");
+            }
+        }
+    }
+}

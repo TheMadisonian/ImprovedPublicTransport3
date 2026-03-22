@@ -1,0 +1,267 @@
+MOD_DESCRIPTION Verbesserte Steuerung des öffentlichen Nahverkehrs.
+CURRENT_WEEK Aktuelle Woche
+LAST_WEEK Letzte Woche
+AVERAGE Durchschnitt
+AVERAGE_TOOLTIP Durchschnitt der letzten {0} Wochen.
+CITY_SERVICE_PANEL_TITLE_STATION_STOPS Bahnhofshaltestellen
+CITY_SERVICE_PANEL_TITLE_DEPOT_VEHICLES Depotfahrzeuge
+CITYSERVICE_ACCEPTINTERCITYBUSES Fernbusse erlauben
+CITYSERVICE_ACCEPTINTERCITYBUSES_TOOLTIP Erlaubt Fernbussen die Nutzung dieser Station. Deaktivieren für reine Stadtbushaltestellen.
+
+EXPLANATION_BUDGET_CONTROL Budgetsteuerung: Die Fahrzeuganzahl wird durch das Budget gesteuert.
+EXPLANATION_UNBUNCHING Fahrzeugentbündelung: Das Spiel versucht, einen Abstand zwischen Fahrzeugen zu erzeugen.
+LINE_PANEL_STOPS Haltestellen: {0}
+LINE_PANEL_SPAWNTIMER Nächstes Fahrzeug in {0} Sekunden.
+LINE_PANEL_DEPOT_WARNING <color #FF0000>Das ausgewählte Depot hat keine Fahrzeuge mehr.</color>
+LINE_PANEL_BUDGET_CONTROL Budgetsteuerung
+LINE_PANEL_BUDGET_CONTROL_TOOLTIP Aktiviert oder deaktiviert die Budgetsteuerung für diese Linie.
+LINE_PANEL_UNBUNCHING_TOOLTIP Aktiviert oder deaktiviert die Fahrzeugentbündelung für diese Linie.\nEntbündelung ist deaktiviert, wenn die Entbündelungsaggressivität auf 0 gesetzt ist.
+LINE_PANEL_DEPOT Depot:
+LINE_PANEL_NO_DEPOT_FOUND Kein Depot gefunden.
+LINE_PANEL_DEPOT_MARKER_TOOLTIP Zum ausgewählten Depot springen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+LINE_PANEL_SELECT_TYPES Typen auswählen
+LINE_PANEL_SELECT_TYPES_TOOLTIP Öffnet/schließt das Typenauswahl-Panel.\nWenn dieser Knopf deaktiviert ist, müssen Sie zuerst ein Depot auswählen.
+LINE_PANEL_LINE_STOPS Linienhaltestellen
+LINE_PANEL_LINE_VEHICLES Fahrzeuge auf dieser Linie
+LINE_PANEL_ENQUEUED Fahrzeuge in Warteschlange
+LINE_PANEL_TOTAL_WAITING_PEOPLE_TOOLTIP {0} Fahrgäste warten auf dieser Linie.
+LINE_PANEL_ADD_VEHICLE Fahrzeug hinzufügen
+LINE_PANEL_ADD_VEHICLE_TOOLTIP Fügt ein neues Fahrzeug zur Linie hinzu.\nWenn dieser Knopf deaktiviert ist, hat das ausgewählte Depot keine Fahrzeuge mehr.
+LINE_PANEL_REMOVE_VEHICLE Fahrzeug entfernen
+
+STOP_LIST_BOX_ROW_STOP Haltestelle #{0}
+STOP_LIST_BOX_ROW_TOOLTIP {0}\nWartende Fahrgäste: {1}\n\nRechtsklick zum Springen zu dieser Haltestelle.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+STOP_PANEL_SUGGESTED_NAMES_TOOLTIP Liste vorgeschlagener Haltestellennamen.
+STOP_PANEL_REUSE_NAME_TOOLTIP Diesen Namen für alle anderen Haltestellen an diesem Bahnhof / dieser Position festlegen.
+STOP_PANEL_WAITING_PEOPLE Wartende Fahrgäste: {0}
+STOP_PANEL_BORED_TIMER Zeit bis zur Ungeduld: <color #{0}>{1}</color>
+STOP_PANEL_BORED_TIMER_TOOLTIP Fahrgäste verlassen diese Haltestelle, wenn der Countdown auf null sinkt.
+STOP_PANEL_PASSENGERS_IN Fahrgäste ein:
+STOP_PANEL_PASSENGERS_IN_TOOLTIP Fahrgäste, die hier in das Transportfahrzeug einsteigen.
+STOP_PANEL_PASSENGERS_OUT Fahrgäste aus:
+STOP_PANEL_PASSENGERS_OUT_TOOLTIP Fahrgäste, die hier aus dem Transportfahrzeug aussteigen.
+STOP_PANEL_PASSENGERS_TOTAL Gesamt:
+STOP_PANEL_PASSENGERS_TOTAL_TOOLTIP Gesamtzahl der hier beförderten Fahrgäste.
+STOP_PANEL_UNBUNCHING_TOOLTIP Aktiviert oder deaktiviert die Fahrzeugentbündelung an dieser Haltestelle.\nEntbündelung ist deaktiviert, wenn die Entbündelungsaggressivität auf 0 gesetzt ist.
+STOP_PANEL_UPDATE_CLOSE_STOPS Nahegelegene Haltestellen aktualisieren
+STOP_PANEL_UPDATE_CLOSE_STOPS_TOOLTIP Den Entbündelungszustand für alle anderen Haltestellen an diesem Bahnhof / dieser Position festlegen.
+STOP_PANEL_PREVIOUS Vorherige Haltestelle
+STOP_PANEL_PREVIOUS_TOOLTIP Zur vorherigen Haltestelle springen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+STOP_PANEL_DELETE_STOP Haltestelle löschen
+STOP_PANEL_DELETE_STOP_TOOLTIP Dieser Knopf ist aktiv, während die Alt-Taste gedrückt gehalten wird.\nAuf eigene Gefahr verwenden!!!
+STOP_PANEL_NEXT Nächste Haltestelle
+STOP_PANEL_NEXT_TOOLTIP Zur nächsten Haltestelle springen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+STOP_BUTTON_TOOLTIP {0}\n\nKlicken zum Springen zu dieser Haltestelle.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.\nMit gedrückter Alt-Taste beim Klicken wird das Haltestelleninfofenster nicht geöffnet.
+
+SETTINGS_DELETE Löschen
+SETTINGS_RESET Zurücksetzen
+
+SETTINGS_TAB_GENERAL Allgemein
+SETTINGS_TAB_STOPS Haltestellen und Bahnhöfe
+SETTINGS_TAB_UNBUNCHING Entbündelung
+SETTINGS_TAB_DELETE Linien löschen
+
+SETTINGS Einstellungen
+SETTINGS_SPEED Geschwindigkeit anzeigen in: 
+SETTINGS_SPEED_TOOLTIP Wählen Sie die Einheit für die Geschwindigkeitsanzeige in der Benutzeroberfläche.
+SETTINGS_SPEED_KPH km/h
+SETTINGS_SPEED_MPH mph
+SETTINGS_WALKING_SPEED Geh-/Radfahrgeschwindigkeit: 
+SETTINGS_WALKING_SPEED_TOOLTIP Standard: Basis-Spielgeschwindigkeiten.\nRealistisch: reduziert die Gehgeschwindigkeit auf realistische, altersgerechte Werte.\nRealistisch erhöht auch die Fahrradgeschwindigkeit, um Fahrradfahrten mit dem After Dark DLC zu fördern.
+SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
+SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistisch
+SETTINGS_BBSP Verbesserte Bushaltestellen-Position: 
+SETTINGS_BBSP_TOOLTIP Deaktiviert: keine Positionsanpassung.\nOriginal: verwendet klassische BBSP-Positionierung.\nExperimentell: wendet verbesserte Positionierung mit vollständiger Bordsteinausrichtung an.
+SETTINGS_BBSP_MODE_DISABLED Deaktiviert
+SETTINGS_BBSP_MODE_ORIGINAL Ursprüngliche Logik verwenden
+SETTINGS_BBSP_MODE_UPDATED Experimentelle Logik verwenden
+
+SETTINGS_BUDGET Budget
+SETTINGS_ENABLE_BUDGET_CONTROL Linien-Budgetsteuerung
+SETTINGS_BUDGET_CONTROL_DISABLED Deaktiviert
+SETTINGS_BUDGET_CONTROL_ENABLED Aktiviert
+SETTINGS_BUDGET_CONTROL_TOOLTIP Wenn aktiviert, wird die Fahrzeuganzahl für Transportlinien durch das Budget gesteuert; aktualisiert alle bestehenden Linien und leert die Fahrzeugwarteschlange.
+
+SETTINGS_AUTO_LINE Automatische Linie
+SETTINGS_AUTOSHOW_LINE_INFO Linieninfo automatisch anzeigen
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Das Linieninfofenster automatisch anzeigen, nachdem eine Linie erstellt wurde.
+
+AUTOLINECOLOR_STRATEGY_RANDOM_HUE Zufälliger Farbton
+AUTOLINECOLOR_STRATEGY_RANDOM_COLOR Zufällige Farbe
+AUTOLINECOLOR_STRATEGY_CATEGORISED Kategorisiert
+AUTOLINECOLOR_STRATEGY_NAMED Benannte Farben
+AUTOLINECOLOR_NAMING_NONE Keine
+AUTOLINECOLOR_NAMING_DISTRICTS Stadtteile
+AUTOLINECOLOR_NAMING_LONDON London
+AUTOLINECOLOR_NAMING_ROADS Straßen
+AUTOLINECOLOR_NAMING_COLORS Benannte Farben
+AUTOLINECOLOR_COLOR_STRATEGY Farbstrategie:
+AUTOLINECOLOR_COLOR_STRATEGY_TOOLTIP Wie Farben neuen Linien zugewiesen werden:\n'Zufälliger Farbton' = gleiche Sättigung/Helligkeit, verschiedene Farbtöne;\n 'Zufällige Farbe' = vollständig zufälliges RGB;\n 'Kategorisiert' = Farben nach Fahrzeugtyp;\n 'Benannte Farben' = vordefinierte Farbpalette.
+AUTOLINECOLOR_NAMING_STRATEGY Benennungsstrategie:
+AUTOLINECOLOR_NAMING_STRATEGY_TOOLTIP Wie Namen neuen Linien zugewiesen werden:\n 'Keine' = keine automatische Benennung;\n 'Stadtteile' = basierend auf bedienten Stadtteilen;\n 'London' = nummerierte Routen (London-Bus-Stil);\n 'Straßen' = basierend auf Straßennamen;\n 'Benannte Farben' = basierend auf Farbnamen.
+AUTOLINECOLOR_MIN_COLOR_DIFF Minimaler Farbunterschied (%):
+AUTOLINECOLOR_MIN_COLOR_DIFF_TOOLTIP Minimaler Farbunterschied in Prozent bei der Auswahl zufälliger Farben.
+AUTOLINECOLOR_MAX_COLOR_PICK Maximale Versuche:
+AUTOLINECOLOR_MAX_COLOR_PICK_TOOLTIP Maximale Versuche, eine unterscheidbare Farbe auszuwählen.
+
+SETTINGS_UI Benutzeroberflächen-Einstellungen
+SETTINGS_VEHICLE_EDITOR_POSITION Fahrzeug-Editor-Position: 
+SETTINGS_VEHICLE_EDITOR_POSITION_TOOLTIP Wählen Sie, ob das Fahrzeug-Editor-Panel am unteren oder rechten Bildschirmrand erscheint.
+SETTINGS_VEHICLE_EDITOR_POSITION_BOTTOM Unten
+SETTINGS_VEHICLE_EDITOR_POSITION_RIGHT Rechts
+SETTINGS_VEHICLE_EDITOR_HIDE Fahrzeug-Editor ausblenden
+SETTINGS_VEHICLE_EDITOR_HIDE_TOOLTIP Den Fahrzeug-Editor in Fahrzeugpanels ausblenden.
+
+SETTINGS_STOPS Öffentliche Verkehrshaltestellen
+SETTINGS_ENABLE_STOPS_AND_STATIONS Haltestellen und Bahnhöfe aktivieren
+SETTINGS_ENABLE_STOPS_AND_STATIONS_TOOLTIP Passen Sie die maximale Anzahl an Bürgern an, die an verschiedenen Haltestellen und Bahnhöfen auf öffentliche Verkehrsmittel warten können. In der Registerkarte Haltestellen konfigurieren.
+SETTINGS_STOPSANDSTATIONS_ENABLE Haltestellen und Bahnhöfe aktivieren
+SETTINGS_STOPSANDSTATIONS_ENABLE_TOOLTIP Fahrgastbeschränkungen an Haltestellen aktivieren oder deaktivieren.
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HEADER Maximale Fahrgäste an einer Linienhaltestelle:
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS Linienbus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS_TOOLTIP Maximale Fahrgäste an einer Linienbushaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS Oberleitungsbus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS_TOOLTIP Maximale Fahrgäste an einer Oberleitungsbushaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS Evakuierungsbus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS_TOOLTIP Maximale Fahrgäste an einer Evakuierungsbushaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS Sightseeing-Bus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS_TOOLTIP Maximale Fahrgäste an einer Sightseeing-Bushaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM Straßenbahn
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM_TOOLTIP Maximale Fahrgäste an einer Straßenbahnhaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO U-Bahn
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO_TOOLTIP Maximale Fahrgäste an einer U-Bahnstation
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN Zug
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN_TOOLTIP Maximale Fahrgäste an einem Bahnhof
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL Monorail
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL_TOOLTIP Maximale Fahrgäste an einer Monorail-Haltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP Schiff
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP_TOOLTIP Maximale Fahrgäste an einem Schiffshafen
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY Fähre
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY_TOOLTIP Maximale Fahrgäste an einer Fährhaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE Flugzeug
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE_TOOLTIP Maximale Fahrgäste an einem Flughafenterminal
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR Seilbahn
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR_TOOLTIP Maximale Fahrgäste an einer Seilbahnhaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON Heißluftballon
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON_TOOLTIP Maximale Fahrgäste an einer Heißluftballon-Haltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER Hubschrauber
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER_TOOLTIP Maximale Fahrgäste an einer Hubschrauberhaltestelle
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP Luftschiff
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP_TOOLTIP Maximale Fahrgäste an einer Luftschiffhaltestelle
+
+SETTINGS_UNBUNCHING Entbündelung
+SETTINGS_UNBUNCHING_AGGRESSION Entbündelungsaggressivität:
+SETTINGS_UNBUNCHING_AGGRESSION_TOOLTIP Wie stark soll die Fahrzeugentbündelung wirken?\nMögliche Werte: 0–52. Ein Wert von 0 deaktiviert die Entbündelung.\nHöhere Werte beeinflussen den Verkehr stark und können dazu führen, dass Fahrzeuge despawnen.
+SETTINGS_VEHICLE_COUNT Fahrzeuge auf neuen Linien:
+SETTINGS_VEHICLE_COUNT_TOOLTIP Die Anzahl der Fahrzeuge, die neuen Linien automatisch hinzugefügt werden, wenn die Budgetsteuerung deaktiviert ist.
+SETTINGS_SPAWN_TIME_INTERVAL Spawn-Zeitintervall:
+SETTINGS_SPAWN_TIME_INTERVAL_TOOLTIP Zeit in Sekunden zwischen Fahrzeug-Spawns.
+SETTINGS_UNBUNCHING_RESET_BUTTON_TOOLTIP Setzt alle Regler auf den Standardwert zurück.
+UNBUNCHING_ENABLED Fahrzeugentbündelung
+UNBUNCHING_DISABLED Entbündelung ist deaktiviert.
+UNBUNCHING_TARGET_GAP Zielabstand: {0}
+
+SETTINGS_EBS_GROUP_BUS Schnellbus-Dienste
+SETTINGS_EBS_GROUP_TRAM Schnellstraßenbahn-Dienste
+SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Schnellbus: 
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Deaktiviert' = Busse verwenden die obigen Entbündelungseinstellungen.\n'Stop-and-Go' = Hält kurz an, prüft Fahrgäste, kann abfahren wenn leer.\n'Express' = Überspringt Haltestellen vollständig, wenn keine Fahrgäste warten.
+SETTINGS_EBS_ENABLE_SELFBAL Dienst-Selbstausgleich aktivieren
+SETTINGS_EBS_TOOLTIP_SELFBAL Analysiert Linienabschnitte und kann Fahrzeuge auf stärker ausgelastete Abschnitte oder Endstationen umverteilen, um den Betrieb zu verbessern und Wartezeiten zu reduzieren.\nEntscheidungen sind probabilistisch und hängen von Fahrgastzahlen und Umverteilungswahrscheinlichkeiten ab.
+SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Selbstausgleich für Mittenstationen aktivieren
+SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Ermöglicht dem Selbstausgleich, Fahrzeuge zu einer stark frequentierten Mittenstation (statt einer Endstation) umzuverteilen.\nWird nur berücksichtigt, wenn die belebteste Haltestelle mehr als 30 wartende Fahrgäste hat, dann mit ~50% Wahrscheinlichkeit gewählt und abhängig von der Gesamtumverteilungswahrscheinlichkeit.
+SETTINGS_EBS_ENABLE_MINIBUS Minibus-Modus aktivieren
+SETTINGS_EBS_TOOLTIP_MINIBUS Busse mit Kapazität ≤20 können früher von einer Haltestelle abfahren, wenn ein- und aussteigende Fahrgäste an dieser Haltestelle ≤5 sind.
+SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Schnellstraßenbahn: 
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Deaktiviert' = Straßenbahnen verwenden die obigen Entbündelungseinstellungen.\n'Stadtbahn' = Hält an jeder Haltestelle, wartet immer die volle Zeit (erzwungene Disziplin).\n'Echte Straßenbahn' = Hält nur, wenn Fahrgäste ein- oder aussteigen.
+SETTINGS_EBS_MODE_NONE Deaktiviert
+SETTINGS_EBS_MODE_AGGRESSIVE Express
+SETTINGS_EBS_MODE_PRUDENTIAL Stop-and-Go
+SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Stadtbahn-Modus
+SETTINGS_EBS_TRAM_MODE_NONE Deaktiviert
+SETTINGS_EBS_TRAM_MODE_TRAM Echter Straßenbahn-Modus 
+
+
+SETTINGS_LINE_DELETION_TOOL Linien-Lösch-Werkzeug
+SETTINGS_LINE_DELETION_TOOL_BUTTON_TOOLTIP Löscht alle Linien der ausgewählten Typen. Funktioniert nur, wenn die Stadt geladen ist.
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_TITLE LINIENLÖSCHUNG BESTÄTIGEN
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_MSG Sie sind dabei, alle Linien zu löschen.\nMöchten Sie fortfahren?
+SETTINGS_DELETE_BUS_TOOLTIP Löscht alle regulären Buslinien.
+SETTINGS_DELETE_SIGHTSEEING_BUS_LABEL Sightseeing-Busse
+SETTINGS_DELETE_SIGHTSEEING_BUS_TOOLTIP Löscht alle Sightseeing-Buslinien.
+SETTINGS_DELETE_TRAM_TOOLTIP Löscht alle Straßenbahnlinien.
+SETTINGS_DELETE_TROLLEYBUS_TOOLTIP Löscht alle Oberleitungsbuslinien.
+SETTINGS_DELETE_TRAIN_TOOLTIP Löscht alle Zuglinien.
+SETTINGS_DELETE_METRO_TOOLTIP Löscht alle U-Bahnlinien.
+SETTINGS_DELETE_MONORAIL_TOOLTIP Löscht alle Monorail-Linien.
+SETTINGS_DELETE_FERRY_LABEL Fähren
+SETTINGS_DELETE_SHIP_TOOLTIP Löscht alle Fährlinien.
+SETTINGS_DELETE_HELICOPTER_LABEL Hubschrauber
+SETTINGS_DELETE_HELICOPTER_TOOLTIP Löscht alle Hubschrauberlinien.
+SETTINGS_DELETE_BLIMP_LABEL Luftschiffe
+SETTINGS_DELETE_BLIMP_TOOLTIP Löscht alle Luftschifflinien.
+
+
+VEHICLE_EDITOR_TITLE Fahrzeug-Editor
+VEHICLE_EDITOR_SUB_TITLE {0} Fahrzeuge
+VEHICLE_EDITOR_CAPACITY Fahrgastkapazität
+VEHICLE_EDITOR_CAPACITY_TAXI Reisekapazität
+VEHICLE_EDITOR_CAPACITY_TAXI_TOOLTIP Anzahl der Fahrgäste pro Arbeitsschicht.
+VEHICLE_EDITOR_MAINTENANCE Wartungskosten
+VEHICLE_EDITOR_MAX_SPEED Höchstgeschwindigkeit
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS Triebwagen an beiden Enden
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS_TOOLTIP Aktiviert oder deaktiviert Triebwagen an beiden Enden des Zuges.
+VEHICLE_EDITOR_APPLY Anwenden
+VEHICLE_EDITOR_DEFAULT Standard
+VEHICLE_LIST_BOX_ROW_TOOLTIP1 Rechtsklick, um diesem Fahrzeug zu folgen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+VEHICLE_LIST_BOX_ROW_TOOLTIP2 Umschalt + Klick, um dieses Fahrzeug in die Warteschlange zu stellen.
+VEHICLE_PANEL_EDIT_TYPE Fahrzeugtyp bearbeiten
+VEHICLE_PANEL_EDIT_TYPE_TOOLTIP Diesen Fahrzeugtyp mit dem Fahrzeug-Editor bearbeiten.
+VEHICLE_PANEL_STATUS_NEXT_STOP Nächste Haltestelle:
+VEHICLE_PANEL_STATUS_UNBUNCHING Entbündelung läuft
+VEHICLE_PANEL_LAST_STOP_EXCHANGE Fahrgastwechsel letzte Haltestelle: <color #FF0000>-{0}</color> | <color #00FF00>+{1}</color>
+VEHICLE_PANEL_PASSENGERS Fahrgäste:
+VEHICLE_PANEL_EARNINGS Einnahmen:
+VEHICLE_PANEL_EARNINGS_TOOLTIP Ergebnis aus Fahrkarten-Einnahmen minus Fahrzeugwartungskosten.
+VEHICLE_PANEL_PREVIOUS Vorheriges Fahrzeug
+VEHICLE_PANEL_PREVIOUS_TOOLTIP Zum vorherigen Fahrzeug springen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+VEHICLE_PANEL_REMOVE_VEHICLE Fahrzeug entfernen
+VEHICLE_PANEL_NEXT Nächstes Fahrzeug
+VEHICLE_PANEL_NEXT_TOOLTIP Zum nächsten Fahrzeug springen.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.
+VEHICLE_SELECTION_CAPACITY Kapazität
+VEHICLE_SELECTION_ADD_VEHICLE Dieses Fahrzeug zur Liste der erlaubten Fahrzeuge hinzufügen
+VEHICLE_SELECTION_ADD_ALL Alle geeigneten Fahrzeuge zur Liste der erlaubten Fahrzeuge hinzufügen
+VEHICLE_SELECTION_REMOVE_VEHICLE Dieses Fahrzeug aus der Liste der erlaubten Fahrzeuge entfernen
+VEHICLE_SELECTION_REMOVE_ALL Alle Fahrzeuge aus der Liste der erlaubten Fahrzeuge entfernen
+VEHICLE_SELECTION_AVAILABLE_VEHICLES Verfügbare Fahrzeuge
+VEHICLE_SELECTION_SELECTED_VEHICLES Ausgewählte Fahrzeuge
+VEHICLE_SELECTION_ANY_VEHICLE Beliebiges Fahrzeug
+VEHICLE_BUTTON_TOOLTIP {0}\n\nKlicken zum Springen zu diesem Fahrzeug.\nMit gedrückter Umschalttaste beim Klicken wird auch hereingezoomt.\nMit gedrückter Alt-Taste beim Klicken wird das Fahrzeuginfofenster nicht geöffnet.
+TRANSPORT_LINE_VEHICLECOUNT Fahrzeuganzahl: {0}
+
+FLIGHT_TRACKER_NAME Flugverfolger
+FLIGHT_STATUS_NONE Keiner
+FLIGHT_STATUS_INCOMING Einkommend
+FLIGHT_STATUS_LANDED Gelandet
+FLIGHT_STATUS_AT_GATE Am Gate
+FLIGHT_STATUS_DEPARTED Abgeflogen
+
+TICKET_PRICE_TAXI_KILOMETER Taxipreis pro Kilometer: 
+TICKET_PRICE_TAXI_MILE Taxipreis pro Meile: 
+TICKET_PRICE_BUS Busfahrkartenpreis: 
+TICKET_PRICE_INTERCITY_BUS Fernbus-Fahrkartenpreis: 
+TICKET_PRICE_METRO U-Bahn-Fahrkartenpreis: 
+TICKET_PRICE_TRAIN Zugfahrkartenpreis: 
+TICKET_PRICE_TRAM Straßenbahn-Fahrkartenpreis: 
+TICKET_PRICE_MONORAIL Monorail-Fahrkartenpreis: 
+TICKET_PRICE_SHIP Schiff-Fahrkartenpreis: 
+TICKET_PRICE_FERRY Fähr-Fahrkartenpreis: 
+TICKET_PRICE_PLANE Flugzeug-Fahrkartenpreis: 
+TICKET_PRICE_CABLECAR Seilbahn-Fahrkartenpreis: 
+TICKET_PRICE_SIGHTSEEING_BUS Sightseeing-Bus-Fahrkartenpreis: 
+TICKET_PRICE_TROLLEYBUS Oberleitungsbus-Fahrkartenpreis: 
+TICKET_PRICE_BLIMP Luftschiff-Fahrkartenpreis: 
+TICKET_PRICE_HELICOPTER Hubschrauber-Fahrkartenpreis: 
+ECONOMY_TAB_TICKET_PRICES Fahrkartenpreise
+
+WHATSNEW_3_0_0_1 Für Race Day aktualisiert; jetzt kompatibel mit More Vehicles Renewed.
+WHATSNEW_3_0_0_2 Die folgenden Mods wurden in IPT3 integriert:\n • Advanced Stop Selection Revisited\n • Auto Line Color Redux\n • Better Bus Stop Position\n • Better Train Boarding\n • Elevated Stops Enabler Revisited  \n • Express Bus Services\n • Flight Tracker\n • Intercity Bus Control\n • Mileage Taxi Services\n • Realistic Walking Speed\n • Stops and Stations\n • Ticket Price Customizer

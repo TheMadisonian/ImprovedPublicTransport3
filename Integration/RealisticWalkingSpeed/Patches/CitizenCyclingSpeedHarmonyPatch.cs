@@ -1,0 +1,78 @@
+﻿using HarmonyLib;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
+
+namespace RealisticWalkingSpeed.Patches
+{
+    public class CitizenCyclingSpeedHarmonyPatch : IHarmonyPatch
+    {
+        private readonly Harmony _harmony;
+
+        public CitizenCyclingSpeedHarmonyPatch(Harmony harmony)
+        {
+            _harmony = harmony ?? throw new ArgumentNullException(nameof(harmony));
+        }
+
+        public void Apply()
+        {
+            var simulationStepMethodInfo = typeof(HumanAI).GetMethod(
+                "SimulationStep",
+                BindingFlags.Instance | BindingFlags.Public,
+                Type.DefaultBinder,
+                new []
+                {
+                    typeof(ushort),
+                    typeof(CitizenInstance).MakeByRefType(),
+                    typeof(CitizenInstance.Frame).MakeByRefType(),
+                    typeof(bool)
+                },
+                null
+            );
+            var simulationStepTranspilerMethodInfo = GetType()
+                .GetMethod(nameof(SimulationStepTranspiler), BindingFlags.Static | BindingFlags.NonPublic);
+            _harmony.Patch(simulationStepMethodInfo, null, null, new HarmonyMethod(simulationStepTranspilerMethodInfo));
+        }
+
+        static IEnumerable<CodeInstruction> SimulationStepTranspiler(IEnumerable<CodeInstruction> codeInstructions)
+        {
+            var codes = new List<CodeInstruction>(codeInstructions);
+            for (int i = 0; i < codes.Count; i++)
+            {
+                var firstCode = codes[i];
+                if (firstCode.opcode != OpCodes.Ldloc_S)
+                {
+                    continue;
+                }
+
+                // Match by the surrounding constant values rather than the compiler-assigned local
+                // variable index (LocalIndex), which can shift when the game DLL is recompiled.
+                if (i + 7 >= codes.Count)
+                    continue;
+
+                var onBikeLaneFactor = codes[i + 1];
+                var onBikeLaneMultiplication = codes[i + 2];
+                var notOnBikeLaneFactor = codes[i + 6];
+                var notOnBikeLaneMultiplication = codes[i + 7];
+
+                if (!(onBikeLaneFactor.opcode == OpCodes.Ldc_R4
+                    && onBikeLaneFactor.operand is float onBikeVal && onBikeVal == 2.0f
+                    && onBikeLaneMultiplication.opcode == OpCodes.Mul
+                    && notOnBikeLaneFactor.opcode == OpCodes.Ldc_R4
+                    && notOnBikeLaneFactor.operand is float notOnBikeVal && notOnBikeVal == 1.5f
+                    && notOnBikeLaneMultiplication.opcode == OpCodes.Mul))
+                {
+                    continue;
+                }
+
+                onBikeLaneFactor.operand = 3.5f;
+                notOnBikeLaneFactor.operand = 2.5f;
+
+                break;
+            }
+
+            return codes;
+        }
+    }
+}

@@ -1,0 +1,267 @@
+MOD_DESCRIPTION Miglioramento del controllo dei trasporti pubblici.
+CURRENT_WEEK Settimana corrente
+LAST_WEEK Ultima settimana
+AVERAGE Media
+AVERAGE_TOOLTIP Media delle ultime {0} settimane.
+CITY_SERVICE_PANEL_TITLE_STATION_STOPS Fermate
+CITY_SERVICE_PANEL_TITLE_DEPOT_VEHICLES Veicoli del deposito
+CITYSERVICE_ACCEPTINTERCITYBUSES Consenti autobus interurbani
+CITYSERVICE_ACCEPTINTERCITYBUSES_TOOLTIP Consenti ai pullman di utilizzare questa stazione. Disabilita per solo autobus locali.
+
+EXPLANATION_BUDGET_CONTROL Controllo del budget: Il conteggio dei veicoli è controllato dal bilancio.
+EXPLANATION_UNBUNCHING Veicoli convogliati: Il gioco cerca di creare una distanza tra i veicoli.
+LINE_PANEL_STOPS Fermate: {0}
+LINE_PANEL_SPAWNTIMER Prossimo veicolo tra {0} secondi.
+LINE_PANEL_DEPOT_WARNING <color #FF0000>Il deposito selezionato non ha più veicoli.</color>
+LINE_PANEL_BUDGET_CONTROL Controllo del budget
+LINE_PANEL_BUDGET_CONTROL_TOOLTIP Attiva o disattiva il controllo del budget per questa linea.
+LINE_PANEL_UNBUNCHING_TOOLTIP Attiva o disattiva il convogliamento dei veicoli per questa linea.\nIl raggruppamento è disabilitato se è settato a 0.
+LINE_PANEL_DEPOT Deposito:
+LINE_PANEL_NO_DEPOT_FOUND Nessun deposito trovato.
+LINE_PANEL_DEPOT_MARKER_TOOLTIP Salta al deposito selezionato.\nTieni premuto Shift mentre fai clic per ingrandire.
+LINE_PANEL_SELECT_TYPES Seleziona il tipo
+LINE_PANEL_SELECT_TYPES_TOOLTIP Attiva 'Seleziona il tipo'.\nSe il tasto è disattivato, devi selezionare il deposito prima.
+LINE_PANEL_LINE_STOPS Fermate della linea
+LINE_PANEL_LINE_VEHICLES Veicoli in questa linea
+LINE_PANEL_ENQUEUED Veicoli in coda
+LINE_PANEL_TOTAL_WAITING_PEOPLE_TOOLTIP {0} persone stanno aspettando su questa linea.
+LINE_PANEL_ADD_VEHICLE Aggiungi veicolo
+LINE_PANEL_ADD_VEHICLE_TOOLTIP Aggiunge un nuovo veicolo alla linea.\nSe questo pulsante è disabilitato, il deposito selezionato non ha più veicoli.
+LINE_PANEL_REMOVE_VEHICLE Rimuovi veicolo
+
+STOP_LIST_BOX_ROW_STOP Fermata #{0}
+STOP_LIST_BOX_ROW_TOOLTIP {0}\nPersone in attesa: {1}\n\nClick con il tasto destro per saltare a questa fermata.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+STOP_PANEL_SUGGESTED_NAMES_TOOLTIP Lista di nomi per le fermate.
+STOP_PANEL_REUSE_NAME_TOOLTIP Imposta questo nome a tutte le altre fermate di questa stazione/posizione.
+STOP_PANEL_WAITING_PEOPLE Persone in attesa: {0}
+STOP_PANEL_BORED_TIMER Tempo finché non si annoiano: <color #{0}>{1}</color>
+STOP_PANEL_BORED_TIMER_TOOLTIP Le persone lasceranno la fermata quando questo countdown raggiunge lo zero.
+STOP_PANEL_PASSENGERS_IN Passeggeri dentro:
+STOP_PANEL_PASSENGERS_IN_TOOLTIP Passeggeri che entrano nel veicolo qui.
+STOP_PANEL_PASSENGERS_OUT Passeggeri fuori:
+STOP_PANEL_PASSENGERS_OUT_TOOLTIP Passeggeri che lasciano il veicolo.
+STOP_PANEL_PASSENGERS_TOTAL Totale:
+STOP_PANEL_PASSENGERS_TOTAL_TOOLTIP Totale passeggeri serviti qui.
+STOP_PANEL_UNBUNCHING_TOOLTIP Attiva o disattiva il convogliamento di questa fermata.\nÈ disabilitato se il convogliamento è settato a zero.
+STOP_PANEL_UPDATE_CLOSE_STOPS Aggiorna le fermate vicine
+STOP_PANEL_UPDATE_CLOSE_STOPS_TOOLTIP Imposta il convogliamento a tutte le altre fermate di questa stazione.
+STOP_PANEL_PREVIOUS Precedente fermata
+STOP_PANEL_PREVIOUS_TOOLTIP Salta sulla fermata precedente.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+STOP_PANEL_DELETE_STOP Cancella fermata
+STOP_PANEL_DELETE_STOP_TOOLTIP Questo pulsante è attivo mentre tieni premuto il tasto Alt.\nUsalo a tuo rischio!!!
+STOP_PANEL_NEXT Prossima fermata
+STOP_PANEL_NEXT_TOOLTIP Salta sulla prossima fermata.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+STOP_BUTTON_TOOLTIP {0}\n\nFai clic per saltare a questa fermata.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.\nTenere premuto il tasto Alt mentre fai clic per evitare di aprire il pannello delle informazioni sulla fermata.
+
+SETTINGS_DELETE Cancella
+SETTINGS_RESET Resetta
+
+SETTINGS_TAB_GENERAL Generale
+SETTINGS_TAB_STOPS Fermate e Stazioni
+SETTINGS_TAB_UNBUNCHING Convogliamento
+SETTINGS_TAB_DELETE Elimina linee
+
+SETTINGS Impostazioni
+SETTINGS_SPEED Velocità: 
+SETTINGS_SPEED_TOOLTIP Scegli l'unità di misura per la velocità visualizzata nell'interfaccia.
+SETTINGS_SPEED_KPH km/h
+SETTINGS_SPEED_MPH mph
+SETTINGS_WALKING_SPEED Velocità a piedi/bicicletta: 
+SETTINGS_WALKING_SPEED_TOOLTIP Standard: velocità del gioco base.\nRealistico: riduce la velocità di camminata a valori realistici in base all'età.\nRealistico aumenta anche la velocità in bicicletta per incoraggiare il ciclismo con il DLC After Dark.
+SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
+SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistico
+SETTINGS_BBSP Posizionamento migliore fermate bus: 
+SETTINGS_BBSP_TOOLTIP Disabilitato: nessun adattamento di posizione.\nOriginale: usa il posizionamento BBSP classico.\nSperimentale: applica un posizionamento migliorato con allineamento completo al marciapiede.
+SETTINGS_BBSP_MODE_DISABLED Disabilitato
+SETTINGS_BBSP_MODE_ORIGINAL Usa logica originale
+SETTINGS_BBSP_MODE_UPDATED Usa logica sperimentale
+
+SETTINGS_BUDGET Budget
+SETTINGS_ENABLE_BUDGET_CONTROL Controllo del budget
+SETTINGS_BUDGET_CONTROL_DISABLED Disabilitato
+SETTINGS_BUDGET_CONTROL_ENABLED Abilitato
+SETTINGS_BUDGET_CONTROL_TOOLTIP Abilita o disabilita il controllo del budget per tutte le linee.\n L'abilitazione applicherà la modalità a ogni linea e cancellerà i veicoli in coda.\n Le modifiche hanno effetto immediato.
+
+SETTINGS_AUTO_LINE Linea automatica
+SETTINGS_AUTOSHOW_LINE_INFO Visualizza le informazioni
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Automaticamente viene mostrata la finestra di informazione dopo aver creato una nuova linea.
+
+AUTOLINECOLOR_STRATEGY_RANDOM_HUE Tonalità casuale
+AUTOLINECOLOR_STRATEGY_RANDOM_COLOR Colore casuale
+AUTOLINECOLOR_STRATEGY_CATEGORISED Categorizzato
+AUTOLINECOLOR_STRATEGY_NAMED Colori nominati
+AUTOLINECOLOR_NAMING_NONE Nessuno
+AUTOLINECOLOR_NAMING_DISTRICTS Distretti
+AUTOLINECOLOR_NAMING_LONDON Londra
+AUTOLINECOLOR_NAMING_ROADS Strade
+AUTOLINECOLOR_NAMING_COLORS Colori nominati
+AUTOLINECOLOR_COLOR_STRATEGY Strategia colore:
+AUTOLINECOLOR_COLOR_STRATEGY_TOOLTIP Come i colori vengono assegnati alle nuove linee:\n'Tonalità casuale' = stessa saturazione/luminosità, tonalità diverse;\n 'Colore casuale' = RGB completamente casuale;\n 'Categorizzato' = colori per tipo di veicolo;\n 'Colori nominati' = tavolozza colori predefinita.
+AUTOLINECOLOR_NAMING_STRATEGY Strategia di denominazione:
+AUTOLINECOLOR_NAMING_STRATEGY_TOOLTIP Come i nomi vengono assegnati alle nuove linee:\n 'Nessuno' = nessuna denominazione automatica;\n 'Distretti' = basato sui distretti serviti;\n 'Londra' = percorsi numerati (stile London Buses);\n 'Strade' = basato sui nomi delle strade;\n 'Colori nominati' = basato sui nomi dei colori.
+AUTOLINECOLOR_MIN_COLOR_DIFF Differenza colore minima (%):
+AUTOLINECOLOR_MIN_COLOR_DIFF_TOOLTIP Percentuale minima di differenza di colore quando si scelgono colori casuali.
+AUTOLINECOLOR_MAX_COLOR_PICK Tentativi massimi:
+AUTOLINECOLOR_MAX_COLOR_PICK_TOOLTIP Numero massimo di tentativi per scegliere un colore distinguibile.
+
+SETTINGS_UI Impostazioni interfaccia
+SETTINGS_VEHICLE_EDITOR_POSITION Editor veicoli: 
+SETTINGS_VEHICLE_EDITOR_POSITION_TOOLTIP Scegli se il pannello dell'editor veicoli appare in basso o a destra dello schermo.
+SETTINGS_VEHICLE_EDITOR_POSITION_BOTTOM In basso
+SETTINGS_VEHICLE_EDITOR_POSITION_RIGHT A destra
+SETTINGS_VEHICLE_EDITOR_HIDE Nascondi l'editor del veicolo
+SETTINGS_VEHICLE_EDITOR_HIDE_TOOLTIP Nascondi l'editor dei veicoli dai pannelli dei veicoli.
+
+SETTINGS_STOPS Fermate di trasporto pubblico
+SETTINGS_ENABLE_STOPS_AND_STATIONS Abilita Fermate e Stazioni
+SETTINGS_ENABLE_STOPS_AND_STATIONS_TOOLTIP Regola il numero massimo di cittadini che possono attendere il trasporto pubblico nelle varie fermate e stazioni. Configura nella scheda Fermate.
+SETTINGS_STOPSANDSTATIONS_ENABLE Abilita Fermate e Stazioni
+SETTINGS_STOPSANDSTATIONS_ENABLE_TOOLTIP Abilita o disabilita l'applicazione dei limiti di passeggeri alle fermate.
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HEADER Numero massimo di passeggeri in attesa a una fermata di linea di trasporto:
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS Bus di linea
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS_TOOLTIP Passeggeri max in attesa a una fermata di bus di linea
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS Filobus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS_TOOLTIP Passeggeri max in attesa a una fermata di filobus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS Bus di evacuazione
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS_TOOLTIP Passeggeri max in attesa a una fermata di bus di evacuazione
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS Bus turistico
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS_TOOLTIP Passeggeri max in attesa a una fermata di bus turistico
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM Tram
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM_TOOLTIP Passeggeri max in attesa a una fermata del tram
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO Metro
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO_TOOLTIP Passeggeri max in attesa a una stazione della metro
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN Treno
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN_TOOLTIP Passeggeri max in attesa a una stazione ferroviaria
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL Monorotaia
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL_TOOLTIP Passeggeri max in attesa a una fermata della monorotaia
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP Nave
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP_TOOLTIP Passeggeri max in attesa a un porto cargo
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY Traghetto
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY_TOOLTIP Passeggeri max in attesa a una fermata del traghetto
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE Aereo
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE_TOOLTIP Passeggeri max in attesa a un terminal aeroportuale
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR Funivia
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR_TOOLTIP Passeggeri max in attesa a una fermata della funivia
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON Mongolfiera
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON_TOOLTIP Passeggeri max in attesa a una fermata della mongolfiera
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER Elicottero
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER_TOOLTIP Passeggeri max in attesa a una fermata dell'elicottero
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP Dirigibile
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP_TOOLTIP Passeggeri max in attesa a una fermata del dirigibile
+
+SETTINGS_UNBUNCHING Veicoli convogliati
+SETTINGS_UNBUNCHING_AGGRESSION Aggressione del convogliamento:
+SETTINGS_UNBUNCHING_AGGRESSION_TOOLTIP Quanto forte deve essere il convogliamento?\nValori possibili: 0-52 quando è 0 disabilita il convogliamento.\nValori più alti avranno effetto sul traffico e probabilmente causeranno la cancellazione del veicolo.
+SETTINGS_VEHICLE_COUNT Veicoli sulla linea:
+SETTINGS_VEHICLE_COUNT_TOOLTIP Il numero di veicoli che saranno automaticamente aggiunti alla nuova linea quando il controllo del budget è disattivo.
+SETTINGS_SPAWN_TIME_INTERVAL Intervallo di tempo:
+SETTINGS_SPAWN_TIME_INTERVAL_TOOLTIP Tempo in secondi tra la creazione dei veicoli.
+SETTINGS_UNBUNCHING_RESET_BUTTON_TOOLTIP Ripristina tutti i cursori ai valori predefiniti.
+UNBUNCHING_ENABLED Veicoli convogliati
+UNBUNCHING_DISABLED Convogliamento disabilitato.
+UNBUNCHING_TARGET_GAP Distanza dalla destinazione: {0}
+
+SETTINGS_EBS_GROUP_BUS Servizi express di autobus
+SETTINGS_EBS_GROUP_TRAM Servizi express di tram
+SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Convogliamento autobus express: 
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Disabilitato' = I bus usano le impostazioni di convogliamento sopra.\n'Ferma e Vai' = Si ferma brevemente, controlla i passeggeri, può ripartire se vuoto.\n'Express' = Salta le fermate se nessun passeggero è in attesa.
+SETTINGS_EBS_ENABLE_SELFBAL Abilita auto-equilibrio del servizio
+SETTINGS_EBS_TOOLTIP_SELFBAL Analizza i segmenti delle linee e può ridistribuire i veicoli a segmenti più trafficati o fermate terminali per equilibrare il servizio e ridurre i tempi di attesa.\n Le decisioni sono probabilistiche e dipendono dal numero di passeggeri e dalle probabilità di ridistribuzione.
+SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Abilita auto-equilibrio delle fermate nel mezzo della linea
+SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Consente all'auto-equilibratore di ridistribuire i veicoli a una fermata molto trafficata nel mezzo della linea (anziché una terminale).\n Considerato solo quando la fermata più trafficata ha più di 30 passeggeri in attesa, quindi scelto con ~50% di probabilità e soggetto alle probabilità di ridistribuzione generali.
+SETTINGS_EBS_ENABLE_MINIBUS Abilita modalità minibus
+SETTINGS_EBS_TOOLTIP_MINIBUS Gli autobus con capacità ≤20 possono partire prima da una fermata quando i passeggeri in salita + discesa in quella fermata ≤5.
+SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Convogliamento tram express: 
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Disabilitato' = I tram usano le impostazioni di convogliamento sopra.\n'Ferrovia leggera' = Si ferma ad ogni fermata, attende sempre il timer completo.\n'Vero tram' = Si ferma solo quando i passeggeri salgono/scendono.
+SETTINGS_EBS_MODE_NONE Disabilitato
+SETTINGS_EBS_MODE_AGGRESSIVE Aggressivo
+SETTINGS_EBS_MODE_PRUDENTIAL Prudenziale (Legacy)
+SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Modalità ferrovia leggera
+SETTINGS_EBS_TRAM_MODE_NONE Disabilitato
+SETTINGS_EBS_TRAM_MODE_TRAM Modalità tram vera
+
+
+SETTINGS_LINE_DELETION_TOOL Strumento per l'eliminazione delle linee
+SETTINGS_LINE_DELETION_TOOL_BUTTON_TOOLTIP Elimina tutte le linee del tipo selezionato.
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_TITLE CONFERMA LA CANCELLAZIONE
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_MSG Stai per cancellare tutte le linee.\nSei sicuro?
+SETTINGS_DELETE_BUS_TOOLTIP Elimina tutte le linee di bus regolari.
+SETTINGS_DELETE_SIGHTSEEING_BUS_LABEL Bus turistici
+SETTINGS_DELETE_SIGHTSEEING_BUS_TOOLTIP Elimina tutte le linee di bus turistici.
+SETTINGS_DELETE_TRAM_TOOLTIP Elimina tutte le linee del tram.
+SETTINGS_DELETE_TROLLEYBUS_TOOLTIP Elimina tutte le linee del filobus.
+SETTINGS_DELETE_TRAIN_TOOLTIP Elimina tutte le linee ferroviarie.
+SETTINGS_DELETE_METRO_TOOLTIP Elimina tutte le linee della metro sotterranea.
+SETTINGS_DELETE_MONORAIL_TOOLTIP Elimina tutte le linee della monorotaia.
+SETTINGS_DELETE_FERRY_LABEL Traghetti
+SETTINGS_DELETE_SHIP_TOOLTIP Elimina tutte le linee dei traghetti.
+SETTINGS_DELETE_HELICOPTER_LABEL Elicotteri
+SETTINGS_DELETE_HELICOPTER_TOOLTIP Elimina tutte le linee degli elicotteri.
+SETTINGS_DELETE_BLIMP_LABEL Dirigibili
+SETTINGS_DELETE_BLIMP_TOOLTIP Elimina tutte le linee dei dirigibili.
+
+
+VEHICLE_EDITOR_TITLE Editor del veicolo
+VEHICLE_EDITOR_SUB_TITLE {0} veicoli
+VEHICLE_EDITOR_CAPACITY Capacità di trasporto
+VEHICLE_EDITOR_CAPACITY_TAXI Capacità di viaggio
+VEHICLE_EDITOR_CAPACITY_TAXI_TOOLTIP Numero di passeggeri per turno di lavoro.
+VEHICLE_EDITOR_MAINTENANCE Costo di mantenimento
+VEHICLE_EDITOR_MAX_SPEED Massima velocità
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS Motore su entrambe le estremità
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS_TOOLTIP Attiva o disattiva i motori dei treni su entrambe le estremità del treno.
+VEHICLE_EDITOR_APPLY Applica
+VEHICLE_EDITOR_DEFAULT Default
+VEHICLE_LIST_BOX_ROW_TOOLTIP1 Tasto destro per seguire questo veicolo.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+VEHICLE_LIST_BOX_ROW_TOOLTIP2 Shift + click per accodare questo veicolo.
+VEHICLE_PANEL_EDIT_TYPE Modifica tipo di veicolo
+VEHICLE_PANEL_EDIT_TYPE_TOOLTIP Modifica questo tipo di veicolo con l'editor dei veicoli.
+VEHICLE_PANEL_STATUS_NEXT_STOP Fermata successiva:
+VEHICLE_PANEL_STATUS_UNBUNCHING Convogliamento in corso
+VEHICLE_PANEL_LAST_STOP_EXCHANGE Ultima fermata: <color #FF0000>-{0}</color> | <color #00FF00>+{1}</color>
+VEHICLE_PANEL_PASSENGERS Passeggeri:
+VEHICLE_PANEL_EARNINGS Guadagno:
+VEHICLE_PANEL_EARNINGS_TOOLTIP Risultato della vendita dei biglietti meno il costo di manutenzione del veicolo.
+VEHICLE_PANEL_PREVIOUS Veicolo precedente
+VEHICLE_PANEL_PREVIOUS_TOOLTIP Salta sul veicolo precedente.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+VEHICLE_PANEL_REMOVE_VEHICLE Rimuovi veicolo
+VEHICLE_PANEL_NEXT Veicolo successivo
+VEHICLE_PANEL_NEXT_TOOLTIP Salta sul prossimo veicolo.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.
+VEHICLE_SELECTION_CAPACITY Capacità
+VEHICLE_SELECTION_ADD_VEHICLE Aggiungi questo veicolo all'elenco dei veicoli consentiti
+VEHICLE_SELECTION_ADD_ALL Aggiungi tutti i veicoli idonei all'elenco dei veicoli consentiti
+VEHICLE_SELECTION_REMOVE_VEHICLE Rimuovi questo veicolo dall'elenco dei veicoli consentiti
+VEHICLE_SELECTION_REMOVE_ALL Rimuovi tutti i veicoli dall'elenco dei veicoli consentiti
+VEHICLE_SELECTION_AVAILABLE_VEHICLES Veicoli disponibili
+VEHICLE_SELECTION_SELECTED_VEHICLES Veicoli selezionati
+VEHICLE_SELECTION_ANY_VEHICLE Qualsiasi veicolo
+VEHICLE_BUTTON_TOOLTIP {0}\n\nFai clic per saltare a questo veicolo.\nQuando clicchi tieni premuto il tasto Shift per ingrandire.\nTenere premuto il tasto Alt mentre fai clic per evitare di aprire il pannello delle informazioni sul veicolo.
+TRANSPORT_LINE_VEHICLECOUNT Numero di veicoli: {0}
+
+FLIGHT_TRACKER_NAME Tracciamento voli
+FLIGHT_STATUS_NONE Nessuno
+FLIGHT_STATUS_INCOMING In arrivo
+FLIGHT_STATUS_LANDED Atterrato
+FLIGHT_STATUS_AT_GATE Al gate
+FLIGHT_STATUS_DEPARTED Partito
+
+TICKET_PRICE_TAXI_KILOMETER Prezzo taxi per chilometro: 
+TICKET_PRICE_TAXI_MILE Prezzo taxi per miglio: 
+TICKET_PRICE_BUS Prezzo biglietto autobus: 
+TICKET_PRICE_INTERCITY_BUS Prezzo biglietto autobus interurbano: 
+TICKET_PRICE_METRO Prezzo biglietto metro: 
+TICKET_PRICE_TRAIN Prezzo biglietto treno: 
+TICKET_PRICE_TRAM Prezzo biglietto tram: 
+TICKET_PRICE_MONORAIL Prezzo biglietto monorotaia: 
+TICKET_PRICE_SHIP Prezzo biglietto nave: 
+TICKET_PRICE_FERRY Prezzo biglietto traghetto: 
+TICKET_PRICE_PLANE Prezzo biglietto aereo: 
+TICKET_PRICE_CABLECAR Prezzo biglietto funivia: 
+TICKET_PRICE_SIGHTSEEING_BUS Prezzo biglietto autobus turistico: 
+TICKET_PRICE_TROLLEYBUS Prezzo biglietto filobus: 
+TICKET_PRICE_BLIMP Prezzo biglietto dirigibile: 
+TICKET_PRICE_HELICOPTER Prezzo biglietto elicottero: 
+ECONOMY_TAB_TICKET_PRICES Prezzi dei biglietti
+
+WHATSNEW_3_0_0_1 Aggiornato per Race Day; ora compatibile con More Vehicles Renewed.
+WHATSNEW_3_0_0_2 I seguenti mod sono stati integrati in IPT3:\n • Advanced Stop Selection Revisited\n • Auto Line Color Redux\n • Better Bus Stop Position\n • Better Train Boarding\n • Elevated Stops Enabler Revisited  \n • Express Bus Services\n • Flight Tracker\n • Intercity Bus Control\n • Mileage Taxi Services\n • Realistic Walking Speed\n • Stops and Stations\n • Ticket Price Customizer

@@ -1,0 +1,267 @@
+MOD_DESCRIPTION Расширенное управление общественным транспортом.
+CURRENT_WEEK Текущая неделя
+LAST_WEEK Предыдущая неделя
+AVERAGE Среднее
+AVERAGE_TOOLTIP Среднее за последние {0} недель.
+CITY_SERVICE_PANEL_TITLE_STATION_STOPS Остановки станции
+CITY_SERVICE_PANEL_TITLE_DEPOT_VEHICLES Транспорт депо
+CITYSERVICE_ACCEPTINTERCITYBUSES Разрешить междугородние автобусы
+CITYSERVICE_ACCEPTINTERCITYBUSES_TOOLTIP Разрешить междугородним автобусам использовать эту станцию. Отключите для только местных автобусов.
+
+EXPLANATION_BUDGET_CONTROL Управляется бюджетом: количество транспорта настраивается через панель бюджета.
+EXPLANATION_UNBUNCHING Распределение транспорта: Игра пытается создать равный интервал между транспортными средствами.
+LINE_PANEL_STOPS Остановки: {0}
+LINE_PANEL_SPAWNTIMER Следующее транспортное средство через {0} секунд.
+LINE_PANEL_DEPOT_WARNING <color #FF0000>Выбранное депо больше не имеет транспортных средств.</color>
+LINE_PANEL_BUDGET_CONTROL Управляется бюджетом
+LINE_PANEL_BUDGET_CONTROL_TOOLTIP Включить или выключить управление через бюджет для этой линии.
+LINE_PANEL_UNBUNCHING_TOOLTIP Включить или выключить распределение для этой линии.\nРаспределение выключено, если Степень распределения установлена на 0.
+LINE_PANEL_DEPOT Депо:
+LINE_PANEL_NO_DEPOT_FOUND Депо не найдено.
+LINE_PANEL_DEPOT_MARKER_TOOLTIP Перейти к выбранному депо.\nЗажмите Shift, чтобы приблизить камеру.
+LINE_PANEL_SELECT_TYPES Выбор модели ТС
+LINE_PANEL_SELECT_TYPES_TOOLTIP Переключает панель выбора моделей транспорта.\nЕсли эта кнопка недоступна, сначала выберите депо.
+LINE_PANEL_LINE_STOPS Остановки на линии
+LINE_PANEL_LINE_VEHICLES Транспорт на линии
+LINE_PANEL_ENQUEUED Транспорт в очереди
+LINE_PANEL_TOTAL_WAITING_PEOPLE_TOOLTIP {0} пассажиров ожидает на этой линии.
+LINE_PANEL_ADD_VEHICLE Добавить транспорт
+LINE_PANEL_ADD_VEHICLE_TOOLTIP Добавляет транспорт на линию.\nЕсли кнопка неактивна, значит в депо не осталось свободных транспортных средств.
+LINE_PANEL_REMOVE_VEHICLE Удалить транспорт
+
+STOP_LIST_BOX_ROW_STOP Остановка #{0}
+STOP_LIST_BOX_ROW_TOOLTIP {0}\nОжидающих пассажиров: {1}\n\nПравый клик для перемещения к этой остановке.\nЗажмите шифт, чтобы сразу приблизить к ней камеру.
+STOP_PANEL_SUGGESTED_NAMES_TOOLTIP Список предлагаемых названий остановки.
+STOP_PANEL_REUSE_NAME_TOOLTIP Применить это название ко всем остановкам на этой станции / позиции.
+STOP_PANEL_WAITING_PEOPLE Ожидающих пассажиров: {0}
+STOP_PANEL_BORED_TIMER Времени до недовольства: <color #{0}>{1}</color>
+STOP_PANEL_BORED_TIMER_TOOLTIP Пассажиры покинут остановку, когда счётчик покажет 0.
+STOP_PANEL_PASSENGERS_IN Вошло:
+STOP_PANEL_PASSENGERS_IN_TOOLTIP Пассажиры, которые вошли в транспортное средство.
+STOP_PANEL_PASSENGERS_OUT Вышло:
+STOP_PANEL_PASSENGERS_OUT_TOOLTIP Пассажиры, которые покинули транспортное средство.
+STOP_PANEL_PASSENGERS_TOTAL Всего:
+STOP_PANEL_PASSENGERS_TOTAL_TOOLTIP Общее число обслуженных пассажиров.
+STOP_PANEL_UNBUNCHING_TOOLTIP Включает или отключает распределение транспорта на этой остановке.\nРаспределение отключено, если Степень распределения установлена на 0.
+STOP_PANEL_UPDATE_CLOSE_STOPS Обновить остановки
+STOP_PANEL_UPDATE_CLOSE_STOPS_TOOLTIP Установить статус распределения для всех остановок на этой станции / позиции.
+STOP_PANEL_PREVIOUS Предыдущая остановка
+STOP_PANEL_PREVIOUS_TOOLTIP Показать предыдущую остановку.\nЗажмите Shift, чтобы приблизить камеру.
+STOP_PANEL_DELETE_STOP Удалить остановку
+STOP_PANEL_DELETE_STOP_TOOLTIP Эта кнопка доступна, когда зажата кнопка Alt.\nИспользуйте на свой страх и риск!!!
+STOP_PANEL_NEXT Следующая остановка
+STOP_PANEL_NEXT_TOOLTIP Показать следующую остановку.\nЗажмите Shift, чтобы приблизить камеру.
+STOP_BUTTON_TOOLTIP {0}\n\nНажмите, чтобы перейти к этой остановке.\nЗажмите Shift, чтобы приблизить камеру.\nЗажмите Alt, чтобы не открывать панель информации об остановке.
+
+SETTINGS_DELETE Удалить
+SETTINGS_RESET Сбросить
+
+SETTINGS_TAB_GENERAL Общие
+SETTINGS_TAB_STOPS Остановки и Станции
+SETTINGS_TAB_UNBUNCHING Распределение
+SETTINGS_TAB_DELETE Удаление линий
+
+SETTINGS Настройки
+SETTINGS_SPEED Скорость: 
+SETTINGS_SPEED_TOOLTIP Выберите единицу измерения скорости, отображаемую в интерфейсе.
+SETTINGS_SPEED_KPH км/ч
+SETTINGS_SPEED_MPH mph
+SETTINGS_WALKING_SPEED Скорость ходьбы/езды на велосипеде: 
+SETTINGS_WALKING_SPEED_TOOLTIP Стандарт: скорость базовой игры.\nРеалистичный: уменьшает скорость ходьбы до реалистичных, с учётом возраста значений.\nРеалистичный также увеличивает скорость езды на велосипеде, чтобы поощрять использование велосипеда с DLC After Dark.
+SETTINGS_WALKING_SPEED_MODE_VANILLA Стандарт
+SETTINGS_WALKING_SPEED_MODE_REALISTIC Реалистичный
+SETTINGS_BBSP Улучшенное расположение остановок: 
+SETTINGS_BBSP_TOOLTIP Отключено: без подстройки позиции.\nОригинальный: классическое позиционирование BBSP.\nЭкспериментальный: улучшенное позиционирование с полным выравниванием по бордюре.
+SETTINGS_BBSP_MODE_DISABLED 禁用
+SETTINGS_BBSP_MODE_ORIGINAL Оригинальная логика
+SETTINGS_BBSP_MODE_UPDATED Экспериментальная логика
+
+SETTINGS_ENABLE_BUDGET_CONTROL Контролируется бюджетом
+SETTINGS_BUDGET_CONTROL_DISABLED Отключено
+SETTINGS_BUDGET_CONTROL_ENABLED Включено
+SETTINGS_BUDGET_CONTROL_TOOLTIP Включает и отключает управление бюджетом для всех линий.\n Включение применит режим к каждой линии и очистит ждущие в очереди транспортные средства.\n Изменения вступают в силу немедленно.
+
+SETTINGS_AUTO_LINE Автолиния
+SETTINGS_AUTOSHOW_LINE_INFO Автоматически показывать инфо
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Автоматически показывает окно информации о линии, когда она создана.
+
+AUTOLINECOLOR_STRATEGY_RANDOM_HUE Случайный оттенок
+AUTOLINECOLOR_STRATEGY_RANDOM_COLOR Случайный цвет
+AUTOLINECOLOR_STRATEGY_CATEGORISED По категории
+AUTOLINECOLOR_STRATEGY_NAMED Именованные цвета
+AUTOLINECOLOR_NAMING_NONE Нет
+AUTOLINECOLOR_NAMING_DISTRICTS Районы
+AUTOLINECOLOR_NAMING_LONDON Лондон
+AUTOLINECOLOR_NAMING_ROADS Дороги
+AUTOLINECOLOR_NAMING_COLORS Именованные цвета
+AUTOLINECOLOR_COLOR_STRATEGY Стратегия цвета:
+AUTOLINECOLOR_COLOR_STRATEGY_TOOLTIP Как цвета назначаются новым линиям:\n'Случайный оттенок' = одинаковая насыщенность/яркость, разные оттенки;\n 'Случайный цвет' = полностью случайный RGB;\n 'По категории' = цвета по типу транспорта;\n 'Именованные цвета' = предустановленная палитра.
+AUTOLINECOLOR_NAMING_STRATEGY Стратегия названий:
+AUTOLINECOLOR_NAMING_STRATEGY_TOOLTIP Как названия назначаются новым линиям:\n 'Нет' = без автоназначения;\n 'Районы' = на основе обслуживаемых районов;\n 'Лондон' = нумерованные маршруты (стиль London Buses);\n 'Дороги' = на основе названий улиц;\n 'Именованные цвета' = на основе названий цветов.
+AUTOLINECOLOR_MIN_COLOR_DIFF Минимальная разница цветов (%):
+AUTOLINECOLOR_MIN_COLOR_DIFF_TOOLTIP Минимальный процент разницы цветов при случайном выборе.
+AUTOLINECOLOR_MAX_COLOR_PICK Максимум попыток:
+AUTOLINECOLOR_MAX_COLOR_PICK_TOOLTIP Максимальное число попыток при выборе различимого цвета.
+
+SETTINGS_UI Параметры пользовательского интерфейса
+SETTINGS_VEHICLE_EDITOR_POSITION Редактор транспорта: 
+SETTINGS_VEHICLE_EDITOR_POSITION_TOOLTIP Выберите, где будет отображаться панель редактора транспорта: внизу или справа.
+SETTINGS_VEHICLE_EDITOR_POSITION_BOTTOM Внизу
+SETTINGS_VEHICLE_EDITOR_POSITION_RIGHT Справа
+SETTINGS_VEHICLE_EDITOR_HIDE Спрятать Редактор Транспорта
+SETTINGS_VEHICLE_EDITOR_HIDE_TOOLTIP Спрячьте редактор транспорта с панелей транспорта.
+
+SETTINGS_STOPS Остановки общественного транспорта
+SETTINGS_ENABLE_STOPS_AND_STATIONS Включить Остановки и Станции
+SETTINGS_ENABLE_STOPS_AND_STATIONS_TOOLTIP Регулирует максимальное количество граждан, ожидающих транспорт на различных остановках и станциях. Настройте на вкладке Остановки.
+SETTINGS_STOPSANDSTATIONS_ENABLE Включить Остановки и Станции
+SETTINGS_STOPSANDSTATIONS_ENABLE_TOOLTIP Включить или отключить ограничение пассажиров на остановках.
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HEADER Максимальное количество пассажиров, ожидающих на остановке:
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS Линейный автобус
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS_TOOLTIP Макс. пассажиров на остановке линейного автобуса
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS Троллейбус
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS_TOOLTIP Макс. пассажиров на остановке троллейбуса
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS Эвакуационный автобус
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS_TOOLTIP Макс. пассажиров на остановке эвакуационного автобуса
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS Туристический автобус
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS_TOOLTIP Макс. пассажиров на остановке туристического автобуса
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM Трамвай
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM_TOOLTIP Макс. пассажиров на остановке трамвая
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO Метро
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO_TOOLTIP Макс. пассажиров на станции метро
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN Поезд
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN_TOOLTIP Макс. пассажиров на железнодорожной станции
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL Монорельс
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL_TOOLTIP Макс. пассажиров на остановке монорельса
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP Корабль
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP_TOOLTIP Макс. пассажиров в грузовом порту
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY Паром
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY_TOOLTIP Макс. пассажиров на остановке парома
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE Самолёт
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE_TOOLTIP Макс. пассажиров в терминале аэропорта
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR Фуникулёр
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR_TOOLTIP Макс. пассажиров на остановке фуникулёра
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON Воздушный шар
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON_TOOLTIP Макс. пассажиров на остановке воздушного шара
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER Вертолёт
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER_TOOLTIP Макс. пассажиров на остановке вертолёта
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP Дирижабль
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP_TOOLTIP Макс. пассажиров на остановке дирижабля
+
+SETTINGS_UNBUNCHING Распределение
+SETTINGS_UNBUNCHING_AGGRESSION Степень распределения:
+SETTINGS_UNBUNCHING_AGGRESSION_TOOLTIP Насколько строго транспорт следует интервалам?\nВозможные значения: 0-52, где 0 отключает распределение.\nВысокие значения могут значительно повлиять на трафик вплоть до исчезновения транспортного средства.
+SETTINGS_VEHICLE_COUNT Транспорт на новой линии:
+SETTINGS_VEHICLE_COUNT_TOOLTIP Количество транспорта, которое появится на новой линии, если выключен бюджетный контроль.
+SETTINGS_SPAWN_TIME_INTERVAL Интервал выхода на линию:
+SETTINGS_SPAWN_TIME_INTERVAL_TOOLTIP Время в секундах между появлением нового транспортного средства.
+SETTINGS_UNBUNCHING_RESET_BUTTON_TOOLTIP Установить все ползунки на значения по умолчанию.
+UNBUNCHING_ENABLED Распределение
+UNBUNCHING_DISABLED Распределение выключено.
+UNBUNCHING_TARGET_GAP Интервал: {0}
+
+SETTINGS_EBS_GROUP_BUS Услуги экспресс-автобусов
+SETTINGS_EBS_GROUP_TRAM Услуги экспресс-трамваев
+SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Распределение экспресс-автобусов: 
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Отключено' = Автобусы используют настройки распределения выше.\n'Остановка-Движение' = Кратко останавливается, проверяет пассажиров, может уехать если пусто.\n'Экспресс' = Пропускает остановки, если никто не ждёт.
+SETTINGS_EBS_ENABLE_SELFBAL Включить саморегулировку услуги
+SETTINGS_EBS_TOOLTIP_SELFBAL Анализирует сегменты линии и может перераспределять транспортные средства на более загруженные сегменты или конечные остановки для сбалансирования обслуживания и снижения времени ожидания.\n Решения являются вероятностными и зависят от количества пассажиров и вероятностей перераспределения.
+SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Включить саморегулировку остановок в середине линии
+SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Позволяет саморегулировке перераспределять транспортные средства на загруженную остановку в середине линии (вместо конечной).\n Рассматривается только когда наиболее загруженная остановка имеет более 30 ожидающих пассажиров, затем выбирается с ~50% вероятностью и подчиняется общим вероятностям перераспределения.
+SETTINGS_EBS_ENABLE_MINIBUS Включить режим минибуса
+SETTINGS_EBS_TOOLTIP_MINIBUS Автобусы вместимостью ≤20 могут отъезжать раньше со стоп, когда пассажиры входят + выходят в этой стопке ≤5.
+SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Распределение экспресс-трамвая: 
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Отключено' = Трамваи используют настройки распределения выше.\n'Лёгкое метро' = Останавливается на каждой остановке, всегда ждёт полный таймер.\n'Настоящий трамвай' = Останавливается только при посадке/высадке пассажиров.
+SETTINGS_EBS_MODE_NONE Отключено
+SETTINGS_EBS_MODE_AGGRESSIVE Агрессивный
+SETTINGS_EBS_MODE_PRUDENTIAL Осторожный (Устаревший)
+SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Режим легкой железной дороги
+SETTINGS_EBS_TRAM_MODE_NONE Отключено
+SETTINGS_EBS_TRAM_MODE_TRAM Режим истинного трамвая
+
+
+SETTINGS_LINE_DELETION_TOOL Инструмент удаления линий
+SETTINGS_LINE_DELETION_TOOL_BUTTON_TOOLTIP Удаляет все линии выбранного типа.
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_TITLE ПОДТВЕРДИТЕ УДАЛЕНИЕ ЛИНИИ
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_MSG Вы собираетесь удалить все линии.\nВы уверены?
+SETTINGS_DELETE_BUS_TOOLTIP Удаляет все обычные автобусные линии.
+SETTINGS_DELETE_SIGHTSEEING_BUS_LABEL Туристические автобусы
+SETTINGS_DELETE_SIGHTSEEING_BUS_TOOLTIP Удаляет все линии туристических автобусов.
+SETTINGS_DELETE_TRAM_TOOLTIP Удаляет все трамвайные линии.
+SETTINGS_DELETE_TROLLEYBUS_TOOLTIP Удаляет все троллейбусные линии.
+SETTINGS_DELETE_TRAIN_TOOLTIP Удаляет все железнодорожные линии.
+SETTINGS_DELETE_METRO_TOOLTIP Удаляет все линии подземного метро.
+SETTINGS_DELETE_MONORAIL_TOOLTIP Удаляет все линии монорельса.
+SETTINGS_DELETE_FERRY_LABEL Паромы
+SETTINGS_DELETE_SHIP_TOOLTIP Удаляет все паромные линии.
+SETTINGS_DELETE_HELICOPTER_LABEL Вертолёты
+SETTINGS_DELETE_HELICOPTER_TOOLTIP Удаляет все вертолётные линии.
+SETTINGS_DELETE_BLIMP_LABEL Дирижабли
+SETTINGS_DELETE_BLIMP_TOOLTIP Удаляет все линии дирижаблей.
+
+
+VEHICLE_EDITOR_TITLE Редактор Транспорта
+VEHICLE_EDITOR_SUB_TITLE {0} транспортных средств
+VEHICLE_EDITOR_CAPACITY Вместимость
+VEHICLE_EDITOR_CAPACITY_TAXI Заказов за смену
+VEHICLE_EDITOR_CAPACITY_TAXI_TOOLTIP Количество пассажиров за смену.
+VEHICLE_EDITOR_MAINTENANCE Стоимость обслуживания
+VEHICLE_EDITOR_MAX_SPEED Максимальная скорость
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS Локомотив на обоих концах
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS_TOOLTIP Включает и выключает отображение локомотива в конце состава.
+VEHICLE_EDITOR_APPLY Принять
+VEHICLE_EDITOR_DEFAULT Стандарт
+VEHICLE_LIST_BOX_ROW_TOOLTIP1 Правый клик, чтобы следовать за транспортным средством.\nЗажмите шифт, чтобы приблизить камеру.
+VEHICLE_LIST_BOX_ROW_TOOLTIP2 Shift + клик, чтобы добавить это ТС в очередь.
+VEHICLE_PANEL_EDIT_TYPE Редактировать транспортное средство
+VEHICLE_PANEL_EDIT_TYPE_TOOLTIP Редактируйте это транспортное средство в редакторе транспорта.
+VEHICLE_PANEL_STATUS_NEXT_STOP Следующая остановка:
+VEHICLE_PANEL_STATUS_UNBUNCHING Распределение в процессе
+VEHICLE_PANEL_LAST_STOP_EXCHANGE Пассажиропоток на предыдущей остановке: <color #FF0000>-{0}</color> | <color #00FF00>+{1}</color>
+VEHICLE_PANEL_PASSENGERS Пассажиры:
+VEHICLE_PANEL_EARNINGS Доход:
+VEHICLE_PANEL_EARNINGS_TOOLTIP Результат продажи билетов минус стоимость обслуживания транспорта.
+VEHICLE_PANEL_PREVIOUS Предыдущее транспортное средство
+VEHICLE_PANEL_PREVIOUS_TOOLTIP Показать предыдущее транспортное средство.\nЗажмите Shift, чтобы приблизить камеру.
+VEHICLE_PANEL_REMOVE_VEHICLE Удалить транспорт
+VEHICLE_PANEL_NEXT Следующее транспортное средство
+VEHICLE_PANEL_NEXT_TOOLTIP Показать следующее транспортное средство.\nЗажмите Shift, чтобы приблизить камеру.
+VEHICLE_SELECTION_CAPACITY Вместимость
+VEHICLE_SELECTION_ADD_VEHICLE Добавить это транспортное средство в список разрешённых транспортных средств
+VEHICLE_SELECTION_ADD_ALL Добавить все подходящие транспортные средства в список разрешённых
+VEHICLE_SELECTION_REMOVE_VEHICLE Удалить это транспортное средство из списка разрешённых
+VEHICLE_SELECTION_REMOVE_ALL Удалить все транспортные средства из списка разрешённых
+VEHICLE_SELECTION_AVAILABLE_VEHICLES Доступные транспортные средства
+VEHICLE_SELECTION_SELECTED_VEHICLES Выбранные транспортные средства
+VEHICLE_SELECTION_ANY_VEHICLE Любое транспортное средство
+VEHICLE_BUTTON_TOOLTIP {0}\n\nНажмите, чтобы перейти к этому транспортному средству.\nЗажмите Shift, чтобы приблизить камеру.\nЗажмите Alt, чтобы не открывать панель информации о транспортном средстве.
+TRANSPORT_LINE_VEHICLECOUNT Количество транспортных средств: {0}
+
+FLIGHT_TRACKER_NAME Отслеживание рейсов
+FLIGHT_STATUS_NONE Нет
+FLIGHT_STATUS_INCOMING Приближается
+FLIGHT_STATUS_LANDED Приземлился
+FLIGHT_STATUS_AT_GATE У выхода
+FLIGHT_STATUS_DEPARTED Вылетел
+
+TICKET_PRICE_TAXI_KILOMETER Цена такси за километр: 
+TICKET_PRICE_TAXI_MILE Цена такси за милю: 
+TICKET_PRICE_BUS Цена билета на автобус: 
+TICKET_PRICE_INTERCITY_BUS Цена билета на междугородний автобус: 
+TICKET_PRICE_METRO Цена билета на метро: 
+TICKET_PRICE_TRAIN Цена билета на поезд: 
+TICKET_PRICE_TRAM Цена билета на трамвай: 
+TICKET_PRICE_MONORAIL Цена билета на монорельс: 
+TICKET_PRICE_SHIP Цена билета на корабль: 
+TICKET_PRICE_FERRY Цена билета на паром: 
+TICKET_PRICE_PLANE Цена билета на самолет: 
+TICKET_PRICE_CABLECAR Цена билета на фуникулер: 
+TICKET_PRICE_SIGHTSEEING_BUS Цена билета на туристический автобус: 
+TICKET_PRICE_TROLLEYBUS Цена билета на троллейбус: 
+TICKET_PRICE_BLIMP Цена билета на дирижабль: 
+TICKET_PRICE_HELICOPTER Цена билета на вертолет: 
+ECONOMY_TAB_TICKET_PRICES Цены на билеты
+
+WHATSNEW_3_0_0_1 Обновлено для Race Day; теперь совместимо с More Vehicles Renewed.
+WHATSNEW_3_0_0_2 Следующие моды были интегрированы в IPT3:\n • Advanced Stop Selection Revisited\n • Auto Line Color Redux\n • Better Bus Stop Position\n • Better Train Boarding\n • Elevated Stops Enabler Revisited  \n • Express Bus Services\n • Flight Tracker\n • Intercity Bus Control\n • Mileage Taxi Services\n • Realistic Walking Speed\n • Stops and Stations\n • Ticket Price Customizer
+

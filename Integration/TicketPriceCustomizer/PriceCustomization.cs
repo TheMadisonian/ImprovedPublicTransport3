@@ -1,0 +1,229 @@
+﻿using System;
+using ColossalFramework;
+using ColossalFramework.IO;
+using UnityEngine;
+using ImprovedPublicTransport.OptionsFramework;
+using ImprovedPublicTransport.Util;
+using IPTUtils = ImprovedPublicTransport.Util.Utils;
+
+namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
+{
+    public class PriceCustomization
+    {
+        /// <summary>
+        /// Overload that accepts nested Settings.TicketPriceCustomizerSettings for consolidated configuration.
+        /// </summary>
+        public static void SetPrices(ImprovedPublicTransport.Settings.Settings.TicketPriceCustomizerSettings settings)
+        {
+            // Always apply ticket customizer when requested. IPT manages whether this integration is active.
+            if (settings == null) return;
+
+            bool hasAfterDark    = SteamHelper.IsDLCOwned(SteamHelper.DLC.AfterDarkDLC);
+            bool hasSnowfall     = SteamHelper.IsDLCOwned(SteamHelper.DLC.SnowFallDLC);
+            bool hasMassTransit  = SteamHelper.IsDLCOwned(SteamHelper.DLC.InMotionDLC);
+            bool hasSunsetHarbor = SteamHelper.IsDLCOwned(SteamHelper.DLC.UrbanDLC);  // Sunset Harbor = UrbanDLC
+            bool hasParklife     = SteamHelper.IsDLCOwned(SteamHelper.DLC.ParksDLC);
+
+            SetBusPrice(settings.BusMultiplier);
+            SetMetroPrice(settings.MetroMultiplier);
+            SetTrainPrice(settings.TrainMultiplier);
+            SetShipPrice(settings.ShipMultiplier);
+            SetPlanePrice(settings.PlaneMultiplier);
+            if (hasAfterDark)    SetTaxiPrice(settings.TaxiMultiplier);
+            if (hasSnowfall)     SetTramPrice(settings.TramMultiplier);
+            if (hasMassTransit)  SetBlimpPrice(settings.BlimpMultiplier);
+            if (hasMassTransit)  SetFerryPrice(settings.FerryMultiplier);
+            if (hasMassTransit)  SetCableCarPrice(settings.CableCarMultiplier);
+            if (hasMassTransit)  SetMonorailPrice(settings.MonorailMultiplier);
+            if (hasParklife)     SetSightseeingBusPrice(settings.SightseeingBusMultiplier);
+            if (hasSunsetHarbor) SetIntercityBusPrice(settings.IntercityBusMultiplier);
+            if (hasSunsetHarbor) SetHelicopterPrice(settings.HelicopterMultiplier);
+            if (hasSunsetHarbor) SetTrolleybusPrice(settings.TrolleybusMultiplier);
+        }
+
+        /// <summary>
+        /// Applies the day or night multipliers based on the current simulation time.
+        /// Called by DayNightPriceWatcher whenever day/night transitions occur.
+        /// </summary>
+        public static void ApplyForCurrentTime(ImprovedPublicTransport.Settings.Settings.TicketPriceCustomizerSettings settings)
+        {
+            if (settings == null) return;
+            bool isNight = Singleton<SimulationManager>.instance.m_isNightTime;
+
+            bool hasAfterDark    = SteamHelper.IsDLCOwned(SteamHelper.DLC.AfterDarkDLC);
+            bool hasSnowfall     = SteamHelper.IsDLCOwned(SteamHelper.DLC.SnowFallDLC);
+            bool hasMassTransit  = SteamHelper.IsDLCOwned(SteamHelper.DLC.InMotionDLC);
+            bool hasSunsetHarbor = SteamHelper.IsDLCOwned(SteamHelper.DLC.UrbanDLC);  // Sunset Harbor = UrbanDLC
+            bool hasParklife     = SteamHelper.IsDLCOwned(SteamHelper.DLC.ParksDLC);
+
+            SetBusPrice(isNight   ? settings.BusNightMultiplier   : settings.BusMultiplier);
+            SetMetroPrice(isNight ? settings.MetroNightMultiplier : settings.MetroMultiplier);
+            SetTrainPrice(isNight ? settings.TrainNightMultiplier : settings.TrainMultiplier);
+            SetShipPrice(isNight  ? settings.ShipNightMultiplier  : settings.ShipMultiplier);
+            SetPlanePrice(isNight ? settings.PlaneNightMultiplier : settings.PlaneMultiplier);
+            if (hasAfterDark)    SetTaxiPrice(isNight           ? settings.TaxiNightMultiplier           : settings.TaxiMultiplier);
+            if (hasSnowfall)     SetTramPrice(isNight           ? settings.TramNightMultiplier           : settings.TramMultiplier);
+            if (hasMassTransit)  SetBlimpPrice(isNight          ? settings.BlimpNightMultiplier          : settings.BlimpMultiplier);
+            if (hasMassTransit)  SetFerryPrice(isNight          ? settings.FerryNightMultiplier          : settings.FerryMultiplier);
+            if (hasMassTransit)  SetCableCarPrice(isNight       ? settings.CableCarNightMultiplier       : settings.CableCarMultiplier);
+            if (hasMassTransit)  SetMonorailPrice(isNight       ? settings.MonorailNightMultiplier       : settings.MonorailMultiplier);
+            if (hasParklife)     SetSightseeingBusPrice(isNight ? settings.SightseeingBusNightMultiplier : settings.SightseeingBusMultiplier);
+            if (hasSunsetHarbor) SetIntercityBusPrice(isNight   ? settings.IntercityBusNightMultiplier   : settings.IntercityBusMultiplier);
+            if (hasSunsetHarbor) SetHelicopterPrice(isNight     ? settings.HelicopterNightMultiplier     : settings.HelicopterMultiplier);
+            if (hasSunsetHarbor) SetTrolleybusPrice(isNight     ? settings.TrolleybusNightMultiplier     : settings.TrolleybusMultiplier);
+        }
+
+        public static void SetSightseeingBusPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Sightseeing Bus");
+        }
+
+        public static void SetMetroPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Metro");
+        }
+
+        public static void SetTrainPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Train");
+        }
+
+        public static void SetShipPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Ship");
+        }
+
+        public static void SetPlanePrice(float multiplier)
+        {
+            SetPrice(multiplier, "Airplane");
+        }
+
+        public static void SetTramPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Tram");
+        }
+
+        public static void SetBlimpPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Blimp");
+        }
+
+        public static void SetFerryPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Ferry");
+        }
+
+        public static void SetMonorailPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Monorail");
+        }
+
+        public static void SetCableCarPrice(float multiplier)
+        {
+            SetPrice(multiplier, "CableCar");
+        }
+
+        public static void SetBusPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Bus");
+        }
+
+        public static void SetTaxiPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Taxi");
+        }
+        
+        public static void SetTrolleybusPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Trolleybus");
+        }
+
+        public static void SetHelicopterPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Passenger Helicopter");
+        }
+        
+        public static void SetIntercityBusPrice(float multiplier)
+        {
+            SetPrice(multiplier, "Intercity Bus");
+        }
+
+        // Keep track of original base prices to avoid compounding multipliers
+        private static readonly System.Collections.Generic.Dictionary<string, int> s_basePrices = new System.Collections.Generic.Dictionary<string, int>();
+
+        private static void SetPrice(float multiplier, string type)
+        {
+            try
+            {
+                // IPT now controls when this is invoked; don't gate on a separate LoadingExtension flag.
+                var info = PrefabCollection<TransportInfo>.FindLoaded(type);
+                if (info == null)
+                {
+                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.LogWarning($"TicketPriceCustomizer: TransportInfo for '{type}' not found.");
+                    return;
+                }
+
+                // Record base price if not already recorded (use original prefab value)
+                if (!s_basePrices.TryGetValue(type, out var basePrice))
+                {
+                    basePrice = (int)info.m_ticketPrice;
+                    s_basePrices[type] = basePrice;
+                }
+
+                // Calculate final price as base price × multiplier
+                int finalPriceInt = Mathf.RoundToInt(basePrice * multiplier);
+                finalPriceInt = Math.Max(0, finalPriceInt);
+                ushort finalPrice = (ushort)Mathf.Clamp(finalPriceInt, 0, UInt16.MaxValue);
+                if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Setting '{type}' multiplier to {multiplier:F1}x (base={basePrice}, final={finalPrice})");
+
+                SetInfoPrice(info, finalPrice);
+
+                int modifiedLines = 0;
+                int checkedLines = 0;
+                for (ushort i = 0; i < TransportManager.instance.m_lines.m_size; i++)
+                {
+                    var line = TransportManager.instance.m_lines.m_buffer[i];
+                    checkedLines++;
+                    if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None || line.Info != info)
+                    {
+                        continue;
+                    }
+
+                    var oldPrice = line.m_ticketPrice;
+                    SetLinePrice(i, info, ref TransportManager.instance.m_lines.m_buffer[i], finalPrice);
+                    if (oldPrice != TransportManager.instance.m_lines.m_buffer[i].m_ticketPrice)
+                    {
+                        modifiedLines++;
+                    }
+                }
+
+                if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Multiplier {multiplier:F1}x applied for '{type}': checkedLines={checkedLines}, modifiedLines={modifiedLines}");
+            }
+            catch (Exception e)
+            {
+                IPTUtils.LogError($"TicketPriceCustomizer: There was an error applying multiplier {multiplier} for transport type {type}: {e.Message}");
+            }
+        }
+
+        private static void SetInfoPrice(TransportInfo info, ushort price)
+        {
+            if (info.m_ticketPrice == price)
+            {
+               return; 
+            }
+            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Transport info: {info.name}, was price: {info.m_ticketPrice}, new price: {price}");
+            info.m_ticketPrice = price;
+        }
+
+        private static void SetLinePrice(ushort lineId, TransportInfo info, ref TransportLine line, ushort price)
+        {
+            if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None || line.Info != info ||
+                price == line.m_ticketPrice)
+            {
+                return;
+            }
+            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Transport line id: {lineId}, #{line.m_lineNumber}, name: {Singleton<TransportManager>.instance.GetLineName(lineId)}, was price: {line.m_ticketPrice}, new price: {price}");
+            line.m_ticketPrice = price;
+        }
+    }
+}

@@ -1,0 +1,267 @@
+MOD_DESCRIPTION Ulepszona kontrola transportu publicznego.
+CURRENT_WEEK Bieżący tydzień
+LAST_WEEK Ubiegły tydzień
+AVERAGE Średnia
+AVERAGE_TOOLTIP Średnia z ostatnich {0} tygodni.
+CITY_SERVICE_PANEL_TITLE_STATION_STOPS Przystanki stacji
+CITY_SERVICE_PANEL_TITLE_DEPOT_VEHICLES Pojazdy zajezdni
+CITYSERVICE_ACCEPTINTERCITYBUSES Zezwól na autobusy międzymiastowe
+CITYSERVICE_ACCEPTINTERCITYBUSES_TOOLTIP Zezwól autobusom międzymiastowym na korzystanie z tej stacji. Wyłącz dla wyłącznie autobusów lokalnych.
+
+EXPLANATION_BUDGET_CONTROL Kontrola budżetu: Liczba pojazdów jest kontrolowana przez budżet.
+EXPLANATION_UNBUNCHING Rozproszenie pojazdów: Gra próbuje utworzyć odstęp między pojazdami.
+LINE_PANEL_STOPS Przystanki: {0}
+LINE_PANEL_SPAWNTIMER Następny pojazd za {0} sekund.
+LINE_PANEL_DEPOT_WARNING <color #FF0000>Wybrana zajezdnia nie ma już żadnych pojazdów.</color>
+LINE_PANEL_BUDGET_CONTROL Kontrola budżetu
+LINE_PANEL_BUDGET_CONTROL_TOOLTIP Włącza lub wyłącza kontrolę budżetu dla tej linii.
+LINE_PANEL_UNBUNCHING_TOOLTIP Włącza lub wyłącza rozproszenie pojazdów dla tej linii.\nRozproszenie jest wyłączone, jeśli agresja rozprzaszająca jest ustawiona na 0.
+LINE_PANEL_DEPOT Zajezdnia:
+LINE_PANEL_NO_DEPOT_FOUND Nie znaleziono zajezdni.
+LINE_PANEL_DEPOT_MARKER_TOOLTIP Przejdź do wybranej zajezdni.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+LINE_PANEL_SELECT_TYPES Wybierz typy
+LINE_PANEL_SELECT_TYPES_TOOLTIP Przełącza panel "Wybierz typy".\nJeśli ten przycisk jest wyłączony, musisz najpierw wybrać zajezdnię.
+LINE_PANEL_LINE_STOPS Przystanki linii
+LINE_PANEL_LINE_VEHICLES Pojazdy na tej linii
+LINE_PANEL_ENQUEUED Pojazdy w kolejce
+LINE_PANEL_TOTAL_WAITING_PEOPLE_TOOLTIP {0} pasażerów czeka na tej linii.
+LINE_PANEL_ADD_VEHICLE Dodaj pojazd
+LINE_PANEL_ADD_VEHICLE_TOOLTIP Dodaje nowy pojazd do linii.\nJeśli ten przycisk jest wyłączony, wybrana zajezdnia nie ma już dostępnych pojazdów.
+LINE_PANEL_REMOVE_VEHICLE Usuń pojazd
+
+STOP_LIST_BOX_ROW_STOP Przystanek #{0}
+STOP_LIST_BOX_ROW_TOOLTIP {0}\nCzekający pasażerowie: {1}\n\nKliknij prawym przyciskiem, aby przejść do tego przystanku.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+STOP_PANEL_SUGGESTED_NAMES_TOOLTIP Lista sugerowanych nazw przystanków.
+STOP_PANEL_REUSE_NAME_TOOLTIP Ustaw tę nazwę dla wszystkich pozostałych przystanków na tej stacji / pozycji.
+STOP_PANEL_WAITING_PEOPLE Czekający pasażerowie: {0}
+STOP_PANEL_BORED_TIMER Czas do znudzenia: <color #{0}>{1}</color>
+STOP_PANEL_BORED_TIMER_TOOLTIP Pasażerowie opuszczą przystanek, gdy ten odliczanie osiągnie zero.
+STOP_PANEL_PASSENGERS_IN Pasażerowie wchodzą:
+STOP_PANEL_PASSENGERS_IN_TOOLTIP Pasażerowie wchodzący do pojazdu transportu tutaj.
+STOP_PANEL_PASSENGERS_OUT Pasażerowie wychodzą:
+STOP_PANEL_PASSENGERS_OUT_TOOLTIP Pasażerowie opuszczający pojazd transportu tutaj.
+STOP_PANEL_PASSENGERS_TOTAL Razem:
+STOP_PANEL_PASSENGERS_TOTAL_TOOLTIP Łączna liczba pasażerów obsłużonych tutaj.
+STOP_PANEL_UNBUNCHING_TOOLTIP Włącza lub wyłącza rozproszenie pojazdów na tym przystanku.\nRozproszenie jest wyłączone, jeśli agresja rozprzaszająca jest ustawiona na 0.
+STOP_PANEL_UPDATE_CLOSE_STOPS Zaktualizuj bliskie przystanki
+STOP_PANEL_UPDATE_CLOSE_STOPS_TOOLTIP Ustaw stan rozprzaszania na wszystkie pozostałe przystanki na tej stacji / pozycji.
+STOP_PANEL_PREVIOUS Poprzedni przystanek
+STOP_PANEL_PREVIOUS_TOOLTIP Przejdź do poprzedniego przystanku.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+STOP_PANEL_DELETE_STOP Usuń przystanek
+STOP_PANEL_DELETE_STOP_TOOLTIP Ten przycisk jest włączony, gdy przytrzymujesz klawisz Alt.\nUżywaj na własne ryzyko!!!
+STOP_PANEL_NEXT Następny przystanek
+STOP_PANEL_NEXT_TOOLTIP Przejdź do następnego przystanku.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+STOP_BUTTON_TOOLTIP {0}\n\nKliknij, aby przejść do tego przystanku.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.\nPrzytrzymanie klawisza Alt podczas klikania uniemożliwi otwarcie panelu informacji przystanku.
+
+SETTINGS_DELETE Usuń
+SETTINGS_RESET Resetuj
+
+SETTINGS_TAB_GENERAL Ogólne
+SETTINGS_TAB_STOPS Przystanki i Stacje
+SETTINGS_TAB_UNBUNCHING Rozproszenie
+SETTINGS_TAB_DELETE Usuń linie
+
+SETTINGS Ustawienia
+SETTINGS_SPEED Prędkość: 
+SETTINGS_SPEED_TOOLTIP Wybierz jednostkę prędkości wyświetlaną w interfejsie.
+SETTINGS_SPEED_KPH km/h
+SETTINGS_SPEED_MPH mil/h
+SETTINGS_WALKING_SPEED Szybkość chodzenia/jazdy na rowerze: 
+SETTINGS_WALKING_SPEED_TOOLTIP Standardowe: standardowe prędkości gry.\nRealistyczne: zmniejsza prędkość chodzenia do realistycznych, opartych na wieku wartości.\nRealistyczne również zwiększa prędkość jazdy na rowerze, aby zachęcić jazdę na rowerze z DLC After Dark.
+SETTINGS_WALKING_SPEED_MODE_VANILLA Standardowy
+SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistyczny
+SETTINGS_BBSP Lepsza pozycja przystanku autobusowego: 
+SETTINGS_BBSP_TOOLTIP Wyłączone: brak dostosowania pozycji.\nOprawieł: używa klasycznego pozycjonowania BBSP.\nEksperymentalne: stosuje ulepszone pozycjonowanie z pełnym wyrównaniem do krawężnika.
+SETTINGS_BBSP_MODE_DISABLED Wyłączone
+SETTINGS_BBSP_MODE_ORIGINAL Użyj oryginalnej logiki
+SETTINGS_BBSP_MODE_UPDATED Użyj eksperymentalnej logiki
+
+SETTINGS_ENABLE_BUDGET_CONTROL Kontrola budżetu linii
+SETTINGS_BUDGET_CONTROL_DISABLED Wyłączone
+SETTINGS_BUDGET_CONTROL_ENABLED Włączone
+SETTINGS_BUDGET_CONTROL_TOOLTIP Włącz lub wyłącz kontrolę budżetu dla wszystkich linii.\n Włączenie zastosuje tryb do każdej linii i wyczyści pojazdy w kolejce.\n Zmiany wchodzą w życie natychmiast.
+
+SETTINGS_AUTO_LINE Automatyczna linia
+SETTINGS_AUTOSHOW_LINE_INFO Automatycznie pokaż informacje linii
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Automatycznie pokazuj okno informacji linii po utworzeniu nowej linii.
+
+AUTOLINECOLOR_STRATEGY_RANDOM_HUE Losowy odcień
+AUTOLINECOLOR_STRATEGY_RANDOM_COLOR Losowy kolor
+AUTOLINECOLOR_STRATEGY_CATEGORISED Kategoryzowany
+AUTOLINECOLOR_STRATEGY_NAMED Nazwane kolory
+AUTOLINECOLOR_NAMING_NONE Brak
+AUTOLINECOLOR_NAMING_DISTRICTS Dzielnice
+AUTOLINECOLOR_NAMING_LONDON Londyn
+AUTOLINECOLOR_NAMING_ROADS Drogi
+AUTOLINECOLOR_NAMING_COLORS Nazwane kolory
+AUTOLINECOLOR_COLOR_STRATEGY Strategia kolorów:
+AUTOLINECOLOR_COLOR_STRATEGY_TOOLTIP Jak kolory są przypisywane do nowych linii:\n'Losowy odcień' = ta sama nasycenie/jasność, różne odcienie;\n 'Losowy kolor' = w pełni losowy RGB;\n 'Kategoryzowany' = kolory wg typu pojazdu;\n 'Nazwane kolory' = predefiniowana paleta kolorów.
+AUTOLINECOLOR_NAMING_STRATEGY Strategia nazewnictwa:
+AUTOLINECOLOR_NAMING_STRATEGY_TOOLTIP Jak nazwy są przypisywane do nowych linii:\n 'Brak' = brak automatycznego nazewnictwa;\n 'Dzielnice' = na podstawie obsługiwanych dzielnic;\n 'Londyn' = numerowane trasy (styl London Buses);\n 'Drogi' = na podstawie nazw ulic;\n 'Nazwane kolory' = na podstawie nazw kolorów.
+AUTOLINECOLOR_MIN_COLOR_DIFF Minimalna różnica kolorów (%):
+AUTOLINECOLOR_MIN_COLOR_DIFF_TOOLTIP Minimalny procent różnicy kolorów przy losowym wyborze.
+AUTOLINECOLOR_MAX_COLOR_PICK Maksymalna liczba prób:
+AUTOLINECOLOR_MAX_COLOR_PICK_TOOLTIP Maksymalna liczba prób wyboru rozróżnialnego koloru.
+
+SETTINGS_UI Ustawienia interfejsu
+SETTINGS_VEHICLE_EDITOR_POSITION Edytor pojazdów: 
+SETTINGS_VEHICLE_EDITOR_POSITION_TOOLTIP Wybierz, czy panel edytora pojazdów pojawi się na dole czy po prawej stronie ekranu.
+SETTINGS_VEHICLE_EDITOR_POSITION_BOTTOM Dół
+SETTINGS_VEHICLE_EDITOR_POSITION_RIGHT Prawo
+SETTINGS_VEHICLE_EDITOR_HIDE Ukryj edytor pojazdów
+SETTINGS_VEHICLE_EDITOR_HIDE_TOOLTIP Ukryj edytor pojazdów z paneli pojazdów.
+
+SETTINGS_STOPS Przystanki transportu publicznego
+SETTINGS_ENABLE_STOPS_AND_STATIONS Włącz Przystanki i Stacje
+SETTINGS_ENABLE_STOPS_AND_STATIONS_TOOLTIP Dostosuj maksymalną liczbę obywateli mogących czekać na transport publiczny na różnych przystankach i stacjach. Skonfiguruj w zakładce Przystanki.
+SETTINGS_STOPSANDSTATIONS_ENABLE Włącz Przystanki i Stacje
+SETTINGS_STOPSANDSTATIONS_ENABLE_TOOLTIP Włącz lub wyłącz egzekwowanie limitu pasażerów na przystankach.
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HEADER Maksymalna liczba pasażerów czekających na przystanku linii transportowej:
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS Autobus liniowy
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BUS_TOOLTIP Maks. pasażerów czekających na przystanku autobusu liniowego
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS Trolejbus
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TROLLEYBUS_TOOLTIP Maks. pasażerów czekających na przystanku trolejbusu
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS Autobus ewakuacyjny
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_EVACUATION_BUS_TOOLTIP Maks. pasażerów czekających na przystanku autobusu ewakuacyjnego
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS Autobus turystyczny
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TOURIST_BUS_TOOLTIP Maks. pasażerów czekających na przystanku autobusu turystycznego
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM Tramwaj
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAM_TOOLTIP Maks. pasażerów czekających na przystanku tramwajowym
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO Metro
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_METRO_TOOLTIP Maks. pasażerów czekających na stacji metra
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN Pociąg
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_TRAIN_TOOLTIP Maks. pasażerów czekających na stacji kolejowej
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL Kolej jednoszynowa
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_MONORAIL_TOOLTIP Maks. pasażerów czekających na przystanku kolei jednoszynowej
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP Statek
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_SHIP_TOOLTIP Maks. pasażerów czekających w porcie cargo
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY Prom
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_FERRY_TOOLTIP Maks. pasażerów czekających na przystanku promowym
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE Samolot
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_AIRPLANE_TOOLTIP Maks. pasażerów czekających na terminalu lotniczym
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR Kolejka linowa
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_CABLECAR_TOOLTIP Maks. pasażerów czekających na przystanku kolejki linowej
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON Balon na ogrzane powietrze
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HOTAIRBALLOON_TOOLTIP Maks. pasażerów czekających na przystanku balonu
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER Helikopter
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_HELICOPTER_TOOLTIP Maks. pasażerów czekających na przystanku helikoptera
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP Sterowiec
+SETTINGS_STOPSANDSTATIONS_MAX_PASSENGERS_BLIMP_TOOLTIP Maks. pasażerów czekających na przystanku sterowca
+
+SETTINGS_UNBUNCHING Rozproszenie pojazdów
+SETTINGS_UNBUNCHING_AGGRESSION Agresja rozprzaszająca:
+SETTINGS_UNBUNCHING_AGGRESSION_TOOLTIP Jak silnie ma działać rozproszenie pojazdów?\nMożliwe wartości: 0–52. Wartość 0 wyłącza rozproszenie.\nWyższe wartości będą mieć silny wpływ na ruch i mogą spowodować zniknięcie pojazdów.
+SETTINGS_VEHICLE_COUNT Pojazdy na nowych liniach:
+SETTINGS_VEHICLE_COUNT_TOOLTIP Liczba pojazdów, która będzie automatycznie dodawana do nowych linii, gdy kontrola budżetu jest wyłączona.
+SETTINGS_SPAWN_TIME_INTERVAL Interwał czasu pojawienia się:
+SETTINGS_SPAWN_TIME_INTERVAL_TOOLTIP Czas w sekundach między pojawieniami się pojazdów.
+SETTINGS_UNBUNCHING_RESET_BUTTON_TOOLTIP Resetuje wszystkie suwaki do wartości domyślnych.
+UNBUNCHING_ENABLED Rozproszenie pojazdów
+UNBUNCHING_DISABLED Rozproszenie jest wyłączone.
+UNBUNCHING_TARGET_GAP Docelowy odstęp: {0}
+
+SETTINGS_EBS_GROUP_BUS Usługi autobusów ekspresowych
+SETTINGS_EBS_GROUP_TRAM Usługi tramwajów ekspresowych
+SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Rozproszenie autobusów ekspresowych: 
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Wyłączone' = Autobusy używają ustawień rozprzaszania powyżej.\n'Zatrzymaj i jedź' = Zatrzymuje się na chwilę, sprawdza pasażerów, może odjechać jeśli pusty.\n'Express' = Pomija przystanki, jeśli nikt nie czeka.
+SETTINGS_EBS_ENABLE_SELFBAL Włącz samodzielne równoważenie usług
+SETTINGS_EBS_TOOLTIP_SELFBAL Analizuje segmenty linii i może redystrybuować pojazdy na bardziej oblegane segmenty lub przystanki końcowe w celu wyrównania usługi i zmniejszenia czasu oczekiwania.\n Decyzje są probabilistyczne i zależą od liczby pasażerów i szans na redystrybuację.
+SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Włącz samodzielne równoważenie przystanków pośrodku linii
+SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Pozwól samodzielnie równoważy redystrybuować pojazdy do obleganych przystanków pośrodku linii (zamiast do przystanków końcowych).\n Brane pod uwagę tylko wtedy, gdy najbardziej oblegany przystanek ma więcej niż 30 czekających pasażerów, następnie wybierany z ~50% prawdopodobieństwem i podlegający ogólnym szansom na redystrybuację.
+SETTINGS_EBS_ENABLE_MINIBUS Włącz tryb minibusa
+SETTINGS_EBS_TOOLTIP_MINIBUS Autobusy o pojemności ≤20 mogą odjechać wcześniej z przystanku, gdy pasażerowie wsiadający + wysiadający na tym przystanku ≤5.
+SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Rozproszenie tramwajów ekspresowych: 
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Wyłączone' = Tramwaje używają ustawień rozprzaszania powyżej.\n'Lekka kolej' = Zatrzymuje się na każdym przystanku, zawsze czeka pełny timer.\n'Prawdziwy tramwaj' = Zatrzymuje się tylko gdy pasażerowie wsiadają/wysiadają.
+SETTINGS_EBS_MODE_NONE Wyłączone
+SETTINGS_EBS_MODE_AGGRESSIVE Agresywne
+SETTINGS_EBS_MODE_PRUDENTIAL Ostrożne (starsze)
+SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Tryb lekkiej kolei
+SETTINGS_EBS_TRAM_MODE_NONE Wyłączone
+SETTINGS_EBS_TRAM_MODE_TRAM Prawdziwy tryb tramwaju 
+
+
+SETTINGS_LINE_DELETION_TOOL Narzędzie usuwania linii
+SETTINGS_LINE_DELETION_TOOL_BUTTON_TOOLTIP Usuwa wszystkie linie wybranych typów. Działa tylko wtedy, gdy miasto jest załadowane.
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_TITLE POTWIERDZENIE USUNIĘCIA LINII
+SETTINGS_LINE_DELETION_TOOL_CONFIRM_MSG Zamierzasz usunąć wszystkie linie.\nCzy chcesz kontynuować?
+SETTINGS_DELETE_BUS_TOOLTIP Usuwa wszystkie zwykłe linie autobusowe.
+SETTINGS_DELETE_SIGHTSEEING_BUS_LABEL Autobusy turystyczne
+SETTINGS_DELETE_SIGHTSEEING_BUS_TOOLTIP Usuwa wszystkie linie autobusów turystycznych.
+SETTINGS_DELETE_TRAM_TOOLTIP Usuwa wszystkie linie tramwajowe.
+SETTINGS_DELETE_TROLLEYBUS_TOOLTIP Usuwa wszystkie linie trolejbusowe.
+SETTINGS_DELETE_TRAIN_TOOLTIP Usuwa wszystkie linie kolejowe.
+SETTINGS_DELETE_METRO_TOOLTIP Usuwa wszystkie linie metra podziemnego.
+SETTINGS_DELETE_MONORAIL_TOOLTIP Usuwa wszystkie linie kolei jednoszynowej.
+SETTINGS_DELETE_FERRY_LABEL Promy
+SETTINGS_DELETE_SHIP_TOOLTIP Usuwa wszystkie linie promowe.
+SETTINGS_DELETE_HELICOPTER_LABEL Helikoptery
+SETTINGS_DELETE_HELICOPTER_TOOLTIP Usuwa wszystkie linie helikopterowe.
+SETTINGS_DELETE_BLIMP_LABEL Sterowce
+SETTINGS_DELETE_BLIMP_TOOLTIP Usuwa wszystkie linie sterowców.
+
+
+VEHICLE_EDITOR_TITLE Edytor pojazdów
+VEHICLE_EDITOR_SUB_TITLE {0} pojazdy
+VEHICLE_EDITOR_CAPACITY Pojemność pasażerów
+VEHICLE_EDITOR_CAPACITY_TAXI Pojemność podróży
+VEHICLE_EDITOR_CAPACITY_TAXI_TOOLTIP Liczba pasażerów na zmianę pracy.
+VEHICLE_EDITOR_MAINTENANCE Koszt utrzymania
+VEHICLE_EDITOR_MAX_SPEED Maksymalna prędkość
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS Silnik pociągu na obu końcach
+VEHICLE_EDITOR_ENGINE_ON_BOTH_ENDS_TOOLTIP Włącza lub wyłącza silniki pociągu na obu końcach pociągu.
+VEHICLE_EDITOR_APPLY Zastosuj
+VEHICLE_EDITOR_DEFAULT Domyślnie
+VEHICLE_LIST_BOX_ROW_TOOLTIP1 Kliknij prawym przyciskiem, aby podążać za tym pojazdem.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+VEHICLE_LIST_BOX_ROW_TOOLTIP2 Shift + klik, aby umieścić ten pojazd w kolejce.
+VEHICLE_PANEL_EDIT_TYPE Edytuj typ pojazdu
+VEHICLE_PANEL_EDIT_TYPE_TOOLTIP Edytuj ten typ pojazdu za pomocą edytora pojazdów.
+VEHICLE_PANEL_STATUS_NEXT_STOP Następny przystanek:
+VEHICLE_PANEL_STATUS_UNBUNCHING Rozproszenie w toku
+VEHICLE_PANEL_LAST_STOP_EXCHANGE Ostatnia wymiana pasażerów na przystanku: <color #FF0000>-{0}</color> | <color #00FF00>+{1}</color>
+VEHICLE_PANEL_PASSENGERS Pasażerowie:
+VEHICLE_PANEL_EARNINGS Zarobki:
+VEHICLE_PANEL_EARNINGS_TOOLTIP Wynik sprzedaży biletów minus koszt utrzymania pojazdu.
+VEHICLE_PANEL_PREVIOUS Poprzedni pojazd
+VEHICLE_PANEL_PREVIOUS_TOOLTIP Przejdź do poprzedniego pojazdu.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+VEHICLE_PANEL_REMOVE_VEHICLE Usuń pojazd
+VEHICLE_PANEL_NEXT Następny pojazd
+VEHICLE_PANEL_NEXT_TOOLTIP Przejdź do następnego pojazdu.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.
+VEHICLE_SELECTION_CAPACITY Pojemność
+VEHICLE_SELECTION_ADD_VEHICLE Dodaj ten pojazd do listy dozwolonych pojazdów
+VEHICLE_SELECTION_ADD_ALL Dodaj wszystkie uprawniające pojazdy do listy dozwolonych pojazdów
+VEHICLE_SELECTION_REMOVE_VEHICLE Usuń ten pojazd z listy dozwolonych pojazdów
+VEHICLE_SELECTION_REMOVE_ALL Usuń wszystkie pojazdy z listy dozwolonych pojazdów
+VEHICLE_SELECTION_AVAILABLE_VEHICLES Dostępne pojazdy
+VEHICLE_SELECTION_SELECTED_VEHICLES Wybrane pojazdy
+VEHICLE_SELECTION_ANY_VEHICLE Jakikolwiek pojazd
+VEHICLE_BUTTON_TOOLTIP {0}\n\nKliknij, aby przejść do tego pojazdu.\nPrzytrzymanie klawisza Shift podczas klikania również przybliży widok.\nPrzytrzymanie klawisza Alt podczas klikania uniemożliwi otwarcie panelu informacji pojazdu.
+TRANSPORT_LINE_VEHICLECOUNT Liczba pojazdów: {0}
+
+FLIGHT_TRACKER_NAME Śledzenie lotów
+FLIGHT_STATUS_NONE Brak
+FLIGHT_STATUS_INCOMING Przylatuje
+FLIGHT_STATUS_LANDED Wylądował
+FLIGHT_STATUS_AT_GATE Przy bramce
+FLIGHT_STATUS_DEPARTED Odlot
+
+TICKET_PRICE_TAXI_KILOMETER Cena taksówki za kilometr: 
+TICKET_PRICE_TAXI_MILE Cena taksówki za milę: 
+TICKET_PRICE_BUS Cena biletu autobusowego: 
+TICKET_PRICE_INTERCITY_BUS Cena biletu autobusu międzymiastowego: 
+TICKET_PRICE_METRO Cena biletu metra: 
+TICKET_PRICE_TRAIN Cena biletu pociągu: 
+TICKET_PRICE_TRAM Cena biletu tramwaju: 
+TICKET_PRICE_MONORAIL Cena biletu monoraileu: 
+TICKET_PRICE_SHIP Cena biletu na statek: 
+TICKET_PRICE_FERRY Cena biletu promem: 
+TICKET_PRICE_PLANE Cena biletu lotniczego: 
+TICKET_PRICE_CABLECAR Cena biletu linki gondolowej: 
+TICKET_PRICE_SIGHTSEEING_BUS Cena biletu autobusu turystycznego: 
+TICKET_PRICE_TROLLEYBUS Cena biletu trolejbusu: 
+TICKET_PRICE_BLIMP Cena biletu sterowca: 
+TICKET_PRICE_HELICOPTER Cena biletu helikoptera: 
+ECONOMY_TAB_TICKET_PRICES Ceny biletów
+
+WHATSNEW_3_0_0_1 Zaktualizowano dla Race Day; teraz kompatybilny z More Vehicles Renewed.
+WHATSNEW_3_0_0_2 Następujące mody zostały zintegrowane z IPT3:\n • Advanced Stop Selection Revisited\n • Auto Line Color Redux\n • Better Bus Stop Position\n • Better Train Boarding\n • Elevated Stops Enabler Revisited  \n • Express Bus Services\n • Flight Tracker\n • Intercity Bus Control\n • Mileage Taxi Services\n • Realistic Walking Speed\n • Stops and Stations\n • Ticket Price Customizer
+
