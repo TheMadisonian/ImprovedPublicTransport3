@@ -32,7 +32,7 @@ namespace AutoLineColor.Coloring
             var logger = Console.Instance;
 
             // we need to load the color list
-            var modConfigPath = Path.Combine(ColossalFramework.IO.DataLocation.localApplicationData, Path.Combine("Mods", "ImprovedPublicTransport3"));
+            var modConfigPath = Path.Combine(ColossalFramework.IO.DataLocation.localApplicationData, Path.Combine("ModsSettings", "IPT"));
             var fullPath = Path.Combine(modConfigPath, _filename);
             logger.Message($"Loading color set from {fullPath}");
             var unparsedColors = _defaultContent;
@@ -46,6 +46,7 @@ namespace AutoLineColor.Coloring
                 else
                 {
                     logger.Message("No colors found, writing default values to  " + fullPath);
+                    Directory.CreateDirectory(modConfigPath);
                     File.WriteAllText(fullPath, unparsedColors);
                 }
             }

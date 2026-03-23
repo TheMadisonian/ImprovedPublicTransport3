@@ -4,7 +4,7 @@
     {
         public static IColorSetLoader Any { get; } = new SimpleColorSetLoader(
             "Any",
-            "all.txt",
+            "AutoLineColors.txt",
             "#f50302, #d60404, #990606, #c71818, #f52020, #991818, #d62f2f, #f53838, #991d02," +
             " #b82606, #d6340f, #993018, #f54f2a, #c74528, #c74900, #e55e10, #a8460d, #c75b1c," +
             " #994b1d, #e5712e, #b85e2a, #e58005, #b86909, #995c12, #e5922c, #c7812c, #997102," +

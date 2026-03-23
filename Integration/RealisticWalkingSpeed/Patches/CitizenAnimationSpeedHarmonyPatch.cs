@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using UnityEngine;
+using Utils = ImprovedPublicTransport.Util.Utils;
 
 namespace RealisticWalkingSpeed.Patches
 {
@@ -18,11 +19,26 @@ namespace RealisticWalkingSpeed.Patches
 
         public void Apply()
         {
-            var setRenderParametersMethodInfo = typeof(CitizenInfo)
-                .GetMethod("SetRenderParameters", BindingFlags.Instance | BindingFlags.Public);
-            var setRenderParametersTranspilerMethodInfo = GetType()
-                .GetMethod(nameof(SetRenderParametersTranspiler), BindingFlags.Static | BindingFlags.NonPublic);
-            _harmony.Patch(setRenderParametersMethodInfo, null, null, new HarmonyMethod(setRenderParametersTranspilerMethodInfo));
+            try
+            {
+                var setRenderParametersMethodInfo = typeof(CitizenInfo)
+                    .GetMethod("SetRenderParameters", BindingFlags.Instance | BindingFlags.Public);
+                var setRenderParametersTranspilerMethodInfo = GetType()
+                    .GetMethod(nameof(SetRenderParametersTranspiler), BindingFlags.Static | BindingFlags.NonPublic);
+                
+                if (setRenderParametersMethodInfo == null)
+                {
+                    Utils.LogError("CitizenAnimationSpeedHarmonyPatch: Could not find SetRenderParameters method");
+                    return;
+                }
+
+                _harmony.Patch(setRenderParametersMethodInfo, null, null, new HarmonyMethod(setRenderParametersTranspilerMethodInfo));
+                Utils.Log("CitizenAnimationSpeedHarmonyPatch: Successfully patched SetRenderParameters");
+            }
+            catch (System.Exception ex)
+            {
+                Utils.LogError($"CitizenAnimationSpeedHarmonyPatch: Failed to apply patch: {ex.Message}\n{ex.StackTrace}");
+            }
         }
 
         static IEnumerable<CodeInstruction> SetRenderParametersTranspiler(IEnumerable<CodeInstruction> codeInstructions)

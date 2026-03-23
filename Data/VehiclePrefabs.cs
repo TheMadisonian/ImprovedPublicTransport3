@@ -12,6 +12,7 @@ namespace ImprovedPublicTransport.Data
 
         private PrefabData[] _busPrefabData;
         private PrefabData[] _biofuelBusPrefabData;
+        private PrefabData[] _intercityBusPrefabData;
         private PrefabData[] _metroPrefabData;
         private PrefabData[] _trainPrefabData;
         private PrefabData[] _airportTrainPrefabData;
@@ -137,6 +138,8 @@ namespace ImprovedPublicTransport.Data
                 {
                     switch (subService)
                     {
+                        case ItemClass.SubService.PublicTransportBus:
+                            return _intercityBusPrefabData;
                         case ItemClass.SubService.PublicTransportTours:
                             return _sightseeingBusPrefabData;
                         case ItemClass.SubService.PublicTransportPlane:
@@ -166,6 +169,7 @@ namespace ImprovedPublicTransport.Data
             var cableCarList = new List<PrefabData>();
             var ferryList = new List<PrefabData>();
             var sightseeingBusList = new List<PrefabData>();
+            var intercityBusList = new List<PrefabData>();
             var trolleybusList = new List<PrefabData>();
             var helicopterList = new List<PrefabData>();
 
@@ -298,6 +302,11 @@ namespace ImprovedPublicTransport.Data
                     {
                         switch (subService)
                         {
+                            case ItemClass.SubService.PublicTransportBus:
+                            {
+                                intercityBusList.Add(RegisterPrefab(prefab));
+                                continue;
+                            }
                             case ItemClass.SubService.PublicTransportTours:
                             {
                                 sightseeingBusList.Add(RegisterPrefab(prefab));
@@ -346,6 +355,7 @@ namespace ImprovedPublicTransport.Data
             _ferryPrefabData = ferryList.ToArray();
             _cableCarPrefabData = cableCarList.ToArray();
             _sightseeingBusPrefabData = sightseeingBusList.ToArray();
+            _intercityBusPrefabData = intercityBusList.ToArray();
             _trolleybusPrefabData = trolleybusList.ToArray();
             _helicopterPrefabData = helicopterList.ToArray();
         }

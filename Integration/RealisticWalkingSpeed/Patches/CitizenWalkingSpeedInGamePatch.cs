@@ -1,4 +1,5 @@
 ﻿using System;
+using Utils = ImprovedPublicTransport.Util.Utils;
 
 namespace RealisticWalkingSpeed.Patches
 {
@@ -13,13 +14,24 @@ namespace RealisticWalkingSpeed.Patches
 
         public void Apply()
         {
-            for (uint i = 0; i < PrefabCollection<CitizenInfo>.LoadedCount(); i++)
+            try
             {
-                var citizenPrefab = PrefabCollection<CitizenInfo>.GetLoaded(i);
-                if (citizenPrefab == null)
-                    continue;
+                int modifiedCount = 0;
+                for (uint i = 0; i < PrefabCollection<CitizenInfo>.LoadedCount(); i++)
+                {
+                    var citizenPrefab = PrefabCollection<CitizenInfo>.GetLoaded(i);
+                    if (citizenPrefab == null)
+                        continue;
 
-                citizenPrefab.m_walkSpeed = _speedData.GetAverageSpeed(citizenPrefab.m_agePhase, citizenPrefab.m_gender);
+                    float newSpeed = _speedData.GetAverageSpeed(citizenPrefab.m_agePhase, citizenPrefab.m_gender);
+                    citizenPrefab.m_walkSpeed = newSpeed;
+                    modifiedCount++;
+                }
+                Utils.Log($"CitizenWalkingSpeedInGamePatch: Applied realistic walking speeds to {modifiedCount} citizen prefabs");
+            }
+            catch (System.Exception ex)
+            {
+                Utils.LogError($"CitizenWalkingSpeedInGamePatch: Failed to apply patches: {ex.Message}\n{ex.StackTrace}");
             }
         }
     }

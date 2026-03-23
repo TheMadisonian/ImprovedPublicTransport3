@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Стандарт: скорость базовой
 SETTINGS_WALKING_SPEED_MODE_VANILLA Стандарт
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Реалистичный
 SETTINGS_BBSP Улучшенное расположение остановок: 
-SETTINGS_BBSP_TOOLTIP Отключено: без подстройки позиции.\nОригинальный: классическое позиционирование BBSP.\nЭкспериментальный: улучшенное позиционирование с полным выравниванием по бордюре.
-SETTINGS_BBSP_MODE_DISABLED 禁用
-SETTINGS_BBSP_MODE_ORIGINAL Оригинальная логика
+SETTINGS_BBSP_TOOLTIP Отключено: без подстройки позиции.\nВключено: автобусы останавливаются спереди остановки, а не посередине.
+SETTINGS_BBSP_MODE_DISABLED Отключено
+SETTINGS_BBSP_MODE_ORIGINAL Включено
 SETTINGS_BBSP_MODE_UPDATED Экспериментальная логика
 
 SETTINGS_ENABLE_BUDGET_CONTROL Контролируется бюджетом
@@ -163,7 +163,7 @@ UNBUNCHING_TARGET_GAP Интервал: {0}
 SETTINGS_EBS_GROUP_BUS Услуги экспресс-автобусов
 SETTINGS_EBS_GROUP_TRAM Услуги экспресс-трамваев
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Распределение экспресс-автобусов: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Отключено' = Автобусы используют настройки распределения выше.\n'Остановка-Движение' = Кратко останавливается, проверяет пассажиров, может уехать если пусто.\n'Экспресс' = Пропускает остановки, если никто не ждёт.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Отключено' = Автобусы используют настройки распределения выше.\n'Prudential' = Кратко останавливается, проверяет пассажиров, может уехать если пусто.\n'Aggressive' = Пропускает остановки, если никто не ждёт.
 SETTINGS_EBS_ENABLE_SELFBAL Включить саморегулировку услуги
 SETTINGS_EBS_TOOLTIP_SELFBAL Анализирует сегменты линии и может перераспределять транспортные средства на более загруженные сегменты или конечные остановки для сбалансирования обслуживания и снижения времени ожидания.\n Решения являются вероятностными и зависят от количества пассажиров и вероятностей перераспределения.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Включить саморегулировку остановок в середине линии
@@ -174,7 +174,7 @@ SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Распределение экспр
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Отключено' = Трамваи используют настройки распределения выше.\n'Лёгкое метро' = Останавливается на каждой остановке, всегда ждёт полный таймер.\n'Настоящий трамвай' = Останавливается только при посадке/высадке пассажиров.
 SETTINGS_EBS_MODE_NONE Отключено
 SETTINGS_EBS_MODE_AGGRESSIVE Агрессивный
-SETTINGS_EBS_MODE_PRUDENTIAL Осторожный (Устаревший)
+SETTINGS_EBS_MODE_PRUDENTIAL Осторожный
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Режим легкой железной дороги
 SETTINGS_EBS_TRAM_MODE_NONE Отключено
 SETTINGS_EBS_TRAM_MODE_TRAM Режим истинного трамвая

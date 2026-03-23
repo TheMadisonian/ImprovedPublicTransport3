@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Standard : vitesses du jeu de base.\nRéaliste : 
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Réaliste
 SETTINGS_BBSP Meilleur positionnement des arrêts de bus : 
-SETTINGS_BBSP_TOOLTIP Désactivé : pas d'ajustement de position.\nOriginal : utilise le positionnement BBSP classique.\nExpérimental : applique un positionnement amélioré avec alignement complet au trottoir.
+SETTINGS_BBSP_TOOLTIP Désactivé : pas d'ajustement de position.\nActivé : les bus s'arrêtent à l'avant de l'arrêt au lieu du centre.
 SETTINGS_BBSP_MODE_DISABLED Désactivé
-SETTINGS_BBSP_MODE_ORIGINAL Utiliser la logique d'origine
+SETTINGS_BBSP_MODE_ORIGINAL Activé
 SETTINGS_BBSP_MODE_UPDATED Utiliser la logique expérimentale
 
 SETTINGS_ENABLE_BUDGET_CONTROL Contrôle budgétaire
@@ -163,7 +163,7 @@ UNBUNCHING_TARGET_GAP Distance désirée: {0}
 SETTINGS_EBS_GROUP_BUS Services de bus express
 SETTINGS_EBS_GROUP_TRAM Services de tramway express
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Débunching de bus express: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Désactivé' = Les bus utilisent les paramètres de distancement ci-dessus.\n'Arrêt-et-Départ' = S'arrête brièvement, vérifie les passagers, peut repartir si vide.\n'Express' = Saute les arrêts si aucun passager n'attend.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Désactivé' = Les bus utilisent les paramètres de distancement ci-dessus.\n'Prudential' = S'arrête brièvement, vérifie les passagers, peut repartir si vide.\n'Aggressive' = Saute les arrêts si aucun passager n'attend.
 SETTINGS_EBS_ENABLE_SELFBAL Activer l'auto-équilibrage du service
 SETTINGS_EBS_TOOLTIP_SELFBAL Analyse les segments de ligne et peut redéployer des véhicules vers des segments plus chargés ou des arrêts terminus pour équilibrer le service et réduire les temps d'attente.\n Les décisions sont probabilistes et dépendent du nombre de passagers et des probabilités de redéploiement.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Activer l'auto-équilibrage du milieu de ligne
@@ -174,7 +174,7 @@ SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Débunching de tramway express:
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Désactivé' = Les trams utilisent les paramètres de distance ci-dessus.\n'Ferroviaire léger' = S'arrête à chaque arrêt, attend toujours le chronomètre complet.\n'Vrai tramway' = S'arrête uniquement quand des passagers montent/descendent.
 SETTINGS_EBS_MODE_NONE Désactivé
 SETTINGS_EBS_MODE_AGGRESSIVE Agressif
-SETTINGS_EBS_MODE_PRUDENTIAL Prudent (Hérité)
+SETTINGS_EBS_MODE_PRUDENTIAL Prudent
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Mode ferroviaire léger
 SETTINGS_EBS_TRAM_MODE_NONE Désactivé
 SETTINGS_EBS_TRAM_MODE_TRAM Mode tramway vrai

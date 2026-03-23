@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Standard: Basis-Spielgeschwindigkeiten.\nRealisti
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistisch
 SETTINGS_BBSP Verbesserte Bushaltestellen-Position: 
-SETTINGS_BBSP_TOOLTIP Deaktiviert: keine Positionsanpassung.\nOriginal: verwendet klassische BBSP-Positionierung.\nExperimentell: wendet verbesserte Positionierung mit vollständiger Bordsteinausrichtung an.
+SETTINGS_BBSP_TOOLTIP Deaktiviert: keine Positionsanpassung.\nAktiviert: Busse halten an der Front der Bushaltestelle statt in der Mitte.
 SETTINGS_BBSP_MODE_DISABLED Deaktiviert
-SETTINGS_BBSP_MODE_ORIGINAL Ursprüngliche Logik verwenden
+SETTINGS_BBSP_MODE_ORIGINAL Aktiviert
 SETTINGS_BBSP_MODE_UPDATED Experimentelle Logik verwenden
 
 SETTINGS_BUDGET Budget
@@ -164,7 +164,7 @@ UNBUNCHING_TARGET_GAP Zielabstand: {0}
 SETTINGS_EBS_GROUP_BUS Schnellbus-Dienste
 SETTINGS_EBS_GROUP_TRAM Schnellstraßenbahn-Dienste
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Schnellbus: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Deaktiviert' = Busse verwenden die obigen Entbündelungseinstellungen.\n'Stop-and-Go' = Hält kurz an, prüft Fahrgäste, kann abfahren wenn leer.\n'Express' = Überspringt Haltestellen vollständig, wenn keine Fahrgäste warten.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Deaktiviert' = Busse verwenden die obigen Entbündelungseinstellungen.\n'Prudential' = Hält kurz an, prüft Fahrgäste, kann abfahren wenn leer.\n'Aggressive' = Überspringt Haltestellen vollständig, wenn keine Fahrgäste warten.
 SETTINGS_EBS_ENABLE_SELFBAL Dienst-Selbstausgleich aktivieren
 SETTINGS_EBS_TOOLTIP_SELFBAL Analysiert Linienabschnitte und kann Fahrzeuge auf stärker ausgelastete Abschnitte oder Endstationen umverteilen, um den Betrieb zu verbessern und Wartezeiten zu reduzieren.\nEntscheidungen sind probabilistisch und hängen von Fahrgastzahlen und Umverteilungswahrscheinlichkeiten ab.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Selbstausgleich für Mittenstationen aktivieren
@@ -174,8 +174,8 @@ SETTINGS_EBS_TOOLTIP_MINIBUS Busse mit Kapazität ≤20 können früher von eine
 SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Schnellstraßenbahn: 
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Deaktiviert' = Straßenbahnen verwenden die obigen Entbündelungseinstellungen.\n'Stadtbahn' = Hält an jeder Haltestelle, wartet immer die volle Zeit (erzwungene Disziplin).\n'Echte Straßenbahn' = Hält nur, wenn Fahrgäste ein- oder aussteigen.
 SETTINGS_EBS_MODE_NONE Deaktiviert
-SETTINGS_EBS_MODE_AGGRESSIVE Express
-SETTINGS_EBS_MODE_PRUDENTIAL Stop-and-Go
+SETTINGS_EBS_MODE_AGGRESSIVE Aggressiv
+SETTINGS_EBS_MODE_PRUDENTIAL Umsichtig
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Stadtbahn-Modus
 SETTINGS_EBS_TRAM_MODE_NONE Deaktiviert
 SETTINGS_EBS_TRAM_MODE_TRAM Echter Straßenbahn-Modus 

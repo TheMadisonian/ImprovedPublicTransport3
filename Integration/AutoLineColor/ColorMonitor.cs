@@ -8,6 +8,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using ImprovedPublicTransport.OptionsFramework;
+using ImprovedPublicTransport.Integration.TicketPriceCustomizer;
 
 namespace AutoLineColor
 {
@@ -109,6 +110,9 @@ namespace AutoLineColor
             TransportManager theTransportManager;
             SimulationManager theSimulationManager;
             TransportLine[] lines;
+
+            // Refresh ticket prices tab passenger counts (throttled internally)
+            try { TicketPricesTab.OnUpdate(realTimeDelta); } catch { }
 
             try
             {

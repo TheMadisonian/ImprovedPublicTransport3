@@ -58,8 +58,11 @@ namespace ImprovedPublicTransport.Settings
 
         public static void OnRealisticWalkingSpeedChanged(int walkingSpeedMode)
         {
+            Utils.Log($"SettingsActions: OnRealisticWalkingSpeedChanged called with mode {walkingSpeedMode}");
+            
             if (!ImprovedPublicTransportMod.InGame)
             {
+                Utils.Log("SettingsActions: Not in-game, changes will be applied when game loads");
                 return;
             }
             
@@ -69,16 +72,18 @@ namespace ImprovedPublicTransport.Settings
                 {
                     if (walkingSpeedMode == (int)ImprovedPublicTransport.Settings.Settings.WalkingSpeedModes.Realistic)
                     {
+                        Utils.Log("SettingsActions: Enabling Realistic Walking Speed");
                         RealisticWalkingSpeedMod.EnableRealisticWalkingSpeedMod();
                     }
                     else
                     {
+                        Utils.Log("SettingsActions: Disabling Realistic Walking Speed");
                         RealisticWalkingSpeedMod.DisableRealisticWalkingSpeedMod();
                     }
                 }
                 catch (System.Exception ex)
                 {
-                    Utils.LogError($"Failed to toggle Realistic Walking Speed: {ex.Message}");
+                    Utils.LogError($"Failed to toggle Realistic Walking Speed: {ex.Message}\n{ex.StackTrace}");
                 }
             });
         }

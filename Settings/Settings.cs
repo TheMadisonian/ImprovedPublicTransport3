@@ -7,7 +7,7 @@ using ImprovedPublicTransport.OptionsFramework.Attibutes;
 
 namespace ImprovedPublicTransport.Settings
 {
-    [Options("ImprovedPublicTransport", "ImprovedPublicTransportSettings")]
+    [Options("ModsSettings/IPT/ImprovedPublicTransport")]
     public class Settings
     {
         private const string SETTINGS_COMMON = "SETTINGS";
@@ -34,8 +34,8 @@ namespace ImprovedPublicTransport.Settings
             Disabled = 0,
             [Description("SETTINGS_BBSP_MODE_ORIGINAL")]
             OriginalLogic = 1,
-            [Description("SETTINGS_BBSP_MODE_UPDATED")]
-            UpdatedLogic = 2
+            // [Description("SETTINGS_BBSP_MODE_UPDATED")]
+            // UpdatedLogic = 2
         }
 
         public enum WalkingSpeedModes
@@ -108,7 +108,7 @@ namespace ImprovedPublicTransport.Settings
         // Express Bus Services settings
         [Description("SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE")]
         [DropDown("SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE", nameof(ExpressBusServicesModes), SETTINGS_EBS_GROUP_BUS)]
-        public int ExpressBusUnbunchingMode { get; set; } = 1; // 0 = None, 1 = Prudential, 2 = Aggressive
+        public int ExpressBusUnbunchingMode { get; set; } = 0; // 0 = Disabled, 1 = Prudential, 2 = Aggressive
 
         [Description("SETTINGS_EBS_TOOLTIP_SELFBAL")]
         [Checkbox("SETTINGS_EBS_ENABLE_SELFBAL", SETTINGS_EBS_GROUP_BUS)]
@@ -251,7 +251,7 @@ namespace ImprovedPublicTransport.Settings
         }
 
         // 'What's new' version tracker for notifications.
-        public string WhatsNewLastSeenVersion { get; set; } = "0.0";
+        public string WhatsNewLastSeenVersion { get; set; } = "0.0.0";
 
         // --- Ticket Price Customizer nested settings
         public TicketPriceCustomizerSettings TicketPriceCustomizer { get; set; } = new TicketPriceCustomizerSettings();

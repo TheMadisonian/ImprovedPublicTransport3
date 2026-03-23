@@ -65,6 +65,8 @@ namespace ImprovedPublicTransport.UI.PanelExtenders
         return;
       this._status = this._publicTransportVehicleWorldInfoPanel.Find<UILabel>("Status");
       this._target = this._publicTransportVehicleWorldInfoPanel.Find<UIButton>("Target");
+      // Remove any native click handlers so only ours fires
+      ClearEventClickHandlers(this._target);
       this._target.eventClick += new MouseEventHandler(this.OnTargetClick);
       this._distance = this._publicTransportVehicleWorldInfoPanel.Find<UILabel>("Distance");
       this._distanceTraveled = Utils.GetPrivate<UIProgressBar>((object) this._publicTransportVehicleWorldInfoPanel, "m_DistanceTraveled");
@@ -353,14 +355,47 @@ namespace ImprovedPublicTransport.UI.PanelExtenders
       VehicleEditor.Instance.SetPrefab(info);
     }
 
+    private static void ClearEventClickHandlers(UIComponent component)
+    {
+      // Walk up the type hierarchy to find and null the backing delegate field for eventClick
+      Type type = component.GetType();
+      while (type != null)
+      {
+        FieldInfo field = type.GetField("eventClick", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+        if (field != null && typeof(Delegate).IsAssignableFrom(field.FieldType))
+        {
+          field.SetValue(component, null);
+          return;
+        }
+        type = type.BaseType;
+      }
+    }
+
     private void OnTargetClick(UIComponent component, UIMouseEventParameter eventParam)
     {
-      if (!((UnityEngine.Object) eventParam.source != (UnityEngine.Object) null))
-        return;
-      InstanceID objectUserData = (InstanceID) eventParam.source.objectUserData;
-      if (objectUserData.Type != InstanceType.NetNode)
-        return;
-      PublicTransportStopWorldInfoPanel.instance.Show(Singleton<NetManager>.instance.m_nodes.m_buffer[(int) objectUserData.NetNode].m_position, objectUserData);
+      try
+      {
+        var lineId = WorldInfoCurrentLineIDQuery.Query(out var vehicleID);
+        if (lineId == 0 || vehicleID == 0) return;
+
+        ushort targetNode = Singleton<VehicleManager>.instance.m_vehicles.m_buffer[(int) vehicleID].m_targetBuilding;
+        if (targetNode == 0) return;
+
+        InstanceID stopID = InstanceID.Empty;
+        stopID.NetNode = targetNode;
+        Vector3 position = Singleton<NetManager>.instance.m_nodes.m_buffer[(int) targetNode].m_position;
+
+        ToolsModifierControl.cameraController.SetTarget(stopID, position, Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
+        PublicTransportWorldInfoPanel.ResetScrollPosition();
+        UIView.SetFocus(null);
+        WorldInfoPanel.HideAllWorldInfoPanels();
+        if (PublicTransportStopWorldInfoPanel.instance != null)
+          PublicTransportStopWorldInfoPanel.instance.Show(position, stopID);
+      }
+      catch (Exception ex)
+      {
+        Debug.LogException(ex);
+      }
     }
 
     private void OnChangeVehicleClick(UIComponent component, UIMouseEventParameter eventParam)

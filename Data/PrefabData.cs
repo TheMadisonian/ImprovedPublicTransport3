@@ -115,7 +115,7 @@ namespace ImprovedPublicTransport.Data
           case ItemClass.SubService.PublicTransportTrolleybus:
             if (_maintenanceCost == 0)
             {
-              float num = TotalCapacity / (float) CarCount / GameDefault.GetCapacity(service, subService, level, Info.m_vehicleType);
+              float num = TotalCapacity / (float) CarCount / (float) GetCapacity(service, subService, level, Info.m_vehicleAI);
               MaintenanceCost = Mathf.RoundToInt(GetMaintenanceCost(service, subService, level, Info.m_vehicleAI) * 16 * num);
             }
             return _maintenanceCost;
@@ -190,7 +190,6 @@ namespace ImprovedPublicTransport.Data
     {
       Info = info;
       DisplayName = GetDisplayName(info);
-      Utils.Log("Creating PrefabData for " + Name);
       if (Name == "451494281.London 1992 Stock (4 car)_Data")
       {
         const int length = 3;
@@ -323,7 +322,7 @@ namespace ImprovedPublicTransport.Data
       _changeFlag = false;
     }
 
-    private static int GetCapacity(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, VehicleAI ai)
+    public static int GetCapacity(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, VehicleAI ai)
     {
       var num = 0;
         switch (service)
@@ -366,6 +365,7 @@ namespace ImprovedPublicTransport.Data
             {
               num = subService switch
               {
+                ItemClass.SubService.PublicTransportBus when ai is BusAI busAI => busAI.m_passengerCapacity,
                 ItemClass.SubService.PublicTransportTours when ai is BusAI busAI => busAI.m_passengerCapacity,
                 ItemClass.SubService.PublicTransportPlane when ai is PassengerHelicopterAI helicopterAI => helicopterAI.m_passengerCapacity,
                 ItemClass.SubService.PublicTransportPlane when ai is PassengerPlaneAI planeAI => planeAI.m_passengerCapacity,
@@ -382,7 +382,7 @@ namespace ImprovedPublicTransport.Data
       return num;
     }
 
-    private static void SetCapacity(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, VehicleAI ai, int capacity)
+    public static void SetCapacity(ItemClass.Service service, ItemClass.SubService subService, ItemClass.Level level, VehicleAI ai, int capacity)
     {
       switch (service)
       {
@@ -453,6 +453,9 @@ namespace ImprovedPublicTransport.Data
           {
             switch (subService)
             {
+              case ItemClass.SubService.PublicTransportBus when ai is BusAI busAI:
+                busAI.m_passengerCapacity = capacity;
+                break;
               case ItemClass.SubService.PublicTransportTours when ai is BusAI busAI:
                 busAI.m_passengerCapacity = capacity;
                 break;
@@ -527,6 +530,7 @@ namespace ImprovedPublicTransport.Data
             {
               num = subService switch
               {
+                ItemClass.SubService.PublicTransportBus when ai is BusAI busAI => busAI.m_transportInfo?.m_maintenanceCostPerVehicle ?? 0,
                 ItemClass.SubService.PublicTransportTours when ai is BusAI busAI => busAI.m_transportInfo?.m_maintenanceCostPerVehicle ?? 0,
                 ItemClass.SubService.PublicTransportPlane when ai is PassengerHelicopterAI helicopterAI => helicopterAI.m_transportInfo?.m_maintenanceCostPerVehicle ?? 0,
                 ItemClass.SubService.PublicTransportPlane when ai is PassengerPlaneAI planeAI => planeAI.m_transportInfo?.m_maintenanceCostPerVehicle ?? 0,
@@ -554,7 +558,6 @@ namespace ImprovedPublicTransport.Data
         string path = Path.Combine(str, path2);
         if (!File.Exists(path))
         {
-          Utils.Log("No stored data found for " + Name);
         }
         else
         {

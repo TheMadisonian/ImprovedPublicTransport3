@@ -17,7 +17,7 @@ namespace AutoLineColor.Naming
         public static void Initialize()
         {
             var logger = Console.Instance;
-            var modSettingsPath = Path.Combine(ColossalFramework.IO.DataLocation.localApplicationData, "ModsSettings");
+            var modSettingsPath = Path.Combine(ColossalFramework.IO.DataLocation.localApplicationData, Path.Combine("ModsSettings", "IPT"));
             var fullPath = Path.Combine(modSettingsPath, "GenericLineNames.txt");
             var unparsedNames = DefaultNames;
 
@@ -30,6 +30,7 @@ namespace AutoLineColor.Naming
                 else
                 {
                     logger.Message("No names found, writing default values to " + fullPath);
+                    Directory.CreateDirectory(modSettingsPath);
                     File.WriteAllText(fullPath, unparsedNames);
                 }
             }

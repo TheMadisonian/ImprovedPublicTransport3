@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using Utils = ImprovedPublicTransport.Util.Utils;
 
 namespace RealisticWalkingSpeed.Patches
 {
@@ -17,22 +18,37 @@ namespace RealisticWalkingSpeed.Patches
 
         public void Apply()
         {
-            var simulationStepMethodInfo = typeof(HumanAI).GetMethod(
-                "SimulationStep",
-                BindingFlags.Instance | BindingFlags.Public,
-                Type.DefaultBinder,
-                new []
+            try
+            {
+                var simulationStepMethodInfo = typeof(HumanAI).GetMethod(
+                    "SimulationStep",
+                    BindingFlags.Instance | BindingFlags.Public,
+                    Type.DefaultBinder,
+                    new []
+                    {
+                        typeof(ushort),
+                        typeof(CitizenInstance).MakeByRefType(),
+                        typeof(CitizenInstance.Frame).MakeByRefType(),
+                        typeof(bool)
+                    },
+                    null
+                );
+                
+                if (simulationStepMethodInfo == null)
                 {
-                    typeof(ushort),
-                    typeof(CitizenInstance).MakeByRefType(),
-                    typeof(CitizenInstance.Frame).MakeByRefType(),
-                    typeof(bool)
-                },
-                null
-            );
-            var simulationStepTranspilerMethodInfo = GetType()
-                .GetMethod(nameof(SimulationStepTranspiler), BindingFlags.Static | BindingFlags.NonPublic);
-            _harmony.Patch(simulationStepMethodInfo, null, null, new HarmonyMethod(simulationStepTranspilerMethodInfo));
+                    Utils.LogError("CitizenCyclingSpeedHarmonyPatch: Could not find HumanAI.SimulationStep method");
+                    return;
+                }
+
+                var simulationStepTranspilerMethodInfo = GetType()
+                    .GetMethod(nameof(SimulationStepTranspiler), BindingFlags.Static | BindingFlags.NonPublic);
+                _harmony.Patch(simulationStepMethodInfo, null, null, new HarmonyMethod(simulationStepTranspilerMethodInfo));
+                Utils.Log("CitizenCyclingSpeedHarmonyPatch: Successfully patched HumanAI.SimulationStep");
+            }
+            catch (System.Exception ex)
+            {
+                Utils.LogError($"CitizenCyclingSpeedHarmonyPatch: Failed to apply patch: {ex.Message}\n{ex.StackTrace}");
+            }
         }
 
         static IEnumerable<CodeInstruction> SimulationStepTranspiler(IEnumerable<CodeInstruction> codeInstructions)
@@ -68,6 +84,7 @@ namespace RealisticWalkingSpeed.Patches
 
                 onBikeLaneFactor.operand = 3.5f;
                 notOnBikeLaneFactor.operand = 2.5f;
+                Utils.Log("CitizenCyclingSpeedHarmonyPatch: Transpiler successfully modified cycling speeds");
 
                 break;
             }

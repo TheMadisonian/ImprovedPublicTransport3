@@ -67,9 +67,8 @@ namespace ImprovedPublicTransport.UI
             this.CheckForClose();
         }
 
-        public override void LateUpdate()
+        public new void LateUpdate()
         {
-            base.LateUpdate();
             if (!this.isVisible)
                 return;
             if ((UnityEngine.Object) this.m_closeStopsUnbunching == (UnityEngine.Object) null)

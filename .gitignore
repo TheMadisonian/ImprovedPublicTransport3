@@ -198,3 +198,5 @@ FakesAssemblies/
 #Rider
 *.iml
 .idea
+*.psd
+.DS_Store

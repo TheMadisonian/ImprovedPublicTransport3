@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Standard: base game speeds.\nRealistic: reduces w
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistic
 SETTINGS_BBSP Better Bus Stop Position: 
-SETTINGS_BBSP_TOOLTIP Disabled: no positioning adjustment.\nOriginal: uses the classic BBSP positioning.\nExperimental: applies improved positioning with full curb alignment.
+SETTINGS_BBSP_TOOLTIP Disabled: no positioning adjustment.\nEnabled: buses stop at the front of the bus stop instead of the center.
 SETTINGS_BBSP_MODE_DISABLED Disabled
-SETTINGS_BBSP_MODE_ORIGINAL Use original logic
+SETTINGS_BBSP_MODE_ORIGINAL Enabled
 SETTINGS_BBSP_MODE_UPDATED Use experimental logic
 
 SETTINGS_ENABLE_BUDGET_CONTROL Line Budget Control:
@@ -163,7 +163,7 @@ UNBUNCHING_TARGET_GAP Target gap: {0}
 SETTINGS_EBS_GROUP_BUS Express Bus Services
 SETTINGS_EBS_GROUP_TRAM Express Tram Services
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Express Bus: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Disabled' = Buses use unbunching settings from above.\n'Stop-and-Go' = Stops briefly, checks passengers, may depart if empty.\n'Express' = Skips stops entirely if no passengers waiting.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Disabled' = Buses use unbunching settings from above.\n'Prudential' = Stops briefly, checks passengers, may depart if empty.\n'Aggressive' = Skips stops entirely if no passengers waiting.
 SETTINGS_EBS_ENABLE_SELFBAL Enable Service Self-Balancing
 SETTINGS_EBS_TOOLTIP_SELFBAL Analyzes line segments and may redeploy vehicles to busier segments or terminus stops to even service and reduce waiting times.\nDecisions are probabilistic and depend on passenger counts and redeployment odds.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Enable Self-Balancing Middle-of-Line Stops
@@ -173,8 +173,8 @@ SETTINGS_EBS_TOOLTIP_MINIBUS Buses with capacity ≤20 may depart earlier from a
 SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Express Tram: 
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Disabled' = Trams use unbunching settings from above.\n'Light Rail' = Stops at every stop, always waits full timer (enforced discipline).\n'True Tram' = Stops only when passengers are boarding/alighting.
 SETTINGS_EBS_MODE_NONE Disabled
-SETTINGS_EBS_MODE_AGGRESSIVE Express
-SETTINGS_EBS_MODE_PRUDENTIAL Stop-and-Go
+SETTINGS_EBS_MODE_AGGRESSIVE Aggressive
+SETTINGS_EBS_MODE_PRUDENTIAL Prudential
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Light Rail Mode
 SETTINGS_EBS_TRAM_MODE_NONE Disabled
 SETTINGS_EBS_TRAM_MODE_TRAM True Tram Mode 

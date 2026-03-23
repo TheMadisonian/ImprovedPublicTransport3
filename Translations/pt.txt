@@ -56,6 +56,7 @@ STOP_BUTTON_TOOLTIP {0}\n\nClique para ir para esta parada.\nSegurar Shift ao cl
 SETTINGS_DELETE Excluir
 SETTINGS_RESET Reiniciar
 
+
 SETTINGS_TAB_GENERAL Geral
 SETTINGS_TAB_STOPS Paradas e Estações
 SETTINGS_TAB_UNBUNCHING Distribuição
@@ -71,9 +72,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Padrão: velocidades do jogo base.\nRealista: red
 SETTINGS_WALKING_SPEED_MODE_VANILLA Padrão
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realista
 SETTINGS_BBSP Melhor posição de parada de ônibus: 
-SETTINGS_BBSP_TOOLTIP Desabilitado: sem ajuste de posição.\nOriginal: utiliza o posicionamento clássico do BBSP.\nExperimental: aplica posicionamento melhorado com alinhamento completo da meio-fio.
+SETTINGS_BBSP_TOOLTIP Desabilitado: sem ajuste de posição.\nHabilitado: ônibus param na frente da parada em vez do centro.
 SETTINGS_BBSP_MODE_DISABLED Desabilitado
-SETTINGS_BBSP_MODE_ORIGINAL Usar lógica original
+SETTINGS_BBSP_MODE_ORIGINAL Habilitado
 SETTINGS_BBSP_MODE_UPDATED Usar lógica experimental
 
 SETTINGS_ENABLE_BUDGET_CONTROL Controle via Orçamento
@@ -163,7 +164,7 @@ UNBUNCHING_TARGET_GAP Intervalo: {0}
 SETTINGS_EBS_GROUP_BUS Serviços de ônibus expresso
 SETTINGS_EBS_GROUP_TRAM Serviços de bonde expresso
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Distribuição de ônibus expresso: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Desabilitado' = Ônibus usam as configurações de distribuição acima.\n'Parar e ir' = Para brevemente, verifica passageiros, pode partir se vazio.\n'Expresso' = Pula paradas se nenhum passageiro está esperando.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Desabilitado' = Ônibus usam as configurações de distribuição acima.\n'Prudential' = Para brevemente, verifica passageiros, pode partir se vazio.\n'Aggressive' = Pula paradas se nenhum passageiro está esperando.
 SETTINGS_EBS_ENABLE_SELFBAL Habilitar auto-equilíbrio de serviço
 SETTINGS_EBS_TOOLTIP_SELFBAL Analisa segmentos de linha e pode redistribuir veículos para segmentos mais ocupados ou paradas terminais para equilibrar o serviço e reduzir tempos de espera.\n As decisões são probabilísticas e dependem da contagem de passageiros e probabilidades de redistribuição.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Habilitar auto-equilíbrio de parada do meio de linha
@@ -171,10 +172,10 @@ SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Permite que o auto-equilibrador redistrib
 SETTINGS_EBS_ENABLE_MINIBUS Habilitar modo minibús
 SETTINGS_EBS_TOOLTIP_MINIBUS Ônibus com capacidade ≤20 podem partir mais cedo de uma parada quando passageiros em pé + em movimento naquela parada ≤5.
 SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Distribuição de bonde expresso: 
-SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Desabilitado' = Bondes usam as configurações de distribuição acima.\n'Ferrovia leve' = Para em cada parada, sempre espera o timer completo.\n'Bonde verdadeiro' = Para apenas quando passageiros estão embarcando/desembarcando.
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Desabilitado' = Bondes usam as configurações de distribuição acima.\n'Light Rail' = Para em cada parada, sempre espera o timer completo.\n'Real Tram' = Para apenas quando passageiros estão embarcando/desembarcando.
 SETTINGS_EBS_MODE_NONE Desabilitado
 SETTINGS_EBS_MODE_AGGRESSIVE Agressivo
-SETTINGS_EBS_MODE_PRUDENTIAL Prudencial (Legado)
+SETTINGS_EBS_MODE_PRUDENTIAL Prudencial
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Modo de ferrovia leve
 SETTINGS_EBS_TRAM_MODE_NONE Desabilitado
 SETTINGS_EBS_TRAM_MODE_TRAM Modo bonde verdadeiro

@@ -105,14 +105,8 @@ Smarter tools for managing where vehicles can stop and pick up passengers at sta
 ### 🎨 **Auto Line Color Redux
 Automatically assigns colors and names to new transit lines based on route characteristics, keeping your transit map organized and visually appealing.
 
-
 ### 🎯 **Better Bus Stop Position (BBSP)
-Controls how buses position themselves at stops, moving them forward instead of centered thus allowing a second bus to pull in behind. You can choose between:
-- **Disabled**: Disable the mod function completely.
-- **Original Logic**: Classic BBSP positioning (buses may curve slightly toward the curb)
-- **Updated Logic**: Precise positioning that aligns perfectly to the stop location
-
-Choose which feels best for your city's vibe. Original should work for most; I added experimental for myself because my buses were always askew instead of parallel to curb when positioned forward in the bus stop.
+Controls how buses position themselves at stops, moving them forward instead of centered thus allowing a second bus to pull in behind.
 
 #### Better Train Boarding
 - Passengers are assigned to the nearest available carriage/vehicle segment and boarding is buffered to avoid strange 'stuck passenger' behavior
@@ -167,7 +161,7 @@ Enables realistic pedestrian and cycling speeds in your city, controllable from 
 
 **Gameplay Impact:**
 - Realistic mode makes pedestrian connections between transit stops more time-consuming, emphasizing good transit coverage
-- Enhanced cycling speeds encourage bike usage as a first/last-mile solution (if you own After Dark DLC)
+- Enhanced cycling speeds encourage bike usage (if you own After Dark DLC)
 - Citizens move more realistically overall, affecting passenger boarding times and transfer experiences
 
 #### Stops and Stations
@@ -278,15 +272,16 @@ Most features work with just the base game. Features that require DLC will be un
 ## Version History
 
 ### 3.0.0 (March 2026) — Current
-Complete rebuild of IPT2 for the Race Day update, with all standalone integrations absorbed.
+Complete rebuild of IPT2 for the Race Day update, with many standalone transport mods absorbed.
 - ✨ What's New notification system
 - ✅ Core transport line panel, vehicle type selector, vehicle editor, and stop info panel carried forward from IPT/IPT2
-- ✅ All integrations verified against Cities: Skylines API source code
-- ✅ All settings properly persist to save games
-- ✅ Compatibility with More Vehicles Renewed
-- 🎯 Updated BBSP with three positioning modes (Disabled / Original / Experimental)
+- ✅ All mod integrations verified against Cities: Skylines API source code
+- ✅ All integrated settings properly save to XML and persist to save games
+- ✅ Compatibility with More Vehicles Renewed for Race Day
+- 🚍 Added Intercity Buses to the Vehicle Editor
 - 🛠 Fixed Deinit early-return bug that left Harmony patches active across game sessions
-- 🛠 Fixed FlightTracker window positioning and Escape key handling
+- 🛠 Fixed Flight Tracker window positioning and Escape key handling
+- 🛠 Fixed Intercity Bus Control to work on all applicable bus transport hubs except Bus-Train-Tram Hub; the game only supports one intercity setting per hub and train hubs have 'Allow Intercity Trains' by default.
 
 ### IPT2 (BloodyPenguin, 2017–2023)
 Fixed and continued the original IPT after it was abandoned. Added Harmony, improved Vehicle Selection UI, and maintained compatibility through game updates up to 1.16.1-f2.
@@ -297,7 +292,7 @@ The original mod. Introduced vehicle count control, vehicle type selection, the 
 ---
 
 ## Credits & License
-Special thanks to all the authors who made code available under MIT or GNU license: Dontcryjustdie, BloodyPenguin, Nyoko, llunak, Vectorial1024, macsergey, dymanoid, TaradinoC. 
+Special thanks to all the authors who made code available under MIT or GNU license: Dontcryjustdie, BloodyPenguin, Nyoko, egi, llunak, Vectorial1024, macsergey, dymanoid, TaradinoC. 
 
 Individual mod integratons include original LICENSE in their respective folders in Integration folder.
 

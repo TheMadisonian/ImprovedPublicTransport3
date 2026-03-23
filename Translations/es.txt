@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Estándar: velocidades del juego base.\nRealista:
 SETTINGS_WALKING_SPEED_MODE_VANILLA Estándar
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realista
 SETTINGS_BBSP Mejor posición de parada de autobús: 
-SETTINGS_BBSP_TOOLTIP Deshabilitado: sin ajuste de posición.\nOriginal: utiliza posicionamiento clásico de BBSP.\nExperimental: aplica posicionamiento mejorado con alineación completa del bordillo.
+SETTINGS_BBSP_TOOLTIP Deshabilitado: sin ajuste de posición.\nHabilitado: los autobuses se detienen al frente de la parada en lugar del centro.
 SETTINGS_BBSP_MODE_DISABLED Deshabilitado
-SETTINGS_BBSP_MODE_ORIGINAL Usar lógica original
+SETTINGS_BBSP_MODE_ORIGINAL Habilitado
 SETTINGS_BBSP_MODE_UPDATED Usar lógica experimental
 
 SETTINGS_ENABLE_BUDGET_CONTROL Control por presupuesto en líneas
@@ -163,7 +163,7 @@ UNBUNCHING_TARGET_GAP Espacio medio: {0}
 SETTINGS_EBS_GROUP_BUS Servicios expresos de autobús
 SETTINGS_EBS_GROUP_TRAM Servicios expresos de tranvía
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Desagrupación de autobús expreso: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Desactivado' = Los autobuses usan las configuraciones de desagrupación anteriores.\n'Stop-and-Go' = Se detiene brevemente, comprueba pasajeros, puede partir si está vacío.\n'Express' = Omite paradas completamente si no hay pasajeros esperando.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Desactivado' = Los autobuses usan las configuraciones de desagrupación anteriores.\n'Prudential' = Se detiene brevemente, comprueba pasajeros, puede partir si está vacío.\n'Aggressive' = Omite paradas completamente si no hay pasajeros esperando.
 SETTINGS_EBS_ENABLE_SELFBAL Habilitar auto-equilibrio de servicio
 SETTINGS_EBS_TOOLTIP_SELFBAL Analiza segmentos de línea y puede reasignar vehículos a segmentos más ocupados o paradas terminales para equilibrar el servicio y reducir tiempos de espera.\n Las decisiones son probabilísticas y dependen del número de pasajeros y probabilidades de reasignación.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Habilitar auto-equilibrio de paradas en medio de línea
@@ -174,7 +174,7 @@ SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Desagrupación de tranvía expreso:
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Desactivado' = Los tranvías usan las configuraciones de desagrupación anteriores.\n'Light Rail' = Se detiene en cada parada, siempre espera el temporizador completo (disciplina reforzada).\n'True Tram' = Solo se detiene cuando los pasajeros suben o bajan.
 SETTINGS_EBS_MODE_NONE Desactivado
 SETTINGS_EBS_MODE_AGGRESSIVE Agresivo
-SETTINGS_EBS_MODE_PRUDENTIAL Prudencial (Heredado)
+SETTINGS_EBS_MODE_PRUDENTIAL Prudencial
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Modo de ferrocarril ligero
 SETTINGS_EBS_TRAM_MODE_NONE Deshabilitado
 SETTINGS_EBS_TRAM_MODE_TRAM Modo de tranvía verdadero

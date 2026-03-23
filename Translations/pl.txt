@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Standardowe: standardowe prędkości gry.\nRealis
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standardowy
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistyczny
 SETTINGS_BBSP Lepsza pozycja przystanku autobusowego: 
-SETTINGS_BBSP_TOOLTIP Wyłączone: brak dostosowania pozycji.\nOprawieł: używa klasycznego pozycjonowania BBSP.\nEksperymentalne: stosuje ulepszone pozycjonowanie z pełnym wyrównaniem do krawężnika.
+SETTINGS_BBSP_TOOLTIP Wyłączone: brak dostosowania pozycji.\nWłączone: autobusy zatrzymują się na przedzie przystanku, a nie pośrodku.
 SETTINGS_BBSP_MODE_DISABLED Wyłączone
-SETTINGS_BBSP_MODE_ORIGINAL Użyj oryginalnej logiki
+SETTINGS_BBSP_MODE_ORIGINAL Włączone
 SETTINGS_BBSP_MODE_UPDATED Użyj eksperymentalnej logiki
 
 SETTINGS_ENABLE_BUDGET_CONTROL Kontrola budżetu linii
@@ -163,7 +163,7 @@ UNBUNCHING_TARGET_GAP Docelowy odstęp: {0}
 SETTINGS_EBS_GROUP_BUS Usługi autobusów ekspresowych
 SETTINGS_EBS_GROUP_TRAM Usługi tramwajów ekspresowych
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Rozproszenie autobusów ekspresowych: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Wyłączone' = Autobusy używają ustawień rozprzaszania powyżej.\n'Zatrzymaj i jedź' = Zatrzymuje się na chwilę, sprawdza pasażerów, może odjechać jeśli pusty.\n'Express' = Pomija przystanki, jeśli nikt nie czeka.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Wyłączone' = Autobusy używają ustawień rozprzaszania powyżej.\n'Prudential' = Zatrzymuje się na chwilę, sprawdza pasażerów, może odjechać jeśli pusty.\n'Aggressive' = Pomija przystanki, jeśli nikt nie czeka.
 SETTINGS_EBS_ENABLE_SELFBAL Włącz samodzielne równoważenie usług
 SETTINGS_EBS_TOOLTIP_SELFBAL Analizuje segmenty linii i może redystrybuować pojazdy na bardziej oblegane segmenty lub przystanki końcowe w celu wyrównania usługi i zmniejszenia czasu oczekiwania.\n Decyzje są probabilistyczne i zależą od liczby pasażerów i szans na redystrybuację.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Włącz samodzielne równoważenie przystanków pośrodku linii
@@ -174,7 +174,7 @@ SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Rozproszenie tramwajów ekspresowych:
 SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Wyłączone' = Tramwaje używają ustawień rozprzaszania powyżej.\n'Lekka kolej' = Zatrzymuje się na każdym przystanku, zawsze czeka pełny timer.\n'Prawdziwy tramwaj' = Zatrzymuje się tylko gdy pasażerowie wsiadają/wysiadają.
 SETTINGS_EBS_MODE_NONE Wyłączone
 SETTINGS_EBS_MODE_AGGRESSIVE Agresywne
-SETTINGS_EBS_MODE_PRUDENTIAL Ostrożne (starsze)
+SETTINGS_EBS_MODE_PRUDENTIAL Ostrożnie
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Tryb lekkiej kolei
 SETTINGS_EBS_TRAM_MODE_NONE Wyłączone
 SETTINGS_EBS_TRAM_MODE_TRAM Prawdziwy tryb tramwaju 

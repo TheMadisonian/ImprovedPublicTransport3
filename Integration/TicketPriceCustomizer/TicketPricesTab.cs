@@ -23,6 +23,10 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
         private static readonly List<TicketPriceSliderRow> s_sliderRows = new List<TicketPriceSliderRow>();
         private static readonly Dictionary<string, UITextureAtlas> s_customIconAtlases = new Dictionary<string, UITextureAtlas>();
 
+        // Passenger count refresh timer
+        private static float s_refreshAccumulator = 0f;
+        private const float RefreshInterval = 5.0f; // seconds between passenger count refreshes
+
         // Transport types with their sprite names and display order
         private static readonly TransportTypeInfo[] s_transportTypes = new TransportTypeInfo[]
         {
@@ -103,6 +107,27 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
             s_ticketPricesContainer = null;
             s_sliderRows.Clear();
             s_customIconAtlases.Clear();
+            s_refreshAccumulator = 0f;
+        }
+
+        /// <summary>
+        /// Called every frame from ColorMonitor.OnUpdate. Refreshes passenger count labels
+        /// at most every <see cref="RefreshInterval"/> seconds, only when the tab is visible.
+        /// </summary>
+        public static void OnUpdate(float realTimeDelta)
+        {
+            if (!s_initialized || s_sliderRows.Count == 0) return;
+            if (s_ticketPricesContainer == null || !s_ticketPricesContainer.isVisible) return;
+
+            s_refreshAccumulator += realTimeDelta;
+            if (s_refreshAccumulator < RefreshInterval) return;
+            s_refreshAccumulator = 0f;
+
+            foreach (var row in s_sliderRows)
+            {
+                if (row.TotalLabel != null)
+                    UpdateTotalLabel(row.TransportType.Name, row.TotalLabel);
+            }
         }
 
         /// <summary>
@@ -301,28 +326,6 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
             }
 
             s_ticketPricesContainer = leftColumn; // Store reference to main container
-
-            // Add reset button at the bottom center
-            var buttonContainer = page.AddUIComponent<UIPanel>();
-            buttonContainer.autoLayout = false;
-            buttonContainer.relativePosition = new Vector3(SIDE_PAD, page.height - 45f);
-            buttonContainer.size = new Vector2(page.width - SIDE_PAD * 2f, 40f);
-            page.eventSizeChanged += (c, s) =>
-            {
-                buttonContainer.relativePosition = new Vector3(SIDE_PAD, page.height - 45f);
-                buttonContainer.size = new Vector2(page.width - SIDE_PAD * 2f, 40f);
-            };
-
-            var resetBtn = buttonContainer.AddUIComponent<UIButton>();
-            resetBtn.text = Localization.Get("SETTINGS_TICKETS_RESET");
-            resetBtn.tooltip = Localization.Get("SETTINGS_TICKETS_RESET_TITLE");
-            resetBtn.size = new Vector2(140f, 30f);
-            resetBtn.relativePosition = new Vector3((buttonContainer.width - 140f) / 2f, 5f);
-            resetBtn.normalBgSprite = "ButtonMenu";
-            resetBtn.hoveredBgSprite = "ButtonMenuHovered";
-            resetBtn.pressedBgSprite = "ButtonMenuPressed";
-            resetBtn.textScale = 0.8f;
-            resetBtn.eventClick += OnResetClick;
         }
 
         private static bool IsTransportLoaded(TransportTypeInfo info)
@@ -712,12 +715,9 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
         {
             try
             {
-                long totalIncome = CalculateTotalIncomeForTransport(transportName);
-                // m_ticketPrice is in centile units (100 = ₡1.00), so divide by 100
-                float currency = totalIncome / 100f;
-
-                // Use the game's fictitious currency symbol ₡ with thousand separators
-                string text = "\u20a1" + currency.ToString("N2");
+                int currentPassengers = CalculateCurrentPassengerLoad(transportName);
+                // Display current passenger load with thousand separators
+                string text = currentPassengers.ToString("N0");
 
                 totalLabel.text      = text;
                 totalLabel.textColor = new Color32((byte)206, (byte)248, (byte)0, (byte)255);
@@ -725,60 +725,142 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
             catch (Exception ex)
             {
                 totalLabel.text = "-";
-                Utils.LogWarning($"TicketPricesTab: Failed to update total for {transportName}: {ex.Message}");
+                Utils.LogWarning($"TicketPricesTab: Failed to update passenger load for {transportName}: {ex.Message}");
             }
         }
 
-        private static long CalculateTotalIncomeForTransport(string transportName)
+        private static int CalculateCurrentPassengerLoad(string transportName)
         {
             try
             {
-                TransportInfo targetInfo = GetTransportInfo(transportName);
-                if (targetInfo == null)
-                    return 0;
-
-                long totalIncome = 0;
-                var vehicleManager = Singleton<VehicleManager>.instance;
-
-                // Iterate through all transport lines
-                for (ushort lineId = 0; lineId < TransportManager.instance.m_lines.m_size; lineId++)
+                // Outside-connection vehicles (Plane, Ship) and non-line vehicles (Taxi, CableCar)
+                // have m_transportLine = 0 and are not in TransportManager.m_lines, so scan
+                // VehicleManager directly. Blimp, Ferry, and Helicopter are strictly player
+                // transport lines and stay on their line during normal operation.
+                switch (transportName)
                 {
-                    var line = TransportManager.instance.m_lines.m_buffer[lineId];
-                    
-                    // Skip if line isn't active or doesn't match this transport type
-                    if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None || line.Info != targetInfo)
-                        continue;
+                    case "Taxi":        return CountVehiclesByAI<TaxiAI>();
+                    case "Plane":       return CountVehiclesByAI<PassengerPlaneAI>();
+                    case "Ship":        return CountVehiclesByAI<PassengerShipAI>();
+                    case "CableCar":    return CountVehiclesByAI<CableCarAI>();
+                    case "IntercityBus": return CountIntercityBusPassengers();
+                }
 
-                    // Iterate through vehicles on this line and sum passengers
+                // For types that reliably stay on transport lines, iterate lines
+                int totalPassengers = 0;
+                var vehicleManager = Singleton<VehicleManager>.instance;
+                var transportManager = TransportManager.instance;
+
+                for (ushort lineId = 0; lineId < transportManager.m_lines.m_size; lineId++)
+                {
+                    var line = transportManager.m_lines.m_buffer[lineId];
+                    if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None) continue;
+                    if (line.Info == null) continue;
+                    if (!LineMatchesTransport(line.Info, transportName)) continue;
+
                     for (ushort vehicleId = line.m_vehicles; vehicleId != 0; vehicleId = vehicleManager.m_vehicles.m_buffer[vehicleId].m_nextLineVehicle)
                     {
-                        if (vehicleId >= vehicleManager.m_vehicles.m_size)
-                            break;
-
+                        if (vehicleId >= vehicleManager.m_vehicles.m_size) break;
                         var vehicle = vehicleManager.m_vehicles.m_buffer[vehicleId];
-                        
-                        // Get passenger count from lead vehicle
-                        ushort totalPassengers = vehicle.m_transferSize;
-                        
-                        // Add passengers from any trailing vehicles (for trains, etc.)
+                        int vehiclePassengers = vehicle.m_transferSize;
                         var trailingId = vehicle.m_trailingVehicle;
                         while (trailingId != 0 && trailingId < vehicleManager.m_vehicles.m_size)
                         {
                             var trailingVehicle = vehicleManager.m_vehicles.m_buffer[trailingId];
-                            totalPassengers += trailingVehicle.m_transferSize;
+                            vehiclePassengers += trailingVehicle.m_transferSize;
                             trailingId = trailingVehicle.m_trailingVehicle;
                         }
-                        
-                        totalIncome += (long)totalPassengers * line.m_ticketPrice;
+                        totalPassengers += vehiclePassengers;
                     }
                 }
 
-                return totalIncome;
+                return totalPassengers;
             }
             catch (Exception ex)
             {
-                Utils.LogWarning($"TicketPricesTab: Error calculating income for {transportName}: {ex.Message}");
+                Utils.LogWarning($"TicketPricesTab: Error calculating passenger load for {transportName}: {ex.Message}");
                 return 0;
+            }
+        }
+
+        // Generic vehicle scan by AI type — counts m_transferSize of all active vehicles
+        // whose AI is exactly TAI. This correctly handles types that set m_transportLine=0.
+        private static int CountVehiclesByAI<TAI>() where TAI : VehicleAI
+        {
+            int count = 0;
+            var vm = Singleton<VehicleManager>.instance;
+            for (ushort i = 1; i < vm.m_vehicles.m_size; i++)
+            {
+                var v = vm.m_vehicles.m_buffer[i];
+                if ((v.m_flags & Vehicle.Flags.Created) == 0) continue;
+                if (v.Info?.m_vehicleAI is TAI)
+                    count += v.m_transferSize;
+            }
+            return count;
+        }
+
+        // Intercity buses use BusAI like regular buses, but their VehicleInfo has m_class.m_level == Level3.
+        // This mirrors the game's own TransportStationAI.IsIntercity(itemClass) check exactly.
+        private static int CountIntercityBusPassengers()
+        {
+            int count = 0;
+            var vm = Singleton<VehicleManager>.instance;
+            for (ushort i = 1; i < vm.m_vehicles.m_size; i++)
+            {
+                var v = vm.m_vehicles.m_buffer[i];
+                if ((v.m_flags & Vehicle.Flags.Created) == 0) continue;
+                if (v.Info?.m_vehicleAI is BusAI
+                    && v.Info.m_class != null
+                    && v.Info.m_class.m_level == ItemClass.Level.Level3)
+                    count += v.m_transferSize;
+            }
+            return count;
+        }
+
+        // Match a TransportInfo against a transport name using the TransportType enum,
+        // which is reliable regardless of the exact prefab name in any given game install.
+        private static bool LineMatchesTransport(TransportInfo info, string transportName)
+        {
+            var t  = info.m_transportType;
+            var ss = info.m_class != null ? info.m_class.m_subService : ItemClass.SubService.None;
+            switch (transportName)
+            {
+                case "Bus":
+                    // Regular city buses: TransportType.Bus, PublicTransportBus sub-service, NOT level 3 (intercity)
+                    // Matches game's own TransportStationAI.IsIntercity check: level 3 = intercity
+                    return t == TransportInfo.TransportType.Bus
+                        && ss == ItemClass.SubService.PublicTransportBus
+                        && (info.m_class == null || info.m_class.m_level != ItemClass.Level.Level3);
+                case "IntercityBus":
+                    // Intercity buses: same TransportType and sub-service as regular bus, but level 3
+                    // This mirrors TransportStationAI.IsIntercity(itemClass) exactly
+                    return t == TransportInfo.TransportType.Bus
+                        && ss == ItemClass.SubService.PublicTransportBus
+                        && info.m_class != null && info.m_class.m_level == ItemClass.Level.Level3;
+                case "Trolleybus":
+                    return t == TransportInfo.TransportType.Trolleybus;
+                case "Tram":
+                    return t == TransportInfo.TransportType.Tram;
+                case "Metro":
+                    return t == TransportInfo.TransportType.Metro;
+                case "Train":
+                    return t == TransportInfo.TransportType.Train;
+                case "Monorail":
+                    return t == TransportInfo.TransportType.Monorail;
+                case "Ferry":
+                    // Ferries use TransportType.Ship; passenger ships are outside-connection
+                    // vehicles and do not create player transport lines, so any Ship line is a ferry.
+                    return t == TransportInfo.TransportType.Ship;
+                case "Blimp":
+                    // Blimps use TransportType.Airplane; intercity planes are outside-connection
+                    // vehicles and do not create player transport lines, so any Airplane line is a blimp.
+                    return t == TransportInfo.TransportType.Airplane;
+                case "Helicopter":
+                    return t == TransportInfo.TransportType.Helicopter;
+                case "SightseeingBus":
+                    return t == TransportInfo.TransportType.TouristBus;
+                default:
+                    return false;
             }
         }
 

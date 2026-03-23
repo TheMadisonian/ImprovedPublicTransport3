@@ -71,9 +71,9 @@ SETTINGS_WALKING_SPEED_TOOLTIP Standard: velocità del gioco base.\nRealistico: 
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistico
 SETTINGS_BBSP Posizionamento migliore fermate bus: 
-SETTINGS_BBSP_TOOLTIP Disabilitato: nessun adattamento di posizione.\nOriginale: usa il posizionamento BBSP classico.\nSperimentale: applica un posizionamento migliorato con allineamento completo al marciapiede.
+SETTINGS_BBSP_TOOLTIP Disabilitato: nessun adattamento della posizione.\nAbilitato: gli autobus si fermano davanti alla fermata invece al centro.
 SETTINGS_BBSP_MODE_DISABLED Disabilitato
-SETTINGS_BBSP_MODE_ORIGINAL Usa logica originale
+SETTINGS_BBSP_MODE_ORIGINAL Abilitato
 SETTINGS_BBSP_MODE_UPDATED Usa logica sperimentale
 
 SETTINGS_BUDGET Budget
@@ -164,7 +164,7 @@ UNBUNCHING_TARGET_GAP Distanza dalla destinazione: {0}
 SETTINGS_EBS_GROUP_BUS Servizi express di autobus
 SETTINGS_EBS_GROUP_TRAM Servizi express di tram
 SETTINGS_EBS_DROPDOWN_UNBUNCHING_MODE Convogliamento autobus express: 
-SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Disabilitato' = I bus usano le impostazioni di convogliamento sopra.\n'Ferma e Vai' = Si ferma brevemente, controlla i passeggeri, può ripartire se vuoto.\n'Express' = Salta le fermate se nessun passeggero è in attesa.
+SETTINGS_EBS_TOOLTIP_UNBUNCHING_MODE 'Disabilitato' = I bus usano le impostazioni di convogliamento sopra.\n'Prudential' = Si ferma brevemente, controlla i passeggeri, può ripartire se vuoto.\n'Aggressive' = Salta le fermate se nessun passeggero è in attesa.
 SETTINGS_EBS_ENABLE_SELFBAL Abilita auto-equilibrio del servizio
 SETTINGS_EBS_TOOLTIP_SELFBAL Analizza i segmenti delle linee e può ridistribuire i veicoli a segmenti più trafficati o fermate terminali per equilibrare il servizio e ridurre i tempi di attesa.\n Le decisioni sono probabilistiche e dipendono dal numero di passeggeri e dalle probabilità di ridistribuzione.
 SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID Abilita auto-equilibrio delle fermate nel mezzo della linea
@@ -172,10 +172,10 @@ SETTINGS_EBS_TOOLTIP_SELFBAL_TARGETMID Consente all'auto-equilibratore di ridist
 SETTINGS_EBS_ENABLE_MINIBUS Abilita modalità minibus
 SETTINGS_EBS_TOOLTIP_MINIBUS Gli autobus con capacità ≤20 possono partire prima da una fermata quando i passeggeri in salita + discesa in quella fermata ≤5.
 SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE Convogliamento tram express: 
-SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Disabilitato' = I tram usano le impostazioni di convogliamento sopra.\n'Ferrovia leggera' = Si ferma ad ogni fermata, attende sempre il timer completo.\n'Vero tram' = Si ferma solo quando i passeggeri salgono/scendono.
+SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING 'Disabilitato' = I tram usano le impostazioni di convogliamento sopra.\n'Light Rail' = Si ferma ad ogni fermata, attende sempre il timer completo.\n'Real Tram' = Si ferma solo quando i passeggeri salgono/scendono.
 SETTINGS_EBS_MODE_NONE Disabilitato
 SETTINGS_EBS_MODE_AGGRESSIVE Aggressivo
-SETTINGS_EBS_MODE_PRUDENTIAL Prudenziale (Legacy)
+SETTINGS_EBS_MODE_PRUDENTIAL Prudenziale
 SETTINGS_EBS_TRAM_MODE_LIGHT_RAIL Modalità ferrovia leggera
 SETTINGS_EBS_TRAM_MODE_NONE Disabilitato
 SETTINGS_EBS_TRAM_MODE_TRAM Modalità tram vera
