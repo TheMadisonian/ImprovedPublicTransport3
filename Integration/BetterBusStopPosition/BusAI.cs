@@ -42,15 +42,18 @@ public static class BusAI_Patch
         CalculateModifiedStopPosition(ref instance.m_lanes.m_buffer[laneID], laneOffset, vehicleID, ref vehicleData, laneInfo, flags, stopOffset, out pos, out dir);
     }
 
-    // Replaces NetLane.CalculateStopPositionAndDirection for bus stops.
+    // Calculates modified bus stop position and direction based on selected BBSP logic mode.
+    // This postfix receives results from vanilla CalculateSegmentPosition and may modify them
+    // according to the active mode (unlike original BBSP which used a transpiler to bypass SmootherStep).
+    //
     // The vanilla CalculateStopPositionAndDirection uses SmootherStep(0.5, 0, |laneOffset - 0.5|)
-    // to fade the lateral curb offset, peaking at 1.0 when laneOffset=0.5 (lane centre).
-    // BBSP moves the stop forward (targetOffset > 0.5). At targetOffset ~0.7, SmootherStep gives
-    // only ~0.64 curb pull, causing buses to swoop — pulling to curb near 0.5 then drifting back.
-    // Applies positioning based on selected BBSP logic mode:
-    // - Disabled: Vanilla behavior
-    // - OriginalLogic: Exact original BBSP code using vanilla method with modified offset
-    // - UpdatedLogic: Improved logic with direct Bezier access and full curb displacement
+    // to fade lateral curb offset, peaking at 1.0 when laneOffset=0.5 (lane center).
+    // Original BBSP moved the stop forward (targetOffset > 0.5), causing partial curb pull and visible swooping.
+    //
+    // Modes:
+    // - Disabled: Pass through vanilla behavior unchanged
+    // - OriginalLogic: Matches original BBSP logic by calculating modified offset and passing to vanilla method
+    // - UpdatedLogic: Direct Bezier calculation with full curb displacement (disabled, for future testing)
     public static void CalculateModifiedStopPosition( ref NetLane lane, float laneOffset, ushort vehicleID,
         ref Vehicle vehicleData, NetInfo.Lane laneInfo, NetSegment.Flags flags,
         float stopOffset, out Vector3 pos, out Vector3 dir )
@@ -66,8 +69,10 @@ public static class BusAI_Patch
 
         if( mode == (int)ImprovedPublicTransport.Settings.Settings.BbspLogicModes.OriginalLogic )
         {
-            // Exact original BBSP code: calculate modified offset, pass to vanilla method
-            float modifiedOffset = laneOffset; // fallback
+            // Original BBSP logic: Calculate modified offset based on vehicle length and lane geometry,
+            // then pass to vanilla CalculateStopPositionAndDirection (which applies SmootherStep tapering).
+            // This produces mathematically equivalent results to the original transpiler approach.
+            float modifiedOffset = laneOffset; // fallback: use vanilla offset if conditions not met
             float laneLength = lane.m_length;
 
             // Return vanilla offset if vehicle is leaving
@@ -94,7 +99,11 @@ public static class BusAI_Patch
             return;
         }
 
-        // Mode == UpdatedLogic: Improved implementation with direct Bezier calculation (disabled, kept for reference)
+        // Mode == UpdatedLogic: Improved algorithm bypassing SmootherStep entirely (disabled, pending testing)
+        // Calculates targetOffset as in OriginalLogic, but then directly accesses the Bezier curve
+        // instead of calling vanilla method. Applies full curb displacement without SmootherStep tapering,
+        // allowing smooth uninterrupted curb approach for better visual flow.
+        //
         // float targetOffset = laneOffset;
         // float laneLength2 = lane.m_length;
         //
@@ -116,11 +125,11 @@ public static class BusAI_Patch
         //     }
         // }
         //
-        // // Calculate position and direction directly from Bezier
+        // // Direct Bezier access (no vanilla SmootherStep curve)
         // pos = lane.m_bezier.Position( targetOffset );
         // dir = lane.m_bezier.Tangent( targetOffset );
         //
-        // // Apply full curb displacement directly (no SmootherStep tapering)
+        // // Full curb displacement applied unconditionally at stop point
         // if( stopOffset != 0f )
         //     pos += Vector3.Cross( Vector3.up, dir ).normalized * stopOffset;
 
