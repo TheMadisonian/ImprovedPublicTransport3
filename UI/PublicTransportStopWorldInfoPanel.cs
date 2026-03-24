@@ -575,7 +575,6 @@ namespace ImprovedPublicTransport.UI
                     new Func<ushort, string>(this.IDToName));
                 this.m_Line.text = Singleton<TransportManager>.instance.GetLineName(transportLine);
                 this.Show();
-                this.LateUpdate();
             }
             else
             {
