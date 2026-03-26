@@ -311,16 +311,14 @@ namespace ImprovedPublicTransport.Settings
         {
             [Description("AUTOLINECOLOR_NAMING_DISABLED")]
             Disabled = 0,
-            [Description("AUTOLINECOLOR_NAMING_NONE")]
-            None = 1,
             [Description("AUTOLINECOLOR_NAMING_DISTRICTS")]
-            Districts = 2,
+            Districts = 1,
             [Description("AUTOLINECOLOR_NAMING_LONDON")]
-            London = 3,
+            London = 2,
             [Description("AUTOLINECOLOR_NAMING_ROADS")]
-            Roads = 4,
+            Roads = 3,
             [Description("AUTOLINECOLOR_NAMING_COLORS")]
-            NamedColors = 5,
+            NamedColors = 4,
         }
 
         [Description("AUTOLINECOLOR_COLOR_STRATEGY_TOOLTIP")]

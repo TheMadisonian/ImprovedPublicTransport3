@@ -70,8 +70,6 @@ namespace AutoLineColor
             {
                 case ImprovedPublicTransport.Settings.Settings.AutoLineColorNamingStrategy.Disabled:
                     return new NoNamingStrategy();
-                case ImprovedPublicTransport.Settings.Settings.AutoLineColorNamingStrategy.None:
-                    return new NoNamingStrategy();
                 case ImprovedPublicTransport.Settings.Settings.AutoLineColorNamingStrategy.Districts:
                     return new DistrictNamingStrategy();
                 case ImprovedPublicTransport.Settings.Settings.AutoLineColorNamingStrategy.London:

@@ -921,7 +921,6 @@ namespace ImprovedPublicTransport.UI
                 namingDropdown.items = new string[]
                 {
                     Localization.Get("AUTOLINECOLOR_NAMING_DISABLED"),
-                    Localization.Get("AUTOLINECOLOR_NAMING_NONE"),
                     Localization.Get("AUTOLINECOLOR_NAMING_DISTRICTS"),
                     Localization.Get("AUTOLINECOLOR_NAMING_LONDON"),
                     Localization.Get("AUTOLINECOLOR_NAMING_ROADS"),
