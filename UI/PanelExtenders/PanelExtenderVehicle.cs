@@ -171,11 +171,13 @@ namespace ImprovedPublicTransport.UI.PanelExtenders
           if (timeSinceBoardingFinished <= 0)
           {
             progress = (boardingTime + timeSinceBoardingFinished) / (float)boardingTime;
+            progress = Mathf.Clamp01(progress);
           }
           else
           {
-            var maxUnbunchingTime = (float) Mathf.Min(OptionsWrapper<Settings.Settings>.Options.IntervalAggressionFactor, CanLeaveStopPatch.MaxUnbunchingTime);
+            var maxUnbunchingTime = Mathf.Max(1f, (float) Mathf.Min(OptionsWrapper<Settings.Settings>.Options.IntervalAggressionFactor, CanLeaveStopPatch.MaxUnbunchingTime));
             progress = timeSinceBoardingFinished / maxUnbunchingTime;
+            progress = Mathf.Clamp01(progress);
           }
           this._distanceTraveled.progressColor = Color.green;
           this._distanceTraveled.value = progress;

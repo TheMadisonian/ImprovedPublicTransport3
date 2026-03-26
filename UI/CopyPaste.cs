@@ -22,8 +22,7 @@ namespace ImprovedPublicTransport.UI
         private readonly List<VehicleInfo> _copyBuffer = new List<VehicleInfo>();
 
         // Copy metadata.
-        private bool _isCopied = false;
-        private int _bufferSize;
+        // Copy state metadata is currently not used in this implementation.
 
         /// <summary>
         /// Gets the active instance.

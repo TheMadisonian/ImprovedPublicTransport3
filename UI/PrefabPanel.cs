@@ -56,12 +56,13 @@ namespace ImprovedPublicTransport.UI
         // Current selections.
         private ushort _currentLineID;
         private TransportLine _thisLine;
-        private byte _currentDistrict;
-        private byte _currentPark;
+        private byte _currentDistrict = 0;
+        private byte _currentPark = 0;
 
         // Event handling.
-        private bool _copyProcessing = false;
-        private bool _pasteProcessing = false;
+        // Copy/paste process flags are optional and not currently required.
+        // private bool _copyProcessing = false;
+        // private bool _pasteProcessing = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PrefabPanel"/> class.

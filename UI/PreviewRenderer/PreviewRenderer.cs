@@ -211,14 +211,14 @@ namespace ImprovedPublicTransport.UI.PreviewRenderer
                 // Calculate rendering matrix and add mesh to scene.
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, modelRotation, Vector3.one);
                 //TODO: set line color, also clean up how it's set up
-                // MaterialPropertyBlock materialBlock = VehicleManager.instance.m_materialBlock;
-                // materialBlock.Clear();
-                // if (_colorSet)
-                // {
-                //     materialBlock.SetColor(VehicleManager.instance.ID_VehicleColor, _color);
-                // }
+                MaterialPropertyBlock materialBlock = VehicleManager.instance.m_materialBlock;
+                materialBlock.Clear();
+                if (_colorSet)
+                {
+                    materialBlock.SetColor(VehicleManager.instance.ID_VehicleColor, _color);
+                }
 
-                Graphics.DrawMesh(_mesh, matrix, previewMaterial, 0, _renderCamera, 0, null, true, true);
+                Graphics.DrawMesh(_mesh, matrix, previewMaterial, 0, _renderCamera, 0, materialBlock, true, true);
             }
 
             // Set zoom to encapsulate entire model.

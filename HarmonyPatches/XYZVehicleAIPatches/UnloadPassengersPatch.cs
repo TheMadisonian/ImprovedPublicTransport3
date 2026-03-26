@@ -40,7 +40,7 @@ namespace ImprovedPublicTransport.HarmonyPatches.XYZVehicleAIPatches
         {
             if (VehicleManager.instance.m_vehicles.m_buffer[vehicleID].m_leadingVehicle != 0)
             {
-                __state = new State();
+                __state = new State { vehicleID = 0 };  // Mark as trailer with 0
                 return true;
             }
 
@@ -55,6 +55,12 @@ namespace ImprovedPublicTransport.HarmonyPatches.XYZVehicleAIPatches
 
         public static void UnloadPassengersPost(State __state)
         {
+            // Skip if this was a trailer (vehicleID == 0 from pre-function's marker)
+            if (__state.vehicleID == 0)
+            {
+                return;
+            }
+
             if (VehicleManager.instance.m_vehicles.m_buffer[__state.vehicleID].m_leadingVehicle != 0)
             {
                 return;

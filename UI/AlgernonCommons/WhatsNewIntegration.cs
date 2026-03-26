@@ -31,6 +31,15 @@ namespace ImprovedPublicTransport.UI.AlgernonCommons
                     Localization.Get("WHATSNEW_3_0_0_1"),
                     Localization.Get("WHATSNEW_3_0_0_2"),
                 }
+            },
+            new WhatsNewMessage
+            {
+                Version = new Version("3.0.1"),
+                MessagesAreKeys = false,
+                Messages = new[]
+                {
+                    Localization.Get("WHATSNEW_3_0_1"),
+                }
             }
         };
 

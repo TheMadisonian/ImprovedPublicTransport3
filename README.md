@@ -1,6 +1,6 @@
 # ImprovedPublicTransport 3
 
-**Version 3.0** | Last Updated: March 2026
+**Version 3.0.1** | Last Updated: March 2026
 
 ## Overview
 

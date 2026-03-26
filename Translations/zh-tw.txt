@@ -181,6 +181,11 @@ SETTINGS_EBS_TRAM_MODE_NONE 停用
 SETTINGS_EBS_TRAM_MODE_TRAM 實際電車模式
 
 
+SETTINGS_PTU_GROUP 公共運輸卡死修復
+SETTINGS_PTU_ENABLE 自動移除被卡住的乘客
+SETTINGS_PTU_TOOLTIP 自動移除在上車時卡住的乘客，使車輛能夠正常發車，防止發車凍結。
+
+
 SETTINGS_LINE_DELETION_TOOL 路線刪除工具
 SETTINGS_LINE_DELETION_TOOL_BUTTON_TOOLTIP 刪除所選類型的所有路線。僅在城市載入時有效。
 SETTINGS_LINE_DELETION_TOOL_CONFIRM_TITLE 確認路線刪除
@@ -261,6 +266,10 @@ TICKET_PRICE_SIGHTSEEING_BUS 觀光巴士票價：
 TICKET_PRICE_TROLLEYBUS 電車票價：
 TICKET_PRICE_BLIMP 飛艇票價：
 TICKET_PRICE_HELICOPTER 直升機票價：
-ECONOMY_TAB_TICKET_PRICES 票價ECONOMY_TAB_TICKET_PRICES_TOOLTIP_PASSENGER_COUNT 此運輸類型的總當前乘客數。
+ECONOMY_TAB_TICKET_PRICES 票價
+ECONOMY_TAB_TICKET_PRICES_TOOLTIP_PASSENGER_COUNT 此運輸類型的總當前乘客數。
+
 WHATSNEW_3_0_0_1 已為Race Day更新；現與More Vehicles Renewed相容。
 WHATSNEW_3_0_0_2 以下mod已整合到IPT3中:\n • Advanced Stop Selection Revisited\n • Auto Line Color Redux\n • Better Bus Stop Position\n • Better Train Boarding\n • Elevated Stops Enabler Revisited  \n • Express Bus Services\n • Flight Tracker\n • Intercity Bus Control\n • Mileage Taxi Services\n • Realistic Walking Speed\n • Stops and Stations\n • Ticket Price Customizer
+
+WHATSNEW_3_0_1 Public Transport Unstucker 已整合至 IPT3。\n有關其他已整合的模組，請參閱 3.0 版本。為避免衝突，請取消訂閱原始模組.

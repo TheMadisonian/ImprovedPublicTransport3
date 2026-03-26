@@ -56,6 +56,28 @@ namespace ImprovedPublicTransport.Settings
             });
         }
 
+        public static void OnPublicTransportUnstuckerChanged(int value)
+        {
+            if (!ImprovedPublicTransportMod.InGame)
+            {
+                return;
+            }
+
+            SimulationManager.instance.AddAction(() =>
+            {
+                if (value != 0)
+                {
+                    Utils.Log("SettingsActions: Enabling PublicTransportUnstucker");
+                    PublicTransportUnstucker.PublicTransportUnstuckerIntegration.Activate();
+                }
+                else
+                {
+                    Utils.Log("SettingsActions: Disabling PublicTransportUnstucker");
+                    PublicTransportUnstucker.PublicTransportUnstuckerIntegration.Deactivate();
+                }
+            });
+        }
+
         public static void OnRealisticWalkingSpeedChanged(int walkingSpeedMode)
         {
             Utils.Log($"SettingsActions: OnRealisticWalkingSpeedChanged called with mode {walkingSpeedMode}");

@@ -253,7 +253,6 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
             // Create main container with padding matching budget panel
             const float SIDE_PAD = 45f;        // Outer left/right padding
             const float COL_GAP = 55f;         // Gap between columns
-            const float COL_PAD = 15f;         // Internal padding within each column
             
             var mainContainer = page.AddUIComponent<UIPanel>();
             mainContainer.autoLayout = false;

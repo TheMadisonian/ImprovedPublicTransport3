@@ -21,6 +21,10 @@ namespace BetterBoarding.DataTypes
                 var counter = 0;
                 foreach (var compartment in FreeCompartments)
                 {
+                    if (compartment.IsProxy)
+                    {
+                        continue;
+                    }
                     counter += compartment.ActualCapacity - compartment.Occupancy;
                 }
                 return counter;

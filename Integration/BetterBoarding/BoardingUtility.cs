@@ -13,21 +13,33 @@ namespace BetterBoarding
         {
             public readonly ushort CitizenID;
             public readonly ushort VehicleID;
+            public readonly ushort BoardingVehicleID;
+            public readonly Vector3 EntryPosition;
 
-            public PassengerChoice(ushort citizenID, ushort vehicleID)
+            public PassengerChoice(ushort citizenID, ushort vehicleID, ushort boardingVehicleID, Vector3 entryPosition)
             {
                 CitizenID = citizenID;
                 VehicleID = vehicleID;
+                BoardingVehicleID = boardingVehicleID;
+                EntryPosition = entryPosition;
             }
         }
 
-        public static void HandleBetterBoarding(ushort vehicleID, ref Vehicle data, ushort currentStop, ushort nextStop)
+        public static int HandleBetterBoarding(ushort vehicleID, ref Vehicle data, ushort currentStop, ushort nextStop)
         {
             // the one-stop replacement to LoadPassengers
             if (currentStop == 0 || nextStop == 0)
             {
-                return;
+                return 0;
             }
+            
+            // BetterBoarding only makes sense for multi-vehicle chains (trains, metros, monorails, trams).
+            // Single-vehicle transports (non-chain) still fall back to vanilla boarding.
+            if (data.m_trailingVehicle == 0)
+            {
+                return -1; // sentinel: use vanilla logic
+            }
+            
             // remember to reset the wait time alarm! otherwise outside vehicles would keep endlessly spawning
             var netManager = Singleton<NetManager>.instance;
             netManager.m_nodes.m_buffer[currentStop].m_maxWaitTime = 0;
@@ -52,11 +64,12 @@ namespace BetterBoarding
             if (maxRank == 0)
             {
                 // no free vehicles; simply stop
-                return;
+                return 0;
             }
             var sortedPaxList = paxStatus.SortedPassengers;
             var paxCount = sortedPaxList.Count;
-            var freeCapacity = trainStatus.FreeCapacity;
+            var initialFreeCapacity = trainStatus.FreeCapacity;
+            var freeCapacity = initialFreeCapacity;
             if (maxRank == 1 && paxCount > freeCapacity)
             {
                 // optimization: if there is only 1 possible vehicle, and there are too many passengers
@@ -80,7 +93,12 @@ namespace BetterBoarding
                 var rank = 0;
                 foreach (var vehicle in sortBuffer)
                 {
-                    paxRankedChoice[rank, currentPaxIndex] = new PassengerChoice(paxInfo.CitizenID, vehicle.VehicleID);
+                    paxRankedChoice[rank, currentPaxIndex] = new PassengerChoice(
+                        paxInfo.CitizenID,
+                        vehicle.VehicleID,
+                        vehicle.BoardingVehicleID,
+                        vehicle.Position
+                    );
                     // debugString.AppendLine($"Pax {paxInfo.CitizenID} rank {rank} picks vehicle {vehicle.VehicleID}");
                     ++rank;
                 }
@@ -91,13 +109,16 @@ namespace BetterBoarding
             // ranked choices ready; process them!
             var instance3 = Singleton<NetManager>.instance;
             var num = instance3.m_nodes.m_buffer[currentStop].m_tempCounter;
-            ProcessRankedChoices(paxRankedChoice, paxStatus.CurrentStopPosition, freeCapacity, ref num);
+            ProcessRankedChoices(paxRankedChoice, paxStatus.CurrentStopPosition, ref freeCapacity, ref num);
 
             // finalize the stuff
             instance3.m_nodes.m_buffer[currentStop].m_tempCounter = (ushort)Mathf.Min(num, 65535);
+            
+            // Return number of passengers boarded
+            return initialFreeCapacity - freeCapacity;
         }
 
-        private static void ProcessRankedChoices(PassengerChoice[,] paxRankedChoice, Vector3 stopPosition, int freeSpaceRemaining, ref ushort serviceCount)
+        private static void ProcessRankedChoices(PassengerChoice[,] paxRankedChoice, Vector3 stopPosition, ref int freeSpaceRemaining, ref ushort serviceCount)
         {
             ref var vehicleBuffer = ref Singleton<VehicleManager>.instance.m_vehicles.m_buffer;
             var citizenManager = Singleton<CitizenManager>.instance;
@@ -116,25 +137,42 @@ namespace BetterBoarding
                         // already boarded; skip
                         continue;
                     }
-                    // directly check whether the vehicle still has space
+                    // use chosen picking target for distance/entry, but board onto a valid vehicle (e.g., trailer choice on bus boards main vehicle)
                     var chosenVehicleID = currentRankedChoice.VehicleID;
-                    var freeCitUnitID = vehicleBuffer[chosenVehicleID].GetNotFullCitizenUnit(CitizenUnit.Flags.Vehicle);
-                    if (freeCitUnitID == 0)
+                    var boardingVehicleID = currentRankedChoice.BoardingVehicleID;
+                    if (boardingVehicleID == 0 || boardingVehicleID >= vehicleBuffer.Length)
                     {
-                        // nope
                         continue;
                     }
-                    // has space; try assigning the citizen
+                    var freeCitUnitID = vehicleBuffer[boardingVehicleID].GetNotFullCitizenUnit(CitizenUnit.Flags.Vehicle);
+                    if (freeCitUnitID == 0)
+                    {
+                        // no room on the boarding vehicle
+                        continue;
+                    }
+                    if (citizenID == 0)
+                    {
+                        continue;
+                    }
                     ref var citizenInstance = ref citizenManager.m_instances.m_buffer[citizenID];
                     var citizenInfo = citizenInstance.Info;
-                    if (!citizenInfo.m_citizenAI.SetCurrentVehicle(citizenID, ref citizenInstance, chosenVehicleID, freeCitUnitID, stopPosition))
+                    if (citizenInfo == null || citizenInfo.m_citizenAI == null)
+                    {
+                        // citizen info invalid; try next
+                        continue;
+                    }
+                    var entryPosition = currentRankedChoice.EntryPosition;
+                    if (!citizenInfo.m_citizenAI.SetCurrentVehicle(citizenID, ref citizenInstance, boardingVehicleID, freeCitUnitID, entryPosition))
                     {
                         // somehow couldn't do it; try next
                         continue;
                     }
                     // successful assignment
                     serviceCount++;
-                    vehicleBuffer[chosenVehicleID].m_transferSize++;
+                    if (boardingVehicleID > 0 && boardingVehicleID < vehicleBuffer.Length)
+                    {
+                        vehicleBuffer[boardingVehicleID].m_transferSize++;
+                    }
                     boardedPaxIDs.Add(citizenID);
                     freeSpaceRemaining--;
                     if (freeSpaceRemaining <= 0)
@@ -150,9 +188,9 @@ namespace BetterBoarding
     [System.Obsolete("Use BoardingUtility instead.")]
     public static class PassengerTrainUtility
     {
-        public static void HandleBetterBoarding(ushort vehicleID, ref Vehicle data, ushort currentStop, ushort nextStop)
+        public static int HandleBetterBoarding(ushort vehicleID, ref Vehicle data, ushort currentStop, ushort nextStop)
         {
-            BoardingUtility.HandleBetterBoarding(vehicleID, ref data, currentStop, nextStop);
+            return BoardingUtility.HandleBetterBoarding(vehicleID, ref data, currentStop, nextStop);
         }
     }
 }

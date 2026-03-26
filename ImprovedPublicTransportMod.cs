@@ -41,7 +41,7 @@ namespace ImprovedPublicTransport
         public static bool InGame;
         public static GameObject IptGameObject;
         private GameObject _worldInfoPanel;
-        private const string Version = "3.0.0";
+        private const string Version = "3.0.1";
 
         public string Name => $"{BaseModName} {Version}";
 
@@ -227,6 +227,24 @@ namespace ImprovedPublicTransport
                         if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("RealisticWalkingSpeed: integration disabled (toggle is off).");
                     }
 
+                    // PublicTransportUnstucker integration
+                    try
+                    {
+                        if (OptionsWrapper<Settings.Settings>.Options.EnablePublicTransportUnstucker)
+                        {
+                            PublicTransportUnstucker.PublicTransportUnstuckerIntegration.Activate();
+                            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("PublicTransportUnstucker: integration applied.");
+                        }
+                        else
+                        {
+                            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("PublicTransportUnstucker: integration is disabled by settings.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Utils.LogError($"PublicTransportUnstucker: failed to apply integration: {ex.Message}");
+                    }
+
                     // TicketPriceCustomizer: apply configured ticket multipliers on load
                     try
                     {
@@ -325,6 +343,17 @@ namespace ImprovedPublicTransport
             catch (Exception ex)
             {
                 Utils.LogError($"StopsAndStations: failed to unload: {ex.Message}");
+            }
+
+            // PublicTransportUnstucker integration unload
+            try
+            {
+                PublicTransportUnstucker.PublicTransportUnstuckerIntegration.Deactivate();
+                if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("PublicTransportUnstucker: integration unloaded.");
+            }
+            catch (Exception ex)
+            {
+                Utils.LogError($"PublicTransportUnstucker: failed to unload integration: {ex.Message}");
             }
 
             Deinit();

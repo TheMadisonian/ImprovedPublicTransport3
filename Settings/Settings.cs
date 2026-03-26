@@ -17,6 +17,7 @@ namespace ImprovedPublicTransport.Settings
         private const string SETTINGS_LINE_DELETION_TOOL = "SETTINGS_LINE_DELETION_TOOL";
         private const string SETTINGS_EBS_GROUP_BUS = "SETTINGS_EBS_GROUP_BUS";
         private const string SETTINGS_EBS_GROUP_TRAM = "SETTINGS_EBS_GROUP_TRAM";
+        private const string SETTINGS_PTU_GROUP = "SETTINGS_PTU_GROUP";
         private const string SETTINGS_STOPS = "SETTINGS_STOPS";
         private const string SETTINGS_AUTO_LINE = "SETTINGS_AUTO_LINE";
 
@@ -125,6 +126,10 @@ namespace ImprovedPublicTransport.Settings
         [Description("SETTINGS_EBS_TOOLTIP_TRAM_UNBUNCHING")]
         [DropDown("SETTINGS_EBS_DROPDOWN_TRAM_UNBUNCHING_MODE", nameof(ExpressTramServicesModes), SETTINGS_EBS_GROUP_TRAM)]
         public int ExpressTramUnbunchingMode { get; set; } = 0; // 0 = Disabled, 1 = Light Rail, 2 = True Tram
+
+        [Description("SETTINGS_PTU_TOOLTIP")]
+        [Checkbox("SETTINGS_PTU_ENABLE", SETTINGS_PTU_GROUP, nameof(SettingsActions), nameof(SettingsActions.OnPublicTransportUnstuckerChanged))]
+        public bool EnablePublicTransportUnstucker { get; set; } = true;
 
         public enum ExpressBusServicesModes
         {

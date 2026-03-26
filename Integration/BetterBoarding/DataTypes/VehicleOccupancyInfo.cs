@@ -8,13 +8,17 @@ namespace BetterBoarding.DataTypes
     {
         public ushort VehicleID { get; }
 
+        public ushort BoardingVehicleID { get; }
+
+        public bool IsProxy { get; }
+
         public int Occupancy { get; }
 
         public int ActualCapacity { get; }
 
         public Vector3 Position { get; }
 
-        public bool IsFull => Occupancy >= ActualCapacity;
+        public bool IsFull => !IsProxy && Occupancy >= ActualCapacity;
 
         public VehicleOccupancyInfo(ushort vehicleID)
         {
@@ -25,8 +29,14 @@ namespace BetterBoarding.DataTypes
             var citizenManager = Singleton<CitizenManager>.instance;
 
             var vehicleInstance = vehicleManager.m_vehicles.m_buffer[vehicleID];
-            Position = vehicleManager.m_vehicles.m_buffer[vehicleID].GetLastFrameData().m_position;
+            // Each vehicle in a chain maintains independent frame position data during simulation
+            // Use frame3 as it's most recently updated; fallback through earlier frames if needed
+            var frameData = vehicleInstance.GetLastFrameData();
+            Position = frameData.m_position;
             Occupancy = vehicleInstance.m_transferSize;
+
+            BoardingVehicleID = vehicleID;
+            IsProxy = false;
 
             // iterate the list to find actual capacity
             var currentCitizenUnit = vehicleInstance.m_citizenUnits;

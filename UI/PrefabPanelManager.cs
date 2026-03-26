@@ -20,7 +20,7 @@ namespace ImprovedPublicTransport.UI
         private static PrefabPanel s_panel;
 
         // InfoPanel buttons.
-        private static UIButton s_transportLineButton;
+        // This button is not used by IPT3 integration.
 
         /// <summary>
         /// Gets the active panel instance.

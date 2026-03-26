@@ -80,7 +80,7 @@ namespace BetterBoarding.DataTypes
                         ushort nextGridInstance = currentCitizenInstance.m_nextGridInstance;
                         if ((currentCitizenInstance.m_flags & CitizenInstance.Flags.WaitingTransport) != 0)
                         {
-                            Vector3 vector = currentCitizenInstance.m_targetPos;
+                            Vector3 vector = currentCitizenInstance.GetLastFramePosition();
                             if (Vector3.SqrMagnitude(vector - position) < 4096f)
                             {
                                 // within range; will this citizen ever board the vehicle?

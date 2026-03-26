@@ -98,8 +98,8 @@ namespace ImprovedPublicTransport.UI
             generalPage.eventSizeChanged += (c, s) => { generalContent.size = new Vector2(generalPage.width - 12, generalPage.height - 8); };
 
             var generalHelper = new UIHelper(generalContent);
-            // Keep all current options in General except the Delete Lines group, EBS groups, Unbunching, Stops, and Auto Line (manual)
-            AddOptionsGroupExcluding<Settings.Settings>(generalHelper, "SETTINGS_LINE_DELETION_TOOL|SETTINGS_UNBUNCHING|SETTINGS_EBS_GROUP_BUS|SETTINGS_EBS_GROUP_TRAM|SETTINGS_STOPS|SETTINGS_STOPS_PASSENGERS|SETTINGS_AUTO_LINE", Localization.Get);
+            // Keep all current options in General except the Delete Lines group, EBS groups, Unbunching, PTU, Stops, and Auto Line (manual)
+            AddOptionsGroupExcluding<Settings.Settings>(generalHelper, "SETTINGS_LINE_DELETION_TOOL|SETTINGS_UNBUNCHING|SETTINGS_PTU_GROUP|SETTINGS_EBS_GROUP_BUS|SETTINGS_EBS_GROUP_TRAM|SETTINGS_STOPS|SETTINGS_STOPS_PASSENGERS|SETTINGS_AUTO_LINE", Localization.Get);
             try { AddAutoLineSection(generalHelper); } catch (Exception ex) { Debug.LogError($"IPT: AddAutoLineSection failed: {ex.Message}"); }
 
             // Stops page
@@ -218,6 +218,8 @@ namespace ImprovedPublicTransport.UI
                             cb1.isEnabled = (OptionsWrapper<Settings.Settings>.Options.ExpressBusUnbunchingMode != 0);
                         }
 
+                        // Public Transport Unstucker option is inserted after Express Tram section (ETS)
+
                         var selfBalMidToggle = ebsBusGroup.AddCheckbox(Localization.Get("SETTINGS_EBS_ENABLE_SELFBAL_TARGETMID"), OptionsWrapper<Settings.Settings>.Options.ExpressBusAllowMiddleStopBalancing, (newValue) =>
                         {
                             try { OptionsWrapper<Settings.Settings>.Options.ExpressBusAllowMiddleStopBalancing = newValue; OptionsWrapper<Settings.Settings>.SaveOptions(); } catch { }
@@ -269,6 +271,27 @@ namespace ImprovedPublicTransport.UI
                             };
                         }
                         catch { }
+                    }
+
+                    // Public Transport Unstucker option (after ETS)
+                    var ptuGroup = unbunchHelper.AddGroup(Localization.Get("SETTINGS_PTU_GROUP"));
+                    if (ptuGroup != null)
+                    {
+                        var ptuToggle = ptuGroup.AddCheckbox(Localization.Get("SETTINGS_PTU_ENABLE"), OptionsWrapper<Settings.Settings>.Options.EnablePublicTransportUnstucker, (newValue) =>
+                        {
+                            try
+                            {
+                                OptionsWrapper<Settings.Settings>.Options.EnablePublicTransportUnstucker = newValue;
+                                OptionsWrapper<Settings.Settings>.SaveOptions();
+                                SettingsActions.OnPublicTransportUnstuckerChanged(newValue ? 1 : 0);
+                            }
+                            catch { }
+                        }) as UICheckBox;
+
+                        if (ptuToggle != null)
+                        {
+                            ptuToggle.tooltip = Localization.Get("SETTINGS_PTU_TOOLTIP");
+                        }
                     }
                 }
                 catch (Exception ex) { Debug.LogError($"IPT: Failed to build EBS Tram group: {ex.Message}"); }
