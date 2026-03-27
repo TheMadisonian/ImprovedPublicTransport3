@@ -57,6 +57,7 @@ SETTINGS_DELETE Excluir
 SETTINGS_RESET Reiniciar
 
 SETTINGS_TAB_GENERAL Geral
+SETTINGS_TAB_AUTOLINE Linha automática
 SETTINGS_TAB_STOPS Paradas e Estações
 SETTINGS_TAB_UNBUNCHING Distribuição
 SETTINGS_TAB_DELETE Excluir Linhas
@@ -67,7 +68,7 @@ SETTINGS_SPEED_TOOLTIP Escolha a unidade usada para exibição de velocidade na 
 SETTINGS_SPEED_KPH km/h
 SETTINGS_SPEED_MPH mph
 SETTINGS_WALKING_SPEED Velocidade caminhada/ciclismo: 
-SETTINGS_WALKING_SPEED_TOOLTIP Padrão: velocidades do jogo base.\nRealista: reduz a velocidade de caminhada para valores realistas baseados na idade.\nRealista também aumenta a velocidade do ciclismo para incentivar o ciclismo com o DLC After Dark.
+SETTINGS_WALKING_SPEED_TOOLTIP Padrão: velocidades do jogo base.\nRealista: reduz a velocidade de caminhada para valores realistas baseados na idade.\nRealista também reduz a velocidade do ciclismo com o DLC After Dark.
 SETTINGS_WALKING_SPEED_MODE_VANILLA Padrão
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realista
 SETTINGS_BBSP Melhor posição de parada de ônibus: 
@@ -76,14 +77,19 @@ SETTINGS_BBSP_MODE_DISABLED Desabilitado
 SETTINGS_BBSP_MODE_ORIGINAL Habilitado
 SETTINGS_BBSP_MODE_UPDATED Usar lógica experimental
 
+SETTINGS_BUDGET Orçamento
 SETTINGS_ENABLE_BUDGET_CONTROL Controle via Orçamento
 SETTINGS_BUDGET_CONTROL_DISABLED Desabilitado
 SETTINGS_BUDGET_CONTROL_ENABLED Habilitado
 SETTINGS_BUDGET_CONTROL_TOOLTIP Liga ou desliga controle via orçamento para todas as linhas.\n Habilitar aplicará o modo para cada linha e limpará veículos em fila.\n As mudanças entram em vigor imediatamente.
+SETTINGS_BUDGET_TICKET_PRICES Personalizador de preços de bilhetes:
+SETTINGS_BUDGET_TICKET_PRICES_DISABLED Desativado
+SETTINGS_BUDGET_TICKET_PRICES_ENABLED Ativado
+SETTINGS_BUDGET_TICKET_PRICES_TOOLTIP Quando ativado, adiciona uma nova aba ao painel Economia com sliders para ajustar os preços dos bilhetes por tipo de transporte.
 
 SETTINGS_AUTO_LINE Linha Automática
-SETTINGS_AUTOSHOW_LINE_INFO Mostrar informações automaticamente
-SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Automaticamente mostra as informações da linha depois de criada.
+SETTINGS_AUTOSHOW_LINE_INFO Abrir painel de informações da linha automaticamente
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Mostra automaticamente o painel de informações da linha após a criação de uma nova linha.
 
 AUTOLINECOLOR_STRATEGY_DISABLED Desativado
 AUTOLINECOLOR_STRATEGY_RANDOM_HUE Matiz aleatória

@@ -32,23 +32,30 @@ namespace ImprovedPublicTransport.HarmonyPatches.TransportLinePatches
 
         public static bool Prefix(ref TransportLine __instance, out bool __result, ushort nextStop, int waitTime)
         {
+            var lineId = __instance.m_lineNumber;
+            var lineName = TransportManager.instance.GetLineName(lineId);
+
             if (nextStop == 0)
             {
                 __result = true;
+                ImprovedPublicTransport.Util.Utils.Log($"CanLeaveStopPatch: line {lineId} ({lineName}) nextStop=0 => allow leave");
                 return false;
             }
 
             var prevSegment = TransportLine.GetPrevSegment(nextStop);
-            if (prevSegment == 0 || (__instance.m_averageInterval -
-                Singleton<NetManager>.instance.m_segments.m_buffer[prevSegment].m_trafficLightState0 + 2) / 4 <= 0)
+            var lowTrafficState = prevSegment == 0 || (__instance.m_averageInterval -
+                Singleton<NetManager>.instance.m_segments.m_buffer[prevSegment].m_trafficLightState0 + 2) / 4 <= 0;
+            if (lowTrafficState)
             {
                 __result = true;
+                ImprovedPublicTransport.Util.Utils.Log($"CanLeaveStopPatch: line {lineId} ({lineName}) prevSegment={prevSegment} lowTrafficState={lowTrafficState} => allow leave");
                 return false;
             }
 
             //begin mod(*): compare with interval aggression setup instead of default 64
             var targetWaitTime = BoardingTime + Mathf.Min(OptionsWrapper<Settings.Settings>.Options.IntervalAggressionFactor, MaxUnbunchingTime);
             __result = waitTime >= targetWaitTime; //4 * 16 = 64 is max waiting time in vanilla, 12 is min waiting time
+            ImprovedPublicTransport.Util.Utils.Log($"CanLeaveStopPatch: line {lineId} ({lineName}) nextStop={nextStop} waitTime={waitTime} avgInterval={__instance.m_averageInterval} targetWaitTime={targetWaitTime} result={__result}");
             //end mod
             return false;
         }

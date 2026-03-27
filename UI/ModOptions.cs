@@ -67,15 +67,16 @@ namespace ImprovedPublicTransport.UI
                 return tab;
             };
 
-            // Create tabs: General, Stops, Unbunching, Delete Lines
+            // Create tabs: General, Auto Line, Stops, Unbunching, Delete Lines
             addTab(Localization.Get("SETTINGS_TAB_GENERAL"));
+            addTab(Localization.Get("SETTINGS_TAB_AUTOLINE"));
             addTab(Localization.Get("SETTINGS_TAB_STOPS"));
             addTab(Localization.Get("SETTINGS_TAB_UNBUNCHING"));
             addTab(Localization.Get("SETTINGS_TAB_DELETE"));
 
             // Configure pages
-            // index 0 -> General, 1 -> Stops, 2 -> Unbunching, 3 -> Delete Lines
-            for (int i = 0; i < 4; i++)
+            // pages are created dynamically based on added tabs
+            for (int i = 0; i < tabContainer.components.Count; i++)
             {
                 var page = tabContainer.components[i] as UIPanel;
                 page.autoLayout = false;
@@ -98,12 +99,51 @@ namespace ImprovedPublicTransport.UI
             generalPage.eventSizeChanged += (c, s) => { generalContent.size = new Vector2(generalPage.width - 12, generalPage.height - 8); };
 
             var generalHelper = new UIHelper(generalContent);
-            // Keep all current options in General except the Delete Lines group, EBS groups, Unbunching, PTU, Stops, and Auto Line (manual)
-            AddOptionsGroupExcluding<Settings.Settings>(generalHelper, "SETTINGS_LINE_DELETION_TOOL|SETTINGS_UNBUNCHING|SETTINGS_PTU_GROUP|SETTINGS_EBS_GROUP_BUS|SETTINGS_EBS_GROUP_TRAM|SETTINGS_STOPS|SETTINGS_STOPS_PASSENGERS|SETTINGS_AUTO_LINE", Localization.Get);
-            try { AddAutoLineSection(generalHelper); } catch (Exception ex) { Debug.LogError($"IPT: AddAutoLineSection failed: {ex.Message}"); }
+            // Render groups in specific order: SETTINGS, SETTINGS_BUDGET, SETTINGS_UI, then the rest (excluding those already rendered)
+            try
+            {
+                AddOptionsGroupOnly<Settings.Settings>(generalHelper, "SETTINGS", Localization.Get);
+            }
+            catch { }
+            try
+            {
+                // New Budget section
+                AddOptionsGroupOnly<Settings.Settings>(generalHelper, "SETTINGS_BUDGET", Localization.Get);
+            }
+            catch { }
+            try
+            {
+                AddOptionsGroupOnly<Settings.Settings>(generalHelper, "SETTINGS_UI", Localization.Get);
+            }
+            catch { }
+
+            // Add remaining groups, excluding those already added and other groups moved to other tabs
+            AddOptionsGroupExcluding<Settings.Settings>(generalHelper, "SETTINGS_LINE_DELETION_TOOL|SETTINGS_UNBUNCHING|SETTINGS_PTU_GROUP|SETTINGS_EBS_GROUP_BUS|SETTINGS_EBS_GROUP_TRAM|SETTINGS_STOPS|SETTINGS_STOPS_PASSENGERS|SETTINGS_AUTO_LINE|SETTINGS|SETTINGS_BUDGET|SETTINGS_UI", Localization.Get);
+
+            // Auto Line page (index 1)
+            try
+            {
+                var autoLinePage = tabContainer.components[1] as UIPanel;
+                var autoLineContent = autoLinePage.AddUIComponent<UIPanel>();
+                autoLineContent.size = new Vector2(autoLinePage.width - 12, autoLinePage.height - 8);
+                autoLineContent.relativePosition = new Vector3(0, 0);
+                autoLineContent.autoLayout = true;
+                autoLineContent.autoLayoutDirection = LayoutDirection.Vertical;
+                autoLineContent.autoLayoutPadding = new RectOffset(5, 5, 0, 5);
+                autoLineContent.autoLayoutStart = LayoutStart.TopLeft;
+                autoLineContent.clipChildren = true;
+                autoLinePage.eventSizeChanged += (c, s) => { autoLineContent.size = new Vector2(autoLinePage.width - 12, autoLinePage.height - 8); };
+
+                var autoLineHelper = new UIHelper(autoLineContent);
+                AddAutoLineSection(autoLineHelper);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"IPT: Building Auto Line tab failed: {ex.Message}");
+            }
 
             // Stops page
-            var stopsPage = tabContainer.components[1] as UIPanel;
+            var stopsPage = tabContainer.components[2] as UIPanel;
             var stopsContent = stopsPage.AddUIComponent<UIPanel>();
             stopsContent.size = new Vector2(stopsPage.width - 12, stopsPage.height - 8);
             stopsContent.relativePosition = new Vector3(0, 0);
@@ -118,7 +158,7 @@ namespace ImprovedPublicTransport.UI
             // Add click handler to rebuild when tab is clicked (handles late instance initialization)
             try
             {
-                UIButton stopsTab = tabStrip.tabs[1] as UIButton;
+                UIButton stopsTab = tabStrip.tabs[2] as UIButton;
                 AddStopsAndStationsSliders(stopsContent);
                 stopsTab.eventClick += (c, e) =>
                 {
@@ -143,7 +183,7 @@ namespace ImprovedPublicTransport.UI
             }
 
             // Unbunching page
-            var unbunchPage = tabContainer.components[2] as UIPanel;
+            var unbunchPage = tabContainer.components[3] as UIPanel;
             var unbunchContent = unbunchPage.AddUIComponent<UIPanel>();
             unbunchContent.size = new Vector2(unbunchPage.width - 12, unbunchPage.height - 8);
             unbunchContent.relativePosition = new Vector3(0, 0);
@@ -207,6 +247,8 @@ namespace ImprovedPublicTransport.UI
                         catch { }
 
                         // Add checkboxes for bus options
+                        // spacer between dropdown and toggles
+                        ebsBusGroup.AddSpace(5);
                         var selfBalToggle = ebsBusGroup.AddCheckbox(Localization.Get("SETTINGS_EBS_ENABLE_SELFBAL"), OptionsWrapper<Settings.Settings>.Options.ExpressBusEnableSelfBalancing, (newValue) =>
                         {
                             try { OptionsWrapper<Settings.Settings>.Options.ExpressBusEnableSelfBalancing = newValue; OptionsWrapper<Settings.Settings>.SaveOptions(); } catch { }
@@ -299,7 +341,7 @@ namespace ImprovedPublicTransport.UI
             catch (Exception) { }
 
             // Delete Lines page
-            var deletePage = tabContainer.components[3] as UIPanel;
+            var deletePage = tabContainer.components[4] as UIPanel;
             var deleteContent = deletePage.AddUIComponent<UIPanel>();
             deleteContent.size = new Vector2(deletePage.width - 12, deletePage.height - 8);
             deleteContent.relativePosition = new Vector3(0, 0);
@@ -587,6 +629,11 @@ namespace ImprovedPublicTransport.UI
                             }
                             catch { }
                         };
+                        // add 5px spacing after the Vehicle Editor position dropdown
+                        if (propertyName == "VehicleEditorPosition")
+                        {
+                            try { targetHelper.AddSpace(5); } catch { }
+                        }
                     }
                 }
 
@@ -642,6 +689,11 @@ namespace ImprovedPublicTransport.UI
             }
 
             // render deferred buttons at the end
+            // For delete-lines group, add a 7px spacer between the last toggle and the delete button
+            if (onlyGroup == "SETTINGS_LINE_DELETION_TOOL")
+            {
+                try { groupHelper.AddSpace(7); } catch { }
+            }
             foreach (var pb in pendingButtons)
             {
                 var targetHelper = pb.Helper;
@@ -658,6 +710,7 @@ namespace ImprovedPublicTransport.UI
                     btn.tooltip = (translator == null || descriptionAttribute is ImprovedPublicTransport.OptionsFramework.Attibutes.DontTranslateDescriptionAttribute) ? descriptionAttribute.Description : translator.Invoke(descriptionAttribute.Description);
                 }
             }
+
         }
 
         private static void SetTooltip(UIComponent component, PropertyInfo property, Func<string, string> translator)
@@ -919,6 +972,16 @@ namespace ImprovedPublicTransport.UI
                 var group = helper.AddGroup(Localization.Get("SETTINGS_AUTO_LINE"));
                 if (group == null) return;
 
+                // Checkbox: Auto show line info (top of section)
+                var checkbox = group.AddCheckbox(
+                    Localization.Get("SETTINGS_AUTOSHOW_LINE_INFO"),
+                    OptionsWrapper<Settings.Settings>.Options.ShowLineInfo,
+                    v => { OptionsWrapper<Settings.Settings>.Options.ShowLineInfo = v; OptionsWrapper<Settings.Settings>.SaveOptions(); });
+                try { if (checkbox is UICheckBox cbTop) cbTop.tooltip = Localization.Get("SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP"); } catch { }
+
+                // 5px gap between checkbox and color strategy dropdown
+                group.AddSpace(5);
+
                 // Dropdown: Color Strategy
                 var colorRow = (UIPanel)group.AddSpace(34);
                 var colorDropdown = UI.AlgernonCommons.UIDropDowns.AddLabelledDropDown(colorRow, 0f, 2f, Localization.Get("AUTOLINECOLOR_COLOR_STRATEGY"), 220f, 25f);
@@ -970,13 +1033,6 @@ namespace ImprovedPublicTransport.UI
                     () => OptionsWrapper<Settings.Settings>.Options.AutoLineColorMaxDiffColorPickAttempt,
                     v => { OptionsWrapper<Settings.Settings>.Options.AutoLineColorMaxDiffColorPickAttempt = v; OptionsWrapper<Settings.Settings>.SaveOptions(); },
                     1f, 50f, 1f, Localization.Get("AUTOLINECOLOR_MAX_COLOR_PICK_TOOLTIP"));
-
-                // Checkbox: Auto show line info (at the bottom)
-                var checkbox = group.AddCheckbox(
-                    Localization.Get("SETTINGS_AUTOSHOW_LINE_INFO"),
-                    OptionsWrapper<Settings.Settings>.Options.ShowLineInfo,
-                    v => { OptionsWrapper<Settings.Settings>.Options.ShowLineInfo = v; OptionsWrapper<Settings.Settings>.SaveOptions(); });
-                try { if (checkbox is UICheckBox cb) cb.tooltip = Localization.Get("SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP"); } catch { }
             }
             catch (Exception ex)
             {

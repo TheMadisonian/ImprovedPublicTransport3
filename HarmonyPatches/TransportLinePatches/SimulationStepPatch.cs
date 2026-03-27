@@ -17,6 +17,9 @@ namespace ImprovedPublicTransport.HarmonyPatches.TransportLinePatches
     {
         public static void Apply()
         {
+            ImprovedPublicTransport.Util.Utils.Log($"{ShortModName}: +++ SimulationStepPatch: check existing patches for TransportLine.SimulationStep");
+            PatchUtil.LogExistingPatches(typeof(TransportLine).GetMethod(nameof(TransportLine.SimulationStep), System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic));
+
             PatchUtil.Patch(
                 new PatchUtil.MethodDefinition(typeof(TransportLine), nameof(TransportLine.SimulationStep)),
                 new PatchUtil.MethodDefinition(typeof(SimulationStepPatch), nameof(Prefix), priority: Priority.Normal),
@@ -102,7 +105,7 @@ namespace ImprovedPublicTransport.HarmonyPatches.TransportLinePatches
             } while (stops1 != stop1 && stop1 != 0);
 
             var amount = 0;
-            TransportLineUtil.CountLineActiveVehicles(__state, out _, (num3) =>
+            var activeVehicles = TransportLineUtil.CountLineActiveVehicles(__state, out _, (num3) =>
             {
                 var vInfo = VehicleManager.instance.m_vehicles.m_buffer[num3].Info;
                 if (vInfo == null) return;
@@ -112,8 +115,14 @@ namespace ImprovedPublicTransport.HarmonyPatches.TransportLinePatches
                 CachedVehicleData.m_cachedVehicleData[num3].StartNewWeek(prefabData.MaintenanceCost);
             });
             if (amount != 0)
+            {
+                var line = TransportManager.instance.m_lines.m_buffer[__state];
+                var lineName = TransportManager.instance.GetLineName(__state);
+                ImprovedPublicTransport.Util.Utils.Log($"SimulationStepPatch: line {__state} ({lineName}) maintenance cost {amount}, activeVehicles={activeVehicles}");
+
                 Singleton<EconomyManager>.instance.FetchResource(EconomyManager.Resource.Maintenance, amount,
-                    TransportManager.instance.m_lines.m_buffer[__state].Info.m_class);
+                    line.Info.m_class);
+            }
         }
 
         public static int CalculateTargetVehicleCount(ushort lineID)

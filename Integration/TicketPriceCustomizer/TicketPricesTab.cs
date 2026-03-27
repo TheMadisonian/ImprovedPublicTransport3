@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using ColossalFramework;
 using ColossalFramework.UI;
@@ -54,6 +55,15 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
         {
             try
             {
+                // Honor user setting: don't inject the Ticket Prices UI if disabled
+                var currentSettings = OptionsWrapper<ImprovedPublicTransport.Settings.Settings>.Options;
+                if (currentSettings.TicketPriceCustomizerMode != (int)ImprovedPublicTransport.Settings.Settings.TicketPriceCustomizerModes.Enabled)
+                {
+                    Utils.Log("TicketPricesTab: disabled by settings; skipping injection");
+                    Cleanup();
+                    return;
+                }
+
                 if (s_initialized) return;
 
                 // Load custom icon atlases
@@ -69,21 +79,64 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
                 }
 
                 Utils.Log("TicketPricesTab: Adding tab button");
+
+                // Preserve the currently selected page index and page reference so we can restore it after adding a new tab.
+                int existingSelectedIndex = -1;
+                UIComponent existingSelectedPage = null;
+                try
+                {
+                    existingSelectedIndex = tabStrip.selectedIndex;
+                    if (existingSelectedIndex >= 0 && existingSelectedIndex < tabContainer.components.Count)
+                    {
+                        existingSelectedPage = tabContainer.components[existingSelectedIndex];
+                    }
+                }
+                catch { existingSelectedPage = null; }
+
+                // Track pre-injection pages and use diff-based detection to avoid ambiguous component order.
+                var existingPages = tabContainer.components.OfType<UIPanel>().ToList();
+
                 // Create the tab button styled like the existing ones
                 var tabButton = tabStrip.AddTab("TicketPrices");
+                tabButton.name = TabName;
                 Utils.Log("TicketPricesTab: Tab button added, setting text");
                 tabButton.text = Localization.Get("ECONOMY_TAB_TICKET_PRICES");
                 // Style it to match the other economy tab buttons
                 StyleTabButton(tabButton, tabStrip);
 
-                // The UITabstrip.AddTab automatically creates a page in the tabContainer.
-                // Get the last page (our new one)
-                var page = tabContainer.components[tabContainer.components.Count - 1] as UIPanel;
+                // Locate newly created page by excluding known existing pages.
+                var newPages = tabContainer.components.OfType<UIPanel>().Except(existingPages).ToList();
+                var page = newPages.FirstOrDefault();
+                if (page == null)
+                {
+                    // Fallback: try find by name if previous injection left one behind.
+                    page = tabContainer.components.OfType<UIPanel>().FirstOrDefault(c => c.name == PageName);
+                }
+                if (page != null)
+                {
+                    page.name = PageName;
+                }
                 if (page == null)
                 {
                     Utils.LogError("TicketPricesTab: Could not find newly created tab page");
                     return;
                 }
+
+                // Keep this tab hidden until it is actually selected.
+                page.isVisible = false;
+
+                // Ensure the previously selected tab remains selected, forcing the tab container to hide newly added page.
+                if (existingSelectedIndex >= 0 && existingSelectedIndex < tabStrip.tabCount)
+                {
+                    tabStrip.selectedIndex = existingSelectedIndex;
+                }
+
+                if (existingSelectedIndex >= 0 && existingSelectedIndex < tabContainer.components.Count)
+                {
+                    tabContainer.selectedIndex = existingSelectedIndex;
+                }
+
+                tabStrip.Invalidate();
 
                 Utils.Log($"TicketPricesTab: Page found, size={page.width}x{page.height}; building content");
                 page.autoLayout = false;
@@ -108,10 +161,159 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
         public static void Cleanup()
         {
             s_initialized = false;
-            s_ticketPricesContainer = null;
+
+            if (s_ticketPricesContainer != null)
+            {
+                try
+                {
+                    UnityEngine.Object.Destroy(s_ticketPricesContainer.gameObject);
+                }
+                catch (Exception ex)
+                {
+                    Utils.LogError($"TicketPricesTab: Cleanup could not destroy container: {ex.Message}");
+                }
+                finally
+                {
+                    s_ticketPricesContainer = null;
+                }
+            }
+
             s_sliderRows.Clear();
             s_customIconAtlases.Clear();
             s_refreshAccumulator = 0f;
+        }
+
+        private const string TabName = "TicketPrices";
+        private const string PageName = "TicketPricesPanel";
+
+        /// <summary>
+        /// Find the active EconomyPanel instance via the UI view.
+        /// </summary>
+        private static EconomyPanel GetEconomyPanel()
+        {
+            var uiView = UIView.GetAView();
+            if (uiView == null)
+            {
+                return null;
+            }
+            return uiView.GetComponentsInChildren<EconomyPanel>().FirstOrDefault();
+        }
+
+        private static UITabstrip GetEconomyTabstrip(EconomyPanel economyPanel)
+        {
+            return economyPanel?.Find<UITabstrip>("EconomyTabstrip");
+        }
+
+        private static UITabContainer GetEconomyTabContainer(EconomyPanel economyPanel)
+        {
+            return economyPanel?.Find<UITabContainer>("EconomyContainer");
+        }
+
+        private static void HideTicketPricesTab(EconomyPanel economyPanel)
+        {
+            try
+            {
+                var tabStrip = GetEconomyTabstrip(economyPanel);
+                var tabContainer = GetEconomyTabContainer(economyPanel);
+                if (tabStrip != null)
+                {
+                    var tab = tabStrip.tabs.FirstOrDefault(t => t.name == TabName);
+                    if (tab != null)
+                    {
+                        UnityEngine.Object.Destroy(tab.gameObject);
+                    }
+                    tabStrip.Invalidate();
+                }
+                if (tabContainer != null)
+                {
+                    var page = tabContainer.components.FirstOrDefault(c => c.name == PageName);
+                    if (page != null)
+                    {
+                        UnityEngine.Object.Destroy(page.gameObject);
+                    }
+                }
+
+                // In the unlikely case we still have a direct reference to the container, destroy it too.
+                if (s_ticketPricesContainer != null)
+                {
+                    try
+                    {
+                        UnityEngine.Object.Destroy(s_ticketPricesContainer.gameObject);
+                    }
+                    catch (Exception ex2)
+                    {
+                        Utils.LogError($"TicketPricesTab: HideTicketPricesTab could not destroy ticketPricesContainer: {ex2.Message}");
+                    }
+                    finally
+                    {
+                        s_ticketPricesContainer = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.LogError($"TicketPricesTab: HideTicketPricesTab failed: {ex.Message}");
+            }
+            finally
+            {
+                // Always cleanup UI state and watcher as soon as tab is hidden.
+                Cleanup();
+            }
+        }
+
+        private static void ShowTicketPricesTab(EconomyPanel economyPanel)
+        {
+            if (economyPanel == null)
+                return;
+
+            var tabStrip = GetEconomyTabstrip(economyPanel);
+            var tabContainer = GetEconomyTabContainer(economyPanel);
+            var tab = tabStrip?.tabs.FirstOrDefault(t => t.name == TabName);
+            var page = tabContainer?.components.FirstOrDefault(c => c.name == PageName);
+
+            if (tab != null && page != null)
+            {
+                // Show tab button; do not force the page visible here, because tab selection should drive visibility.
+                tab.isVisible = true;
+
+                // Make sure existing selected tab remains selected in container so new ticket page doesn't appear over existing tab.
+                if (tabStrip != null && tabContainer != null)
+                {
+                    tabContainer.selectedIndex = tabStrip.selectedIndex;
+                }
+
+                tabStrip?.Invalidate();
+                return;
+            }
+
+            // If we do not have a tab/page, inject it.
+            InjectTab(economyPanel);
+        }
+
+        public static void UpdateTabState()
+        {
+            var economyPanel = GetEconomyPanel();
+            if (economyPanel == null)
+            {
+                return;
+            }
+
+            var enabled = OptionsWrapper<ImprovedPublicTransport.Settings.Settings>.Options.TicketPriceCustomizerMode == (int)ImprovedPublicTransport.Settings.Settings.TicketPriceCustomizerModes.Enabled;
+            if (enabled)
+            {
+                if (!s_initialized)
+                {
+                    InjectTab(economyPanel);
+                }
+                else
+                {
+                    ShowTicketPricesTab(economyPanel);
+                }
+            }
+            else
+            {
+                HideTicketPricesTab(economyPanel);
+            }
         }
 
         /// <summary>

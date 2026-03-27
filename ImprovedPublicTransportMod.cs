@@ -77,7 +77,14 @@ namespace ImprovedPublicTransport
                     IptGameObject.transform.parent = objectOfType.transform;
                     IptGameObject.AddComponent<SimHelper>();
                     IptGameObject.AddComponent<LineWatcher>();
-                    IptGameObject.AddComponent<Integration.TicketPriceCustomizer.DayNightPriceWatcher>();
+                    if (OptionsWrapper<Settings.Settings>.Options.TicketPriceCustomizerMode == (int)Settings.Settings.TicketPriceCustomizerModes.Enabled)
+                    {
+                        IptGameObject.AddComponent<Integration.TicketPriceCustomizer.DayNightPriceWatcher>();
+                    }
+                    else
+                    {
+                        if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: disabled by settings, skipping DayNightPriceWatcher.");
+                    }
                     _worldInfoPanel = new GameObject("PublicTransportStopWorldInfoPanel");
                     _worldInfoPanel.transform.parent = objectOfType.transform;
                     _worldInfoPanel.AddComponent<PublicTransportStopWorldInfoPanel>();
@@ -245,11 +252,21 @@ namespace ImprovedPublicTransport
                         Utils.LogError($"PublicTransportUnstucker: failed to apply integration: {ex.Message}");
                     }
 
-                    // TicketPriceCustomizer: apply configured ticket multipliers on load
+                    // TicketPriceCustomizer: apply configured ticket multipliers on load (only if enabled)
                     try
                     {
-                        ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.SetPrices(OptionsWrapper<Settings.Settings>.Options.TicketPriceCustomizer);
-                        if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: Prices applied on load.");
+                        if (OptionsWrapper<Settings.Settings>.Options.TicketPriceCustomizerMode == (int)Settings.Settings.TicketPriceCustomizerModes.Enabled)
+                        {
+                            ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.SetPrices(OptionsWrapper<Settings.Settings>.Options.TicketPriceCustomizer);
+                            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: Prices applied on load.");
+
+                            // Ensure Ticket Prices tab exists (cover cases where EconomyPanel patching order/detection missed initial panel creation).
+                            ImprovedPublicTransport.Integration.TicketPriceCustomizer.TicketPricesTab.UpdateTabState();
+                        }
+                        else
+                        {
+                            if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: disabled by settings, skipping initial price application.");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -325,11 +342,18 @@ namespace ImprovedPublicTransport
             if (!InGame)
                 return;
             InGame = false;
-            // Reset ticket prices to defaults on unload
+            // Reset ticket prices to defaults on unload (only if feature enabled)
             try
             {
-                ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.SetPrices(new Settings.Settings.TicketPriceCustomizerSettings());
-                if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: Prices reset on unload.");
+                if (OptionsWrapper<Settings.Settings>.Options.TicketPriceCustomizerMode == (int)Settings.Settings.TicketPriceCustomizerModes.Enabled)
+                {
+                    ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.SetPrices(new Settings.Settings.TicketPriceCustomizerSettings());
+                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: Prices reset on unload.");
+                }
+                else
+                {
+                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) Utils.Log("TicketPriceCustomizer: disabled by settings, skipping reset on unload.");
+                }
             }
             catch (Exception ex)
             {

@@ -32,6 +32,7 @@ namespace ImprovedPublicTransport.Util
             {
                 Debug.Log($"{ShortModName}: Patching method {original.Type.FullName}.{original.MethodName}");
                 var methodInfo = GetOriginal(original);
+                LogExistingPatches(methodInfo);
                 HarmonyInstance.Patch(methodInfo,
                     prefix == null ? null : new HarmonyMethod(GetPatch(prefix), before: prefix.Before, after: prefix.After, priority: prefix.Priority),
                     postfix == null ? null : new HarmonyMethod(GetPatch(postfix), before: postfix.Before, after: postfix.After, priority: postfix.Priority),
@@ -41,6 +42,52 @@ namespace ImprovedPublicTransport.Util
             catch (Exception e)
             {
                 Debug.LogError($"{ShortModName}: Failed to patch method {original.Type.FullName}.{original.MethodName}");
+                Debug.LogException(e);
+            }
+        }
+
+        internal static void LogExistingPatches(MethodInfo methodInfo)
+        {
+            if (methodInfo == null)
+            {
+                Debug.LogWarning($"{ShortModName}: LogExistingPatches called with null MethodInfo.");
+                return;
+            }
+
+            try
+            {
+                var patchInfo = Harmony.GetPatchInfo(methodInfo);
+                if (patchInfo == null) return;
+
+                var otherPatchers = new System.Collections.Generic.List<string>();
+
+                if (patchInfo.Prefixes != null)
+                    foreach (var p in patchInfo.Prefixes)
+                        if (p.owner != HarmonyId.Value) otherPatchers.Add($"prefix:{p.owner}");
+
+                if (patchInfo.Postfixes != null)
+                    foreach (var p in patchInfo.Postfixes)
+                        if (p.owner != HarmonyId.Value) otherPatchers.Add($"postfix:{p.owner}");
+
+                if (patchInfo.Transpilers != null)
+                    foreach (var p in patchInfo.Transpilers)
+                        if (p.owner != HarmonyId.Value) otherPatchers.Add($"transpiler:{p.owner}");
+
+                if (otherPatchers.Count > 0)
+                {
+                    Debug.LogWarning($"{ShortModName}: Detected other patchers on {methodInfo.DeclaringType.FullName}.{methodInfo.Name} -> {string.Join(", ", otherPatchers.ToArray())}");
+                }
+            }
+            catch (Exception e)
+            {
+                if (methodInfo != null)
+                {
+                    Debug.LogError($"{ShortModName}: Failed to inspect existing patches for {methodInfo.DeclaringType?.FullName}.{methodInfo.Name}");
+                }
+                else
+                {
+                    Debug.LogError($"{ShortModName}: Failed to inspect existing patches for unknown method.");
+                }
                 Debug.LogException(e);
             }
         }

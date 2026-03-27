@@ -57,6 +57,7 @@ SETTINGS_DELETE Löschen
 SETTINGS_RESET Zurücksetzen
 
 SETTINGS_TAB_GENERAL Allgemein
+SETTINGS_TAB_AUTOLINE Automatische Linie
 SETTINGS_TAB_STOPS Haltestellen und Bahnhöfe
 SETTINGS_TAB_UNBUNCHING Entbündelung
 SETTINGS_TAB_DELETE Linien löschen
@@ -67,7 +68,7 @@ SETTINGS_SPEED_TOOLTIP Wählen Sie die Einheit für die Geschwindigkeitsanzeige 
 SETTINGS_SPEED_KPH km/h
 SETTINGS_SPEED_MPH mph
 SETTINGS_WALKING_SPEED Geh-/Radfahrgeschwindigkeit: 
-SETTINGS_WALKING_SPEED_TOOLTIP Standard: Basis-Spielgeschwindigkeiten.\nRealistisch: reduziert die Gehgeschwindigkeit auf realistische, altersgerechte Werte.\nRealistisch erhöht auch die Fahrradgeschwindigkeit, um Fahrradfahrten mit dem After Dark DLC zu fördern.
+SETTINGS_WALKING_SPEED_TOOLTIP Standard: Basis-Spielgeschwindigkeiten.\nRealistisch: reduziert die Gehgeschwindigkeit auf realistische, altersgerechte Werte.\nRealistisch reduziert auch die Fahrradgeschwindigkeit mit dem After Dark DLC.
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistisch
 SETTINGS_BBSP Verbesserte Bushaltestellen-Position: 
@@ -76,14 +77,19 @@ SETTINGS_BBSP_MODE_DISABLED Deaktiviert
 SETTINGS_BBSP_MODE_ORIGINAL Aktiviert
 SETTINGS_BBSP_MODE_UPDATED Experimentelle Logik verwenden
 
+SETTINGS_BUDGET Budget
 SETTINGS_ENABLE_BUDGET_CONTROL Linien-Budgetsteuerung
 SETTINGS_BUDGET_CONTROL_DISABLED Deaktiviert
 SETTINGS_BUDGET_CONTROL_ENABLED Aktiviert
 SETTINGS_BUDGET_CONTROL_TOOLTIP Wenn aktiviert, wird die Fahrzeuganzahl für Transportlinien durch das Budget gesteuert; aktualisiert alle bestehenden Linien und leert die Fahrzeugwarteschlange.
+SETTINGS_BUDGET_TICKET_PRICES Ticketpreis-Anpasser:
+SETTINGS_BUDGET_TICKET_PRICES_DISABLED Deaktiviert
+SETTINGS_BUDGET_TICKET_PRICES_ENABLED Aktiviert
+SETTINGS_BUDGET_TICKET_PRICES_TOOLTIP Wenn aktiviert, fügt es dem Wirtschaftsfenster einen neuen Reiter mit Schiebereglern hinzu, um die Ticketpreise für jeden Verkehrstyp anzupassen.
 
 SETTINGS_AUTO_LINE Automatische Linie
-SETTINGS_AUTOSHOW_LINE_INFO Linieninfo automatisch anzeigen
-SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Das Linieninfofenster automatisch anzeigen, nachdem eine Linie erstellt wurde.
+SETTINGS_AUTOSHOW_LINE_INFO Linieninfo automatisch öffnen
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Zeigt das Linieninfo-Fenster automatisch an, nachdem eine neue Linie erstellt wurde.
 
 AUTOLINECOLOR_STRATEGY_DISABLED Deaktiviert
 AUTOLINECOLOR_STRATEGY_RANDOM_HUE Zufälliger Farbton

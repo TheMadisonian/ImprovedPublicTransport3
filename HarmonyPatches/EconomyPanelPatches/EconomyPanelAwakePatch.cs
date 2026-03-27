@@ -14,16 +14,34 @@ namespace ImprovedPublicTransport.HarmonyPatches.EconomyPanelPatches
         public static void Apply()
         {
             Utils.Log("EconomyPanelAwakePatch: Attempting to apply patch on EconomyPanel.Awake");
-            
+
+            // Log if someone else already patched EconomyPanel.Awake
+            var economyAwakeMethod = typeof(EconomyPanel).GetMethod("Awake", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+            if (economyAwakeMethod == null)
+            {
+                Utils.LogWarning("EconomyPanelAwakePatch: Could not find EconomyPanel.Awake method for patching.");
+            }
+            else
+            {
+                PatchUtil.LogExistingPatches(economyAwakeMethod);
+            }
+
             // Try to inject immediately if the panel already exists
             TryInjectNow();
             
             // Also apply the patch for when the panel is created/awakened later
-            PatchUtil.Patch(
-                new PatchUtil.MethodDefinition(typeof(EconomyPanel), "Awake"),
-                postfix: new PatchUtil.MethodDefinition(typeof(EconomyPanelAwakePatch), nameof(Postfix))
-            );
-            Utils.Log("EconomyPanelAwakePatch: Patch applied");
+            if (economyAwakeMethod != null)
+            {
+                PatchUtil.Patch(
+                    new PatchUtil.MethodDefinition(typeof(EconomyPanel), "Awake"),
+                    postfix: new PatchUtil.MethodDefinition(typeof(EconomyPanelAwakePatch), nameof(Postfix))
+                );
+                Utils.Log("EconomyPanelAwakePatch: Patch applied");
+            }
+            else
+            {
+                Utils.LogError("EconomyPanelAwakePatch: Skipping Harmony patch because EconomyPanel.Awake was not found.");
+            }
         }
 
         public static void Undo()

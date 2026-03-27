@@ -1,4 +1,6 @@
-﻿using ColossalFramework;
+﻿using System;
+using System.Linq;
+using ColossalFramework;
 using ColossalFramework.UI;
 using UnityEngine;
 using ImprovedPublicTransport.OptionsFramework;
@@ -45,7 +47,13 @@ namespace ImprovedPublicTransport.Settings
             
             SimulationManager.instance.AddAction(() =>
             {
-                TransportManager instance = Singleton<TransportManager>.instance;
+                var instance = Singleton<TransportManager>.instance;
+                if (instance == null)
+                {
+                    Utils.LogWarning("SettingsActions: OnBudgetModeChanged called before TransportManager is available.");
+                    return;
+                }
+
                 int length = instance.m_lines.m_buffer.Length;
                 for (int index = 0; index < length; ++index)
                 {
@@ -54,6 +62,63 @@ namespace ImprovedPublicTransport.Settings
                         CachedTransportLineData.ClearEnqueuedVehicles((ushort) index);
                 }
             });
+        }
+
+        public static void OnTicketPriceCustomizerChanged(int mode)
+        {
+            bool enabled = mode == (int)ImprovedPublicTransport.Settings.Settings.TicketPriceCustomizerModes.Enabled;
+
+            // Update UI tab immediately on main thread (the dropdown callback runs on UI thread)
+            ImprovedPublicTransport.Integration.TicketPriceCustomizer.TicketPricesTab.UpdateTabState();
+
+            // Update day/night watcher immediately, on UI thread too (safe for component operations)
+            if (ImprovedPublicTransportMod.IptGameObject != null)
+            {
+                var watcher = ImprovedPublicTransportMod.IptGameObject.GetComponent<ImprovedPublicTransport.Integration.TicketPriceCustomizer.DayNightPriceWatcher>();
+                if (enabled)
+                {
+                    if (watcher == null)
+                    {
+                        ImprovedPublicTransportMod.IptGameObject.AddComponent<ImprovedPublicTransport.Integration.TicketPriceCustomizer.DayNightPriceWatcher>();
+                    }
+                }
+                else
+                {
+                    if (watcher != null)
+                    {
+                        UnityEngine.Object.Destroy(watcher);
+                    }
+                }
+            }
+
+            if (!ImprovedPublicTransportMod.InGame)
+            {
+                return;
+            }
+
+            // Apply ticket multipliers in simulation thread (game data manipulation)
+            SimulationManager.instance.AddAction(() =>
+            {
+                try
+                {
+                    if (enabled)
+                    {
+                        ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.SetPrices(OptionsWrapper<ImprovedPublicTransport.Settings.Settings>.Options.TicketPriceCustomizer);
+                        Utils.Log("SettingsActions: TicketPriceCustomizer enabled.");
+                    }
+                    else
+                    {
+                        // Revert to vanilla prices when disabling
+                        ImprovedPublicTransport.Integration.TicketPriceCustomizer.PriceCustomization.ResetToVanilla();
+                        Utils.Log("SettingsActions: TicketPriceCustomizer disabled and prices reset to vanilla.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Utils.LogError($"SettingsActions: OnTicketPriceCustomizerChanged failed: {ex.Message}");
+                }
+            });
+
         }
 
         public static void OnPublicTransportUnstuckerChanged(int value)

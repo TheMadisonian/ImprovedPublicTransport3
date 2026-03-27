@@ -57,6 +57,7 @@ SETTINGS_DELETE Удалить
 SETTINGS_RESET Сбросить
 
 SETTINGS_TAB_GENERAL Общие
+SETTINGS_TAB_AUTOLINE Автолиния
 SETTINGS_TAB_STOPS Остановки и Станции
 SETTINGS_TAB_UNBUNCHING Распределение
 SETTINGS_TAB_DELETE Удаление линий
@@ -67,7 +68,7 @@ SETTINGS_SPEED_TOOLTIP Выберите единицу измерения ско
 SETTINGS_SPEED_KPH км/ч
 SETTINGS_SPEED_MPH mph
 SETTINGS_WALKING_SPEED Скорость ходьбы/езды на велосипеде: 
-SETTINGS_WALKING_SPEED_TOOLTIP Стандарт: скорость базовой игры.\nРеалистичный: уменьшает скорость ходьбы до реалистичных, с учётом возраста значений.\nРеалистичный также увеличивает скорость езды на велосипеде, чтобы поощрять использование велосипеда с DLC After Dark.
+SETTINGS_WALKING_SPEED_TOOLTIP Стандарт: скорость базовой игры.\nРеалистичный: уменьшает скорость ходьбы до реалистичных, с учётом возраста значений.\nРеалистичный также уменьшает скорость езды на велосипеде с DLC After Dark.
 SETTINGS_WALKING_SPEED_MODE_VANILLA Стандарт
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Реалистичный
 SETTINGS_BBSP Улучшенное расположение остановок: 
@@ -76,14 +77,19 @@ SETTINGS_BBSP_MODE_DISABLED Отключено
 SETTINGS_BBSP_MODE_ORIGINAL Включено
 SETTINGS_BBSP_MODE_UPDATED Экспериментальная логика
 
+SETTINGS_BUDGET Бюджет
 SETTINGS_ENABLE_BUDGET_CONTROL Контролируется бюджетом
 SETTINGS_BUDGET_CONTROL_DISABLED Отключено
 SETTINGS_BUDGET_CONTROL_ENABLED Включено
 SETTINGS_BUDGET_CONTROL_TOOLTIP Включает и отключает управление бюджетом для всех линий.\n Включение применит режим к каждой линии и очистит ждущие в очереди транспортные средства.\n Изменения вступают в силу немедленно.
+SETTINGS_BUDGET_TICKET_PRICES Настройка цен на билеты:
+SETTINGS_BUDGET_TICKET_PRICES_DISABLED Отключено
+SETTINGS_BUDGET_TICKET_PRICES_ENABLED Включено
+SETTINGS_BUDGET_TICKET_PRICES_TOOLTIP При включении добавляет новую вкладку в панель Экономики с ползунками для настройки цен билетов для каждого типа транспорта.
 
 SETTINGS_AUTO_LINE Автолиния
-SETTINGS_AUTOSHOW_LINE_INFO Автоматически показывать инфо
-SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Автоматически показывает окно информации о линии, когда она создана.
+SETTINGS_AUTOSHOW_LINE_INFO Автоматически открывать информацию о линии
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Автоматически показывать окно информации о линии после создания новой линии.
 
 AUTOLINECOLOR_STRATEGY_DISABLED Отключено
 AUTOLINECOLOR_STRATEGY_RANDOM_HUE Случайный оттенок

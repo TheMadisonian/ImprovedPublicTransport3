@@ -4,6 +4,14 @@
 
 - Integrated Public Transport Unstucker support directly into IPT3.
 - Added on/off toggle in the Unbunching settings tab.
+- Added conflict detection logging for key economy/transport patches:
+  - `EconomyPanel.Awake` patch checks for other Harmony owners before applying.
+  - `TransportLine.SimulationStep` patch checks for existing prefix/postfix/transpilers before applying.
+  - Logs warnings with other patch owners to help diagnose IPT3 budget/income anomalies in mod combinations.
+- Added targeted debug logging to help track budget ordering issues:
+  - `CanLeaveStopPatch` logs line, wait time, and chosen result.
+  - `SimulationStepPatch` logs maintenance cost applied a line and active vehicle count.
+  - `TicketPriceCustomizer` logs each ticket price adjustment and the number of modified lines.
 
 ## [3.0.0] UI, Performance, and Safety enhancements from previous IPT2 version
 
@@ -32,7 +40,7 @@
 - Added bounds checks in BetterBoarding `LoadPassengers` prefixes for all vehicle types (bus, trolleybus, tram, train, ferry, helicopter, blimp): verify `CachedVehicleData.m_cachedVehicleData != null && vehicleID < ...Length` before `BoardPassengers`.
 - Added node guard in BetterBoarding `LoadPassengers` prefixes: verify `CachedNodeData.m_cachedNodeData != null && currentStop < ...Length` before `PassengersIn +=`.
 - **`BoardingUtility.ProcessRankedChoices` critical guards**: Added bounds checks for `chosenVehicleID` (verify `> 0 && < vehicleBuffer.Length`) and `citizenID` (verify `!= 0`) before buffer access. Added null checks for `citizenInfo` and `citizenInfo.m_citizenAI` before calling instance methods.
-- **BetterBoarding now correctly skips single-vehicle transports** (regular buses and non-articulated trolleybuses). These vehicles are not vehicle chains and have no compartment selection; they return sentinel value to fall back to vanilla boarding. Only multi-vehicle chains (trains, articulated trolleybuses) use distance-based compartment boarding.
+
 
 ### Performance — Dictionary lookup (O(1)) replacing linear search (O(n))
 

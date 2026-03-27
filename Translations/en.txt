@@ -57,6 +57,7 @@ SETTINGS_DELETE Delete
 SETTINGS_RESET Reset
 
 SETTINGS_TAB_GENERAL General
+SETTINGS_TAB_AUTOLINE Auto Line
 SETTINGS_TAB_STOPS Stops and Stations
 SETTINGS_TAB_UNBUNCHING Unbunching
 SETTINGS_TAB_DELETE Delete Lines
@@ -67,7 +68,7 @@ SETTINGS_SPEED_TOOLTIP Choose the unit used for speed display in the UI.
 SETTINGS_SPEED_KPH kph
 SETTINGS_SPEED_MPH mph
 SETTINGS_WALKING_SPEED Walking/Cycling Speed: 
-SETTINGS_WALKING_SPEED_TOOLTIP Standard: base game speeds.\nRealistic: reduces walking speed to realistic, age-based values.\nRealistic also increases cycling speed to encourage biking with After Dark DLC.
+SETTINGS_WALKING_SPEED_TOOLTIP Standard: base game speeds.\nRealistic: reduces walking speed to realistic, age-based values.\nRealistic also reduces cycling speed with After Dark DLC.
 SETTINGS_WALKING_SPEED_MODE_VANILLA Standard
 SETTINGS_WALKING_SPEED_MODE_REALISTIC Realistic
 SETTINGS_BBSP Better Bus Stop Position: 
@@ -76,14 +77,19 @@ SETTINGS_BBSP_MODE_DISABLED Disabled
 SETTINGS_BBSP_MODE_ORIGINAL Enabled
 SETTINGS_BBSP_MODE_UPDATED Use experimental logic
 
+SETTINGS_BUDGET Budget
 SETTINGS_ENABLE_BUDGET_CONTROL Line Budget Control:
 SETTINGS_BUDGET_CONTROL_DISABLED Disabled
 SETTINGS_BUDGET_CONTROL_ENABLED Enabled
 SETTINGS_BUDGET_CONTROL_TOOLTIP When enabled, vehicle counts for transport lines are controlled by the budget; updates all existing lines and clears enqueued vehicles.
+SETTINGS_BUDGET_TICKET_PRICES Ticket Price Customizer:
+SETTINGS_BUDGET_TICKET_PRICES_DISABLED Disabled
+SETTINGS_BUDGET_TICKET_PRICES_ENABLED Enabled
+SETTINGS_BUDGET_TICKET_PRICES_TOOLTIP When enabled, adds a new tab to Economy panel with sliders to adjust ticket prices for each transport type.
 
 SETTINGS_AUTO_LINE Auto Line
-SETTINGS_AUTOSHOW_LINE_INFO Auto show line info
-SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Automatically show the line info window after a line has been created.
+SETTINGS_AUTOSHOW_LINE_INFO Automatically open Line Info Panel
+SETTINGS_AUTOSHOW_LINE_INFO_TOOLTIP Automatically show the Line Info Panel after a new line is created.
 
 AUTOLINECOLOR_STRATEGY_DISABLED Disabled
 AUTOLINECOLOR_STRATEGY_RANDOM_HUE Random Hue

@@ -75,8 +75,20 @@ namespace ImprovedPublicTransport.Settings
         }
 
         [Description("SETTINGS_BUDGET_CONTROL_TOOLTIP")]
-        [DropDown("SETTINGS_ENABLE_BUDGET_CONTROL", nameof(BudgetControlModes), SETTINGS_COMMON, nameof(SettingsActions), nameof(SettingsActions.OnBudgetModeChanged))]
+        [DropDown("SETTINGS_ENABLE_BUDGET_CONTROL", nameof(BudgetControlModes), SETTINGS_BUDGET, nameof(SettingsActions), nameof(SettingsActions.OnBudgetModeChanged))]
         public int BudgetControl { get; set; } = (int)BudgetControlModes.Enabled;
+
+        public enum TicketPriceCustomizerModes
+        {
+            [Description("SETTINGS_BUDGET_TICKET_PRICES_DISABLED")]
+            Disabled = 0,
+            [Description("SETTINGS_BUDGET_TICKET_PRICES_ENABLED")]
+            Enabled = 1
+        }
+
+        [Description("SETTINGS_BUDGET_TICKET_PRICES_TOOLTIP")]
+        [DropDown("SETTINGS_BUDGET_TICKET_PRICES", nameof(TicketPriceCustomizerModes), SETTINGS_BUDGET, nameof(SettingsActions), nameof(SettingsActions.OnTicketPriceCustomizerChanged))]
+        public int TicketPriceCustomizerMode { get; set; } = (int)TicketPriceCustomizerModes.Enabled;
 
 
         [Description("SETTINGS_VEHICLE_EDITOR_POSITION_TOOLTIP")]

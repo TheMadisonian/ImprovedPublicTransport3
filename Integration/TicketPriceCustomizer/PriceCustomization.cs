@@ -151,15 +151,45 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
         // Keep track of original base prices to avoid compounding multipliers
         private static readonly System.Collections.Generic.Dictionary<string, int> s_basePrices = new System.Collections.Generic.Dictionary<string, int>();
 
+        // Cache of resolved transport Info objects for safer simulation-thread operations.
+        private static readonly System.Collections.Generic.Dictionary<string, TransportInfo> s_cachedTransportInfos = new System.Collections.Generic.Dictionary<string, TransportInfo>();
+
+        public static void ResetToVanilla()
+        {
+            foreach (var kvp in s_basePrices)
+            {
+                if (!TryGetTransportInfo(kvp.Key, out var info))
+                {
+                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs)
+                        IPTUtils.LogWarning($"TicketPriceCustomizer: ResetToVanilla skipping '{kvp.Key}' - TransportInfo not found.");
+                    continue;
+                }
+
+                SetInfoPrice(info, (ushort)Mathf.Clamp(kvp.Value, 0, UInt16.MaxValue));
+
+                // restore line prices for all lines with this transport type
+                var transportManager = TransportManager.instance;
+                if (transportManager == null) continue;
+
+                for (ushort i = 0; i < transportManager.m_lines.m_size; i++)
+                {
+                    var line = transportManager.m_lines.m_buffer[i];
+                    if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None || line.Info != info)
+                        continue;
+
+                    SetLinePrice(i, info, ref transportManager.m_lines.m_buffer[i], (ushort)Mathf.Clamp(kvp.Value, 0, UInt16.MaxValue));
+                }
+            }
+        }
+
         private static void SetPrice(float multiplier, string type)
         {
             try
             {
-                // IPT now controls when this is invoked; don't gate on a separate LoadingExtension flag.
-                var info = PrefabCollection<TransportInfo>.FindLoaded(type);
-                if (info == null)
+                // Prefer already-resolved TransportInfo objects (from existing lines) and avoid PrefabCollection lookups on simulation thread.
+                if (!TryGetTransportInfo(type, out var info))
                 {
-                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.LogWarning($"TicketPriceCustomizer: TransportInfo for '{type}' not found.");
+                    if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.LogWarning($"TicketPriceCustomizer: TransportInfo for '{type}' not found; skipping type.");
                     return;
                 }
 
@@ -198,6 +228,8 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
                 }
 
                 if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Multiplier {multiplier:F1}x applied for '{type}': checkedLines={checkedLines}, modifiedLines={modifiedLines}");
+                // Additional target logging for debugging ticket price/bus cost interactions
+                IPTUtils.Log($"TicketPriceCustomizer: Applied ticket price for '{type}' (multiplier {multiplier:F1}) - checkedLines={checkedLines}, modifiedLines={modifiedLines}");
             }
             catch (Exception e)
             {
@@ -224,6 +256,37 @@ namespace ImprovedPublicTransport.Integration.TicketPriceCustomizer
             }
             if (ImprovedPublicTransport.Util.Diagnostics.VerboseTranspileLogs) IPTUtils.Log($"TicketPriceCustomizer: Transport line id: {lineId}, #{line.m_lineNumber}, name: {Singleton<TransportManager>.instance.GetLineName(lineId)}, was price: {line.m_ticketPrice}, new price: {price}");
             line.m_ticketPrice = price;
+        }
+
+        private static bool TryGetTransportInfo(string transportType, out TransportInfo info)
+        {
+            if (s_cachedTransportInfos.TryGetValue(transportType, out info))
+            {
+                return info != null;
+            }
+
+            info = null;
+            var transportManager = TransportManager.instance;
+            if (transportManager != null)
+            {
+                for (ushort i = 0; i < transportManager.m_lines.m_size; i++)
+                {
+                    var line = transportManager.m_lines.m_buffer[i];
+                    if ((line.m_flags & TransportLine.Flags.Created) == TransportLine.Flags.None || line.Info == null)
+                        continue;
+                    if (line.Info.name.Equals(transportType, StringComparison.OrdinalIgnoreCase))
+                    {
+                        info = line.Info;
+                        break;
+                    }
+                }
+            }
+
+            // We purposely skip PrefabCollection lookups here in the simulation thread path because some external
+            // mods (e.g. LoadingScreenModRevisited custom asset deserializer) can crash when called from worker threads.
+            // Use line snapshot data only.
+            s_cachedTransportInfos[transportType] = info;
+            return info != null;
         }
     }
 }
