@@ -84,11 +84,17 @@ namespace StopsAndStations
             {
                 ref var instance = ref instances[i];
                 uint pathId = instance.m_path;
-                if (pathId != 0 && (instance.m_flags & InstanceUsingTransport) == InstanceUsingTransport)
+                if (pathId != 0 && pathId < (uint)pathUnits.Length && (instance.m_flags & InstanceUsingTransport) == InstanceUsingTransport)
                 {
                     var pathPosition = pathUnits[pathId].GetPosition(instance.m_pathPositionIndex >> 1);
-                    ushort nodeId = segments[pathPosition.m_segment].m_startNode;
-                    ++passengerCount[nodeId];
+                    if (pathPosition.m_segment < segments.Length)
+                    {
+                        ushort nodeId = segments[pathPosition.m_segment].m_startNode;
+                        if (nodeId < passengerCount.Length)
+                        {
+                            ++passengerCount[nodeId];
+                        }
+                    }
                 }
             }
         }
@@ -112,16 +118,20 @@ namespace StopsAndStations
                 ref var instance = ref instances[i];
                 uint pathId = instance.m_path;
                 if (pathId != 0
+                    && pathId < (uint)pathUnits.Length
                     && instance.m_waitCounter == 0
                     && (instance.m_flags & InstanceUsingTransport) == InstanceUsingTransport)
                 {
                     var pathPosition = pathUnits[pathId].GetPosition(instance.m_pathPositionIndex >> 1);
-                    ushort nodeId = segments[pathPosition.m_segment].m_startNode;
-                    if (passengerCount[nodeId] > GetMaximumAllowedPassengers(nodeId))
+                    if (pathPosition.m_segment < segments.Length)
                     {
-                        --passengerCount[nodeId];
-                        instance.m_flags |= CitizenInstance.Flags.BoredOfWaiting;
-                        instance.m_waitCounter = byte.MaxValue;
+                        ushort nodeId = segments[pathPosition.m_segment].m_startNode;
+                        if (nodeId < passengerCount.Length && passengerCount[nodeId] > GetMaximumAllowedPassengers(nodeId))
+                        {
+                            --passengerCount[nodeId];
+                            instance.m_flags |= CitizenInstance.Flags.BoredOfWaiting;
+                            instance.m_waitCounter = byte.MaxValue;
+                        }
                     }
                 }
             }

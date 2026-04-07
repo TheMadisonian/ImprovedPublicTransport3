@@ -35,8 +35,10 @@ namespace ImprovedPublicTransport.Data
                         _lineData[index].TargetVehicleCount =
                             OptionsWrapper<Settings.Settings>.Options.DefaultVehicleCount;
                     _lineData[index].BudgetControl = OptionsWrapper<Settings.Settings>.Options.BudgetControl == (int)Settings.Settings.BudgetControlModes.Enabled;
-                    _lineData[index].Depot = DepotUtil.GetClosestDepot(index,
-                        instance1.m_nodes.m_buffer[instance2.m_lines.m_buffer[index].GetStop(0)].m_position);
+                    var firstStop = instance2.m_lines.m_buffer[index].GetStop(0);
+                    _lineData[index].Depot = firstStop != 0
+                        ? DepotUtil.GetClosestDepot(index, instance1.m_nodes.m_buffer[firstStop].m_position)
+                        : 0;
                     _lineData[index].Unbunching = OptionsWrapper<Settings.Settings>.Options.Unbunching;
                 }
             }
@@ -72,7 +74,7 @@ namespace ImprovedPublicTransport.Data
                 Utils.Log("Found transport line data version: " + str);
                 var instance1 = Singleton<NetManager>.instance;
                 var instance2 = Singleton<TransportManager>.instance;
-                while (index1 < data1.Length)
+                while (index1 < data1.Length && lineID < 256)
                 {
                     if (instance2.m_lines.m_buffer[lineID].Complete)
                     {
@@ -89,11 +91,17 @@ namespace ImprovedPublicTransport.Data
                     data[lineID].BudgetControl = boolean;
                     ++index1;
                     var uint16 = BitConverter.ToUInt16(data1, index1);
-                    data[lineID].Depot = uint16 != 0
-                        ? uint16
-                        : DepotUtil.GetClosestDepot(lineID,
-                            instance1.m_nodes.m_buffer[instance2.m_lines.m_buffer[lineID].GetStop(0)]
-                                .m_position);
+                    if (uint16 != 0)
+                    {
+                        data[lineID].Depot = uint16;
+                    }
+                    else
+                    {
+                        var firstStop = instance2.m_lines.m_buffer[lineID].GetStop(0);
+                        data[lineID].Depot = firstStop != 0
+                            ? DepotUtil.GetClosestDepot(lineID, instance1.m_nodes.m_buffer[firstStop].m_position)
+                            : 0;
+                    }
                     index1 += 2;
                     if (str == "v001")
                     {

@@ -62,6 +62,11 @@ namespace ImprovedPublicTransport.Data
         while (index1 < Math.Min(data1.Length, CachedVehicleData.MaxVehicleCount))
         {
           int index2 = SerializableDataExtension.ReadInt32(data1, ref index1);
+          if (index2 < 0 || index2 >= data.Length)
+          {
+            Utils.LogWarning((object) $"Vehicle data index {index2} out of bounds, skipping.");
+            break;
+          }
           if (str == "v001")
           {
             int num = (int) SerializableDataExtension.ReadByte(data1, ref index1);
