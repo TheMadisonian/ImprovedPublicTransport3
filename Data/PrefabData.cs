@@ -277,19 +277,22 @@ namespace ImprovedPublicTransport.Data
             }
           }
           
-          var hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 3), out var result);
-          if (!hasNumberOnEnd)
+          if (infoName.Length >= 3)
           {
-            hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 2), out result);
-          }
-          if (!hasNumberOnEnd)
-          {
-            hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 1), out result);
-          }
+            var hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 3), out var result);
+            if (!hasNumberOnEnd && infoName.Length >= 2)
+            {
+              hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 2), out result);
+            }
+            if (!hasNumberOnEnd)
+            {
+              hasNumberOnEnd = TryParse(infoName.Substring(infoName.Length - 1), out result);
+            }
 
-          if (hasNumberOnEnd)
-          {
-            return $"{PrefabUtils.GetDisplayName(info)} {result}";
+            if (hasNumberOnEnd)
+            {
+              return $"{PrefabUtils.GetDisplayName(info)} {result}";
+            }
           }
         }
       }
@@ -711,7 +714,8 @@ namespace ImprovedPublicTransport.Data
         if (passengerCount < 0)
         {
           Utils.LogToTxt($"ReleaseUnits for #{vehicleID}");
-          instance.m_units.m_buffer[(int) num].m_nextUnit = 0U;
+          if ((int) num != 0)
+            instance.m_units.m_buffer[(int) num].m_nextUnit = 0U;
           instance.ReleaseUnits(firstUnit);
           return;
         }
