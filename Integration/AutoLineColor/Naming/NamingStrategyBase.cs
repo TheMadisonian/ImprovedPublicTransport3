@@ -246,6 +246,9 @@ namespace AutoLineColor.Naming
         {
             var thePathManager = Singleton<PathManager>.instance;
 
+            if (pathUnit >= (uint)thePathManager.m_pathUnits.m_buffer.Length)
+                yield break;
+
             var unit = thePathManager.m_pathUnits.m_buffer[pathUnit];
 
             if (!unit.GetPosition(0, out var position))

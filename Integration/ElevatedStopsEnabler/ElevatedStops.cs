@@ -22,6 +22,9 @@ namespace ElevatedStopsEnabler
                 if (!hasStops)
                     continue;
 
+                if (network.m_sortedLanes == null || network.m_sortedLanes.Length == 0)
+                    continue;
+
                 VehicleInfo.VehicleType firstStopType = network.m_lanes[network.m_sortedLanes[0]].m_stopType;
                 VehicleInfo.VehicleType secondStopType = network.m_lanes[network.m_sortedLanes[network.m_sortedLanes.Length - 1]].m_stopType;
                 VehicleInfo.VehicleType mediumStopType = VehicleInfo.VehicleType.None;

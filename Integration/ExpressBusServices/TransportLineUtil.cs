@@ -160,7 +160,7 @@ namespace ExpressBusServices
             var targetPath = citizenData.m_path;
 
             IncrementPath(instance, ref pathPosIdx, ref targetPath);
-            if (targetPath != 0U)
+            if (targetPath != 0U && targetPath < (uint)instance.m_pathUnits.m_buffer.Length)
             {
                 if (instance.m_pathUnits.m_buffer[(int)((UIntPtr)targetPath)].GetPosition(pathPosIdx >> 1, out PathUnit.Position pathPos2))
                 {
@@ -189,7 +189,7 @@ namespace ExpressBusServices
 
         private static void IncrementPath(PathManager instance, ref byte pathPosIdx, ref uint targetPath)
         {
-            if (targetPath != 0U)
+            if (targetPath != 0U && targetPath < (uint)instance.m_pathUnits.m_buffer.Length)
             {
                 pathPosIdx += 2;
                 if (pathPosIdx >> 1 >= instance.m_pathUnits.m_buffer[targetPath].m_positionCount)
